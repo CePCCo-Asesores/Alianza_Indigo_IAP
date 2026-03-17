@@ -160,7 +160,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, lang, onToggle
                   Alianza Índigo
                 </div>
                 <div className="text-[10px] text-gray-500 font-label tracking-widest uppercase">
-                  Neurodivergencia
+                  Neurodivergente I.A.P.
                 </div>
               </div>
             </button>
