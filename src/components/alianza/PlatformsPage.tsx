@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   Cpu, Bot, QrCode, Code2, Users, LayoutDashboard,
-  ArrowRight, Search, CheckCircle2, AlertCircle, Workflow
+  ArrowRight, Search, CheckCircle2, AlertCircle, Workflow, BookOpen
 } from 'lucide-react';
 
 interface PlatformsPageProps {
@@ -25,10 +25,29 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
   const platforms = es ? [
     {
       icon: Bot,
-      title: 'ADIA – Asistente de IA',
-      desc: 'Asistente de inteligencia artificial diseñado para apoyar la inclusión y accesibilidad en entornos educativos, laborales y sociales. ADIA proporciona orientación personalizada sobre neurodivergencia.',
-      status: 'En desarrollo',
-      features: ['Orientación sobre neurodivergencia', 'Recomendaciones de accesibilidad', 'Soporte multilingüe', 'Integración con plataformas educativas'],
+      title: 'ADIA – Asistente Docente de IA',
+      desc: 'El asistente permanente del docente que lo acompaña antes, durante y después de clase. Genera planeaciones inclusivas con adaptaciones específicas para estudiantes neurodivergentes, estrategias en tiempo real para situaciones de aula y documentación oficial (PTI, ACI, informes SEP). Gratuito para docentes de escuelas públicas.',
+      status: 'Activo',
+      features: [
+        'Planeaciones con adaptaciones ND por sesión',
+        'Estrategias en tiempo real para el aula',
+        'Documentación oficial: PTI, ACI, informes SEP',
+        'IIP v4.0: Ingeniero de Inclusión Pedagógica Total',
+        'Gratuito para escuelas públicas',
+      ],
+    },
+    {
+      icon: BookOpen,
+      title: 'NeuroPlan 360',
+      desc: 'Plataforma de IA que crea protocolos personalizados de autonomía funcional para personas neurodivergentes. Diseñada para familias, no para especialistas. El perfil ND generado se comparte directamente con el maestro, conectando el hogar con la escuela. Acceso gratuito para todos los afiliados a Alianza Índigo.',
+      status: 'Activo',
+      features: [
+        'Perfil ND personalizado del estudiante',
+        'Protocolos para vida diaria, escuela y socialización',
+        'Compartible con docentes y terapeutas',
+        'Framework FAN (Adaptación Neuro-Funcional)',
+        '100% gratuito para familias afiliadas',
+      ],
     },
     {
       icon: Workflow,
@@ -39,17 +58,17 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
     },
     {
       icon: Users,
-      title: 'Registro de Profesionales ND',
-      desc: 'Directorio institucional de profesionales especializados en neurodivergencia. Permite a organizaciones encontrar expertos certificados.',
+      title: 'RENAP-ND',
+      desc: 'Registro Nacional de Prestadores de Servicios Neurodivergentes. Directorio público verificable de terapeutas, médicos y centros que han firmado el Código de Ética Neuroafirmativa de Alianza Índigo.',
       status: 'En desarrollo',
-      features: ['Directorio verificado', 'Búsqueda por especialidad', 'Perfiles profesionales', 'Validación institucional'],
+      features: ['Directorio verificado y público', 'Búsqueda por especialidad', 'Verificación por QR dinámico', 'Tres estados: vigente, suspendido, retirado'],
     },
     {
       icon: QrCode,
       title: 'Verificador de Distintivos',
-      desc: 'Sistema de verificación mediante código QR y código único que permite validar la autenticidad de certificaciones y distintivos otorgados por Alianza Índigo.',
+      desc: 'Sistema de verificación mediante código QR y código único que permite validar la autenticidad de certificaciones y distintivos otorgados por Alianza Índigo en tiempo real.',
       status: 'Activo',
-      features: ['Verificación por QR', 'Código único', 'Validación en tiempo real', 'Registro público'],
+      features: ['Verificación por QR', 'Código único por certificación', 'Validación en tiempo real', 'Registro público consultable'],
     },
     {
       icon: Code2,
@@ -58,20 +77,32 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
       status: 'En desarrollo',
       features: ['Endpoints RESTful', 'Documentación completa', 'Autenticación segura', 'Rate limiting'],
     },
-    {
-      icon: LayoutDashboard,
-      title: 'Panel Administrativo',
-      desc: 'Sistema interno de gestión institucional para la administración de certificaciones, registros, comunicaciones y reportes. Acceso restringido al equipo institucional.',
-      status: 'Interno',
-      features: ['Gestión de certificaciones', 'Reportes institucionales', 'Control de acceso', 'Auditoría de acciones'],
-    },
   ] : [
     {
       icon: Bot,
-      title: 'ADIA – AI Assistant',
-      desc: 'Artificial intelligence assistant designed to support inclusion and accessibility in educational, work and social environments. ADIA provides personalized guidance on neurodivergence.',
-      status: 'In development',
-      features: ['Neurodivergence guidance', 'Accessibility recommendations', 'Multilingual support', 'Educational platform integration'],
+      title: 'ADIA – AI Teaching Assistant',
+      desc: 'The permanent assistant that accompanies teachers before, during and after class. Generates inclusive lesson plans with specific adaptations for neurodivergent students, real-time strategies for classroom situations and official documentation (PTI, ACI, SEP reports). Free for public school teachers.',
+      status: 'Active',
+      features: [
+        'Lesson plans with ND adaptations per session',
+        'Real-time classroom strategies',
+        'Official documentation: PTI, ACI, SEP reports',
+        'IIP v4.0: Total Pedagogical Inclusion Engineer',
+        'Free for public schools',
+      ],
+    },
+    {
+      icon: BookOpen,
+      title: 'NeuroPlan 360',
+      desc: 'AI platform that creates personalized functional autonomy protocols for neurodivergent people. Designed for families, not specialists. The generated ND profile is shared directly with the teacher, connecting home and school. Free access for all Alianza Índigo members.',
+      status: 'Active',
+      features: [
+        'Personalized ND student profile',
+        'Protocols for daily life, school and socialization',
+        'Shareable with teachers and therapists',
+        'FAN Framework (Neuro-Functional Adaptation)',
+        '100% free for affiliated families',
+      ],
     },
     {
       icon: Workflow,
@@ -82,17 +113,17 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
     },
     {
       icon: Users,
-      title: 'ND Professional Registry',
-      desc: 'Institutional directory of professionals specialized in neurodivergence. Allows organizations to find certified experts.',
+      title: 'RENAP-ND',
+      desc: 'National Registry of Neurodivergent Service Providers. Public verifiable directory of therapists, doctors and centers that have signed the Alianza Índigo Neuroaffirmative Code of Ethics.',
       status: 'In development',
-      features: ['Verified directory', 'Search by specialty', 'Professional profiles', 'Institutional validation'],
+      features: ['Verified public directory', 'Search by specialty', 'Dynamic QR verification', 'Three states: valid, suspended, withdrawn'],
     },
     {
       icon: QrCode,
       title: 'Badge Verifier',
-      desc: 'QR code and unique code verification system that validates the authenticity of certifications and badges granted by Alianza Índigo.',
+      desc: 'QR code and unique code verification system that validates the authenticity of certifications and badges granted by Alianza Índigo in real time.',
       status: 'Active',
-      features: ['QR verification', 'Unique code', 'Real-time validation', 'Public registry'],
+      features: ['QR verification', 'Unique code per certification', 'Real-time validation', 'Public registry'],
     },
     {
       icon: Code2,
@@ -100,13 +131,6 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
       desc: 'Programming interface that allows third parties to validate certifications, consult the public registry and access open data from Alianza Índigo.',
       status: 'In development',
       features: ['RESTful endpoints', 'Complete documentation', 'Secure authentication', 'Rate limiting'],
-    },
-    {
-      icon: LayoutDashboard,
-      title: 'Admin Panel',
-      desc: 'Internal institutional management system for the administration of certifications, registrations, communications and reports. Restricted access to the institutional team.',
-      status: 'Internal',
-      features: ['Certification management', 'Institutional reports', 'Access control', 'Action auditing'],
     },
   ];
 
@@ -127,8 +151,8 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
           </h1>
           <p className="text-white/80 text-lg leading-relaxed max-w-3xl">
             {es
-              ? 'Desarrollamos herramientas tecnológicas accesibles para potenciar la neuroinclusión. Desde inteligencia artificial hasta sistemas de verificación, nuestra tecnología está al servicio de la comunidad.'
-              : 'We develop accessible technological tools to enhance neuroinclusion. From artificial intelligence to verification systems, our technology serves the community.'}
+              ? 'Inteligencia artificial al servicio de quienes más la necesitan. ADIA y NeuroPlan 360 son completamente gratuitos para docentes de escuelas públicas y familias afiliadas a Alianza Índigo. Financiados por certificaciones y Sorteos Índigo.'
+              : 'Artificial intelligence at the service of those who need it most. ADIA and NeuroPlan 360 are completely free for public school teachers and families affiliated with Alianza Índigo. Funded by certifications and Sorteos Índigo.'}
           </p>
         </div>
       </section>
