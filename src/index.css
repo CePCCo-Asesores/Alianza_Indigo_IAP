@@ -1,0 +1,198 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Lato:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 235 52% 23%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 235 52% 23%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 235 52% 23%;
+
+    --primary: 236 52% 23%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 48 100% 50%;
+    --secondary-foreground: 235 52% 23%;
+
+    --muted: 230 20% 96%;
+    --muted-foreground: 235 20% 46%;
+
+    --accent: 48 100% 50%;
+    --accent-foreground: 235 52% 23%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 230 20% 90%;
+    --input: 230 20% 90%;
+    --ring: 236 52% 23%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 236 52% 23%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 48 100% 50%;
+    --sidebar-primary-foreground: 235 52% 23%;
+    --sidebar-accent: 236 40% 30%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 236 40% 30%;
+    --sidebar-ring: 48 100% 50%;
+
+    --indigo: #1B1F5A;
+    --indigo-light: #2B2D6D;
+    --indigo-dark: #12143D;
+    --gold: #FFD700;
+    --gold-light: #FFE44D;
+    --gold-dark: #C9A800;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  p, span, li, a, label, input, textarea, select, button {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .indigo-gradient {
+    background: linear-gradient(135deg, #1B1F5A 0%, #2B2D6D 50%, #1B1F5A 100%);
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, #FFD700 0%, #FFE44D 50%, #FFD700 100%);
+  }
+
+  .indigo-text-gradient {
+    background: linear-gradient(135deg, #1B1F5A, #3D42A0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gold-text-gradient {
+    background: linear-gradient(135deg, #FFD700, #FFE44D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-institutional {
+    @apply bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  .btn-indigo {
+    @apply bg-[#1B1F5A] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#2B2D6D] transition-all duration-300 inline-flex items-center gap-2;
+  }
+
+  .btn-gold {
+    @apply bg-[#FFD700] text-[#1B1F5A] px-6 py-3 rounded-lg font-semibold hover:bg-[#FFE44D] transition-all duration-300 inline-flex items-center gap-2;
+  }
+
+  .btn-outline-indigo {
+    @apply border-2 border-[#1B1F5A] text-[#1B1F5A] px-6 py-3 rounded-lg font-medium hover:bg-[#1B1F5A] hover:text-white transition-all duration-300 inline-flex items-center gap-2;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 px-4 md:px-8;
+  }
+
+  .container-institutional {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1B1F5A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2B2D6D;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid #FFD700;
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-link {
+  @apply absolute -top-10 left-4 bg-[#FFD700] text-[#1B1F5A] px-4 py-2 rounded-b-lg font-semibold z-[100] transition-all;
+}
+
+.skip-link:focus {
+  @apply top-0;
+}
