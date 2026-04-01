@@ -15,7 +15,7 @@ const CERT_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b4919a_
 
 const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
   const t = lang === 'es' ? {
-    heroTitle: 'No necesitas parecer para ser',
+    heroTitle: 'No necesitas PARECER para SER',
     heroSubtitle: 'Institución dedicada a la protección y promoción de la neurodivergencia',
     heroDesc: 'Alianza Índigo trabaja por un mundo donde cada mente diversa sea reconocida, protegida y valorada. Somos una institución colectiva, ética y universal.',
     btnNeurodiv: '¿Qué es la neurodivergencia?',
@@ -62,7 +62,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
       'La sociedad debe adaptarse a la diversidad neurológica',
     ],
   } : {
-    heroTitle: 'You don\'t need to seem to be',
+    heroTitle: 'No need to SEEM to BE',
     heroSubtitle: 'Institution dedicated to the protection and promotion of neurodivergence',
     heroDesc: 'Alianza Índigo works for a world where every diverse mind is recognized, protected and valued. We are a collective, ethical and universal institution.',
     btnNeurodiv: 'What is neurodivergence?',
