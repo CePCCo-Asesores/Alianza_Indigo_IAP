@@ -66,8 +66,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ lang }) => {
             </h1>
             <p className="text-white/80 text-lg leading-relaxed">
               {es
-                ? 'Alianza Índigo es una institución colectiva, ética y universal dedicada a la protección, representación, certificación y promoción de la neurodivergencia.'
-                : 'Alianza Índigo is a collective, ethical and universal institution dedicated to the protection, representation, certification and promotion of neurodivergence.'}
+                ? 'Alianza Índigo A.C. es una asociación civil colectiva, ética y universal dedicada a la protección, representación, certificación y promoción de la neurodivergencia.'
+                : 'Alianza Índigo A.C. is a collective, ethical and universal civil association dedicated to the protection, representation, certification and promotion of neurodivergence.'}
             </p>
           </div>
         </div>
@@ -84,8 +84,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ lang }) => {
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
                   {es
-                    ? 'Alianza Índigo es un organismo institucional dedicado a transformar la comprensión social de la neurodivergencia. Operamos como una entidad colectiva, sin protagonismos individuales, con el objetivo de construir un mundo donde cada mente diversa sea reconocida, protegida y valorada.'
-                    : 'Alianza Índigo is an institutional body dedicated to transforming the social understanding of neurodivergence. We operate as a collective entity, without individual protagonism, with the goal of building a world where every diverse mind is recognized, protected and valued.'}
+                    ? 'Alianza Índigo A.C. es una asociación civil dedicada a transformar la comprensión social de la neurodivergencia. Operamos como una entidad colectiva, sin protagonismos individuales, con el objetivo de construir un mundo donde cada mente diversa sea reconocida, protegida y valorada.'
+                    : 'Alianza Índigo A.C. is a civil association dedicated to transforming the social understanding of neurodivergence. We operate as a collective entity, without individual protagonism, with the goal of building a world where every diverse mind is recognized, protected and valued.'}
                 </p>
                 <p>
                   {es
