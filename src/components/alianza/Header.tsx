@@ -123,8 +123,8 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, lang, onToggle
           <div className="max-w-7xl mx-auto flex justify-between items-center">
             <span className="font-label tracking-wide opacity-80">
               {lang === 'es'
-                ? 'Institución dedicada a la protección y promoción de la neurodivergencia'
-                : 'Institution dedicated to the protection and promotion of neurodivergence'}
+                ? 'Asociación Civil dedicada a la protección y promoción de la neurodivergencia'
+                : 'Civil Association dedicated to the protection and promotion of neurodivergence'}
             </span>
             <div className="flex items-center gap-4">
               <button
@@ -160,7 +160,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, lang, onToggle
                   Alianza Índigo Neurodivergente
                 </div>
                 <div className="text-[10px] text-gray-500 font-label tracking-widest uppercase">
-                  Neurodivergente I.A.P.
+                  Asociación Civil
                 </div>
               </div>
             </button>

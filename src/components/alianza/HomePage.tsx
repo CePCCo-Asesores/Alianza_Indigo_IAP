@@ -16,8 +16,8 @@ const CERT_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b4919a_
 const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
   const t = lang === 'es' ? {
     heroTitle: 'No necesitas PARECER para SER',
-    heroSubtitle: 'Institución dedicada a la protección y promoción de la neurodivergencia',
-    heroDesc: 'Alianza Índigo Neurodivergente trabaja por un mundo donde cada mente diversa sea reconocida, protegida y valorada. Somos una institución colectiva, ética y universal.',
+    heroSubtitle: 'Asociación Civil dedicada a la protección y promoción de la neurodivergencia',
+    heroDesc: 'Alianza Índigo Neurodivergente A.C. trabaja por un mundo donde cada mente diversa sea reconocida, protegida y valorada. Somos una asociación civil colectiva, ética y universal.',
     btnNeurodiv: '¿Qué es la neurodivergencia?',
     btnCert: 'Certificaciones',
     btnPlatforms: 'Plataformas',
@@ -63,8 +63,8 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
     ],
   } : {
     heroTitle: 'No need to SEEM to BE',
-    heroSubtitle: 'Institution dedicated to the protection and promotion of neurodivergence',
-    heroDesc: 'Alianza Índigo Neurodivergente works for a world where every diverse mind is recognized, protected and valued. We are a collective, ethical and universal institution.',
+    heroSubtitle: 'Civil Association dedicated to the protection and promotion of neurodivergence',
+    heroDesc: 'Alianza Índigo Neurodivergente A.C. works for a world where every diverse mind is recognized, protected and valued. We are a collective, ethical and universal civil association.',
     btnNeurodiv: 'What is neurodivergence?',
     btnCert: 'Certifications',
     btnPlatforms: 'Platforms',
