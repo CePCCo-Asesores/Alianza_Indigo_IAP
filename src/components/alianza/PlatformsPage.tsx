@@ -39,14 +39,14 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
    {
   icon: BookOpen,
   title: 'NeuroPlan 360',
-  desc: 'La plataforma de IA más poderosa del ecosistema Alianza Índigo. Crea protocolos personalizados de autonomía funcional para personas neurodivergentes basados en el Framework FAN. Diseñada para familias, docentes, terapeutas, psicólogos y cualquier especialista que trabaje con personas ND. El perfil generado se comparte entre todos los actores del entorno del estudiante — conectando hogar, escuela y clínica en un solo sistema.',
+  desc: 'La plataforma de IA más poderosa del ecosistema Alianza Índigo Neurodivergente. Crea protocolos personalizados de autonomía funcional para personas neurodivergentes basados en el Framework FAN. Diseñada para familias, docentes, terapeutas, psicólogos y cualquier especialista que trabaje con personas ND. El perfil generado se comparte entre todos los actores del entorno del estudiante — conectando hogar, escuela y clínica en un solo sistema.',
   status: 'Activo',
   features: [
     'Perfil ND personalizado y compartible',
     'Protocolos para vida diaria, escuela y clínica',
     'Para familias, docentes y especialistas',
     'Framework FAN (Adaptación Neuro-Funcional)',
-    'Gratuito para familias afiliadas a Alianza Índigo',
+    'Gratuito para familias afiliadas a Alianza Índigo Neurodivergente',
   ],
 },
     {
@@ -59,21 +59,21 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
     {
       icon: Users,
       title: 'RENAP-ND',
-      desc: 'Registro Nacional de Prestadores de Servicios Neurodivergentes. Directorio público verificable de terapeutas, médicos y centros que han firmado el Código de Ética Neuroafirmativa de Alianza Índigo.',
+      desc: 'Registro Nacional de Prestadores de Servicios Neurodivergentes. Directorio público verificable de terapeutas, médicos y centros que han firmado el Código de Ética Neuroafirmativa de Alianza Índigo Neurodivergente.',
       status: 'En desarrollo',
       features: ['Directorio verificado y público', 'Búsqueda por especialidad', 'Verificación por QR dinámico', 'Tres estados: vigente, suspendido, retirado'],
     },
     {
       icon: QrCode,
       title: 'Verificador de Distintivos',
-      desc: 'Sistema de verificación mediante código QR y código único que permite validar la autenticidad de certificaciones y distintivos otorgados por Alianza Índigo en tiempo real.',
+      desc: 'Sistema de verificación mediante código QR y código único que permite validar la autenticidad de certificaciones y distintivos otorgados por Alianza Índigo Neurodivergente en tiempo real.',
       status: 'Activo',
       features: ['Verificación por QR', 'Código único por certificación', 'Validación en tiempo real', 'Registro público consultable'],
     },
     {
       icon: Code2,
       title: 'API Pública',
-      desc: 'Interfaz de programación que permite a terceros validar certificaciones, consultar el registro público y acceder a datos abiertos de Alianza Índigo.',
+      desc: 'Interfaz de programación que permite a terceros validar certificaciones, consultar el registro público y acceder a datos abiertos de Alianza Índigo Neurodivergente.',
       status: 'En desarrollo',
       features: ['Endpoints RESTful', 'Documentación completa', 'Autenticación segura', 'Rate limiting'],
     },
@@ -94,14 +94,14 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
     {
   icon: BookOpen,
   title: 'NeuroPlan 360',
-  desc: 'The most powerful platform in the Alianza Índigo ecosystem. Creates personalized functional autonomy protocols for neurodivergent people based on the FAN Framework. Designed for families, teachers, therapists, psychologists and any specialist working with ND individuals. The generated profile is shared across all actors in the student\'s environment — connecting home, school and clinic in a single system.',
+  desc: 'The most powerful platform in the Alianza Índigo Neurodivergente ecosystem. Creates personalized functional autonomy protocols for neurodivergent people based on the FAN Framework. Designed for families, teachers, therapists, psychologists and any specialist working with ND individuals. The generated profile is shared across all actors in the student\'s environment — connecting home, school and clinic in a single system.',
   status: 'Active',
   features: [
     'Personalized and shareable ND profile',
     'Protocols for daily life, school and clinic',
     'For families, teachers and specialists',
     'FAN Framework (Neuro-Functional Adaptation)',
-    'Free for families affiliated with Alianza Índigo',
+    'Free for families affiliated with Alianza Índigo Neurodivergente',
   ],
 },
     {
@@ -114,21 +114,21 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
     {
       icon: Users,
       title: 'RENAP-ND',
-      desc: 'National Registry of Neurodivergent Service Providers. Public verifiable directory of therapists, doctors and centers that have signed the Alianza Índigo Neuroaffirmative Code of Ethics.',
+      desc: 'National Registry of Neurodivergent Service Providers. Public verifiable directory of therapists, doctors and centers that have signed the Alianza Índigo Neurodivergente Neuroaffirmative Code of Ethics.',
       status: 'In development',
       features: ['Verified public directory', 'Search by specialty', 'Dynamic QR verification', 'Three states: valid, suspended, withdrawn'],
     },
     {
       icon: QrCode,
       title: 'Badge Verifier',
-      desc: 'QR code and unique code verification system that validates the authenticity of certifications and badges granted by Alianza Índigo in real time.',
+      desc: 'QR code and unique code verification system that validates the authenticity of certifications and badges granted by Alianza Índigo Neurodivergente in real time.',
       status: 'Active',
       features: ['QR verification', 'Unique code per certification', 'Real-time validation', 'Public registry'],
     },
     {
       icon: Code2,
       title: 'Public API',
-      desc: 'Programming interface that allows third parties to validate certifications, consult the public registry and access open data from Alianza Índigo.',
+      desc: 'Programming interface that allows third parties to validate certifications, consult the public registry and access open data from Alianza Índigo Neurodivergente.',
       status: 'In development',
       features: ['RESTful endpoints', 'Complete documentation', 'Secure authentication', 'Rate limiting'],
     },
@@ -151,8 +151,8 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
           </h1>
           <p className="text-white/80 text-lg leading-relaxed max-w-3xl">
             {es
-              ? 'Inteligencia artificial al servicio de quienes más la necesitan. ADIA y NeuroPlan 360 son completamente gratuitos para docentes de escuelas públicas y familias afiliadas a Alianza Índigo. Financiados por certificaciones y Sorteos Índigo.'
-              : 'Artificial intelligence at the service of those who need it most. ADIA and NeuroPlan 360 are completely free for public school teachers and families affiliated with Alianza Índigo. Funded by certifications and Sorteos Índigo.'}
+              ? 'Inteligencia artificial al servicio de quienes más la necesitan. ADIA y NeuroPlan 360 son completamente gratuitos para docentes de escuelas públicas y familias afiliadas a Alianza Índigo Neurodivergente. Financiados por certificaciones y Sorteos Índigo.'
+              : 'Artificial intelligence at the service of those who need it most. ADIA and NeuroPlan 360 are completely free for public school teachers and families affiliated with Alianza Índigo Neurodivergente. Funded by certifications and Sorteos Índigo.'}
           </p>
         </div>
       </section>
@@ -226,7 +226,7 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
               <CheckCircle2 className="w-6 h-6 text-emerald-600 flex-shrink-0" />
               <div className="text-left">
                 <p className="font-semibold text-emerald-700 text-sm">{es ? 'Distintivo válido' : 'Valid badge'}</p>
-                <p className="text-emerald-600 text-xs">{es ? 'Este código corresponde a un distintivo auténtico de Alianza Índigo.' : 'This code corresponds to an authentic Alianza Índigo badge.'}</p>
+                <p className="text-emerald-600 text-xs">{es ? 'Este código corresponde a un distintivo auténtico de Alianza Índigo Neurodivergente.' : 'This code corresponds to an authentic Alianza Índigo Neurodivergente badge.'}</p>
               </div>
             </div>
           )}
@@ -252,8 +252,8 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
               </h2>
               <p className="text-white/70 leading-relaxed mb-6">
                 {es
-                  ? 'Nuestra API permite a desarrolladores y organizaciones integrar la validación de certificaciones de Alianza Índigo en sus propios sistemas.'
-                  : 'Our API allows developers and organizations to integrate Alianza Índigo certification validation into their own systems.'}
+                  ? 'Nuestra API permite a desarrolladores y organizaciones integrar la validación de certificaciones de Alianza Índigo Neurodivergente en sus propios sistemas.'
+                  : 'Our API allows developers and organizations to integrate Alianza Índigo Neurodivergente certification validation into their own systems.'}
               </p>
               <button className="btn-gold">
                 {es ? 'Ver Documentación' : 'View Documentation'} <ArrowRight className="w-4 h-4" />

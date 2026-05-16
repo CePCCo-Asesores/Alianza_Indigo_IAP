@@ -64,8 +64,8 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
           </h1>
           <p className="text-white/80 text-lg leading-relaxed max-w-3xl">
             {es
-              ? 'La comunidad de Alianza Índigo es una red colectiva de personas, organizaciones y aliados comprometidos con la neurodivergencia.'
-              : 'The Alianza Índigo community is a collective network of people, organizations and allies committed to neurodivergence.'}
+              ? 'La comunidad de Alianza Índigo Neurodivergente es una red colectiva de personas, organizaciones y aliados comprometidos con la neurodivergencia.'
+              : 'The Alianza Índigo Neurodivergente community is a collective network of people, organizations and allies committed to neurodivergence.'}
           </p>
         </div>
       </section>
@@ -85,8 +85,8 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
               </div>
               <p className="text-gray-600 leading-relaxed mb-6">
                 {es
-                  ? 'Los Embajadores Índigo son una red colectiva de representación institucional. No son figuras individuales, sino un cuerpo colectivo que lleva el mensaje de Alianza Índigo a comunidades, instituciones y espacios públicos.'
-                  : 'Índigo Ambassadors are a collective network of institutional representation. They are not individual figures, but a collective body that carries the Alianza Índigo message to communities, institutions and public spaces.'}
+                  ? 'Los Embajadores Índigo son una red colectiva de representación institucional. No son figuras individuales, sino un cuerpo colectivo que lleva el mensaje de Alianza Índigo Neurodivergente a comunidades, instituciones y espacios públicos.'
+                  : 'Índigo Ambassadors are a collective network of institutional representation. They are not individual figures, but a collective body that carries the Alianza Índigo Neurodivergente message to communities, institutions and public spaces.'}
               </p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {(es ? [
@@ -203,7 +203,7 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
               {es ? 'Voluntariado' : 'Volunteering'}
             </h2>
             <p className="text-gray-600">
-              {es ? 'Únete como voluntario/a y contribuye a la misión de Alianza Índigo.' : 'Join as a volunteer and contribute to the Alianza Índigo mission.'}
+              {es ? 'Únete como voluntario/a y contribuye a la misión de Alianza Índigo Neurodivergente.' : 'Join as a volunteer and contribute to the Alianza Índigo Neurodivergente mission.'}
             </p>
           </div>
           {volunteerSubmitted ? (

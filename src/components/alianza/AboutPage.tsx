@@ -66,26 +66,26 @@ const AboutPage: React.FC<AboutPageProps> = ({ lang }) => {
             </h1>
             <p className="text-white/80 text-lg leading-relaxed">
               {es
-                ? 'Alianza Índigo A.C. es una asociación civil colectiva, ética y universal dedicada a la protección, representación, certificación y promoción de la neurodivergencia.'
-                : 'Alianza Índigo A.C. is a collective, ethical and universal civil association dedicated to the protection, representation, certification and promotion of neurodivergence.'}
+                ? 'Alianza Índigo Neurodivergente A.C. es una asociación civil colectiva, ética y universal dedicada a la protección, representación, certificación y promoción de la neurodivergencia.'
+                : 'Alianza Índigo Neurodivergente A.C. is a collective, ethical and universal civil association dedicated to the protection, representation, certification and promotion of neurodivergence.'}
             </p>
           </div>
         </div>
       </section>
 
-      {/* What is Alianza Índigo */}
+      {/* What is Alianza Índigo Neurodivergente */}
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-5 gap-12 items-start">
             <div className="lg:col-span-3">
               <h2 className="font-heading font-bold text-3xl text-[#1B1F5A] mb-6">
-                {es ? '¿Qué es Alianza Índigo?' : 'What is Alianza Índigo?'}
+                {es ? '¿Qué es Alianza Índigo Neurodivergente?' : 'What is Alianza Índigo Neurodivergente?'}
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
                   {es
-                    ? 'Alianza Índigo A.C. es una asociación civil dedicada a transformar la comprensión social de la neurodivergencia. Operamos como una entidad colectiva, sin protagonismos individuales, con el objetivo de construir un mundo donde cada mente diversa sea reconocida, protegida y valorada.'
-                    : 'Alianza Índigo A.C. is a civil association dedicated to transforming the social understanding of neurodivergence. We operate as a collective entity, without individual protagonism, with the goal of building a world where every diverse mind is recognized, protected and valued.'}
+                    ? 'Alianza Índigo Neurodivergente A.C. es una asociación civil dedicada a transformar la comprensión social de la neurodivergencia. Operamos como una entidad colectiva, sin protagonismos individuales, con el objetivo de construir un mundo donde cada mente diversa sea reconocida, protegida y valorada.'
+                    : 'Alianza Índigo Neurodivergente A.C. is a civil association dedicated to transforming the social understanding of neurodivergence. We operate as a collective entity, without individual protagonism, with the goal of building a world where every diverse mind is recognized, protected and valued.'}
                 </p>
                 <p>
                   {es
@@ -94,8 +94,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ lang }) => {
                 </p>
                 <p>
                   {es
-                    ? 'Alianza Índigo no es un proyecto individual ni una marca personal. Es una institución que pertenece a la comunidad neurodivergente y a la sociedad en su conjunto. Nuestra gobernanza es colectiva, nuestras decisiones son transparentes y nuestro compromiso es universal.'
-                    : 'Alianza Índigo is not an individual project or a personal brand. It is an institution that belongs to the neurodivergent community and to society as a whole. Our governance is collective, our decisions are transparent and our commitment is universal.'}
+                    ? 'Alianza Índigo Neurodivergente no es un proyecto individual ni una marca personal. Es una institución que pertenece a la comunidad neurodivergente y a la sociedad en su conjunto. Nuestra gobernanza es colectiva, nuestras decisiones son transparentes y nuestro compromiso es universal.'
+                    : 'Alianza Índigo Neurodivergente is not an individual project or a personal brand. It is an institution that belongs to the neurodivergent community and to society as a whole. Our governance is collective, our decisions are transparent and our commitment is universal.'}
                 </p>
               </div>
             </div>
@@ -156,7 +156,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ lang }) => {
               {es ? 'Valores Institucionales' : 'Institutional Values'}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              {es ? 'Los principios que guían cada acción de Alianza Índigo.' : 'The principles that guide every action of Alianza Índigo.'}
+              {es ? 'Los principios que guían cada acción de Alianza Índigo Neurodivergente.' : 'The principles that guide every action of Alianza Índigo Neurodivergente.'}
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -186,8 +186,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ lang }) => {
               </h2>
               <p className="text-gray-600 leading-relaxed mb-8">
                 {es
-                  ? 'Alianza Índigo opera bajo un marco ético riguroso que garantiza la integridad de todas nuestras acciones y programas institucionales.'
-                  : 'Alianza Índigo operates under a rigorous ethical framework that guarantees the integrity of all our actions and institutional programs.'}
+                  ? 'Alianza Índigo Neurodivergente opera bajo un marco ético riguroso que garantiza la integridad de todas nuestras acciones y programas institucionales.'
+                  : 'Alianza Índigo Neurodivergente operates under a rigorous ethical framework that guarantees the integrity of all our actions and institutional programs.'}
               </p>
               <ul className="space-y-3">
                 {principles.map((p, i) => (
@@ -254,8 +254,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ lang }) => {
           </h2>
           <p className="text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">
             {es
-              ? 'Alianza Índigo opera con total transparencia. Nuestra gobernanza es colectiva, nuestras finanzas son públicas y nuestras decisiones se toman con base en principios éticos y evidencia.'
-              : 'Alianza Índigo operates with total transparency. Our governance is collective, our finances are public and our decisions are made based on ethical principles and evidence.'}
+              ? 'Alianza Índigo Neurodivergente opera con total transparencia. Nuestra gobernanza es colectiva, nuestras finanzas son públicas y nuestras decisiones se toman con base en principios éticos y evidencia.'
+              : 'Alianza Índigo Neurodivergente operates with total transparency. Our governance is collective, our finances are public and our decisions are made based on ethical principles and evidence.'}
           </p>
           <div className="grid sm:grid-cols-3 gap-6">
             {(es ? [

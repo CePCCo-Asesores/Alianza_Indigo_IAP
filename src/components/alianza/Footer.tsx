@@ -125,7 +125,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
             <div className="flex items-center gap-3 mb-4">
               <IndigoSeal size={48} variant="compact" />
               <div>
-                <div className="font-heading font-bold text-lg">Alianza Índigo A.C.</div>
+                <div className="font-heading font-bold text-lg">Alianza Índigo Neurodivergente A.C.</div>
               </div>
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-4">{text.tagline}</p>
@@ -235,7 +235,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-white/40 text-xs">
-            &copy; {new Date().getFullYear()} Alianza Índigo A.C. {text.rights}
+            &copy; {new Date().getFullYear()} Alianza Índigo Neurodivergente A.C. {text.rights}
           </p>
           <div className="flex items-center gap-4 text-xs text-white/40">
             <button onClick={() => onNavigate('nosotros')} className="hover:text-[#FFD700] transition-colors">{text.privacy}</button>

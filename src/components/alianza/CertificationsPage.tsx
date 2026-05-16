@@ -54,8 +54,8 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
           </h1>
           <p className="text-white/80 text-lg leading-relaxed max-w-3xl">
             {es
-              ? 'Alianza Índigo ofrece certificaciones voluntarias para organizaciones comprometidas con la neuroinclusión. Nuestros procesos son transparentes, basados en evidencia y alineados con estándares internacionales.'
-              : 'Alianza Índigo offers voluntary certifications for organizations committed to neuroinclusion. Our processes are transparent, evidence-based and aligned with international standards.'}
+              ? 'Alianza Índigo Neurodivergente ofrece certificaciones voluntarias para organizaciones comprometidas con la neuroinclusión. Nuestros procesos son transparentes, basados en evidencia y alineados con estándares internacionales.'
+              : 'Alianza Índigo Neurodivergente offers voluntary certifications for organizations committed to neuroinclusion. Our processes are transparent, evidence-based and aligned with international standards.'}
           </p>
         </div>
       </section>
@@ -238,7 +238,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
               </div>
               <div className="card-institutional p-6">
                 <h3 className="font-heading font-bold text-[#1B1F5A] mb-3">{es ? 'Solicitar Distintivo' : 'Request Badge'}</h3>
-                <p className="text-gray-600 text-sm mb-4">{es ? 'Presenta tu campaña para evaluación y obtén el respaldo institucional de Alianza Índigo.' : 'Submit your campaign for evaluation and obtain the institutional endorsement of Alianza Índigo.'}</p>
+                <p className="text-gray-600 text-sm mb-4">{es ? 'Presenta tu campaña para evaluación y obtén el respaldo institucional de Alianza Índigo Neurodivergente.' : 'Submit your campaign for evaluation and obtain the institutional endorsement of Alianza Índigo Neurodivergente.'}</p>
                 <button className="btn-indigo text-sm py-2 px-4">
                   {es ? 'Iniciar Solicitud' : 'Start Application'} <ArrowRight className="w-4 h-4" />
                 </button>
@@ -258,8 +258,8 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
             </h2>
             <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
               {es
-                ? 'El Sello Universal de Alianza Índigo es el símbolo oficial de compromiso con la neurodivergencia. Su uso está regulado y protegido mediante registro ante el IMPI. Representa dignidad, inclusión y rigor institucional.'
-                : 'The Universal Seal of Alianza Índigo is the official symbol of commitment to neurodivergence. Its use is regulated and protected through IMPI registration. It represents dignity, inclusion and institutional rigor.'}
+                ? 'El Sello Universal de Alianza Índigo Neurodivergente es el símbolo oficial de compromiso con la neurodivergencia. Su uso está regulado y protegido mediante registro ante el IMPI. Representa dignidad, inclusión y rigor institucional.'
+                : 'The Universal Seal of Alianza Índigo Neurodivergente is the official symbol of commitment to neurodivergence. Its use is regulated and protected through IMPI registration. It represents dignity, inclusion and institutional rigor.'}
             </p>
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               {(es ? [
@@ -324,7 +324,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
             {es ? 'Registro Público de Instituciones Certificadas' : 'Public Registry of Certified Institutions'}
           </h2>
           <p className="text-gray-600 mb-6">
-            {es ? 'Consulta las organizaciones que han obtenido certificaciones de Alianza Índigo.' : 'Check the organizations that have obtained Alianza Índigo certifications.'}
+            {es ? 'Consulta las organizaciones que han obtenido certificaciones de Alianza Índigo Neurodivergente.' : 'Check the organizations that have obtained Alianza Índigo Neurodivergente certifications.'}
           </p>
 
           <div className="relative mb-6 max-w-md">

@@ -17,14 +17,14 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
   const t = lang === 'es' ? {
     heroTitle: 'No necesitas PARECER para SER',
     heroSubtitle: 'Institución dedicada a la protección y promoción de la neurodivergencia',
-    heroDesc: 'Alianza Índigo trabaja por un mundo donde cada mente diversa sea reconocida, protegida y valorada. Somos una institución colectiva, ética y universal.',
+    heroDesc: 'Alianza Índigo Neurodivergente trabaja por un mundo donde cada mente diversa sea reconocida, protegida y valorada. Somos una institución colectiva, ética y universal.',
     btnNeurodiv: '¿Qué es la neurodivergencia?',
     btnCert: 'Certificaciones',
     btnPlatforms: 'Plataformas',
     btnRaffles: 'Rifas institucionales',
     btnJoin: 'Únete a la Alianza',
     purposeTitle: 'Propósito Institucional',
-    purposeDesc: 'Alianza Índigo existe para transformar la comprensión social de la neurodivergencia. Promovemos entornos inclusivos, certificamos prácticas éticas, desarrollamos tecnología accesible y construimos comunidad.',
+    purposeDesc: 'Alianza Índigo Neurodivergente existe para transformar la comprensión social de la neurodivergencia. Promovemos entornos inclusivos, certificamos prácticas éticas, desarrollamos tecnología accesible y construimos comunidad.',
     purposeItems: [
       { icon: Shield, title: 'Protección', desc: 'Defendemos los derechos de las personas neurodivergentes en todos los ámbitos.' },
       { icon: Eye, title: 'Representación', desc: 'Visibilizamos la neurodivergencia con dignidad, rigor y respeto.' },
@@ -64,14 +64,14 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
   } : {
     heroTitle: 'No need to SEEM to BE',
     heroSubtitle: 'Institution dedicated to the protection and promotion of neurodivergence',
-    heroDesc: 'Alianza Índigo works for a world where every diverse mind is recognized, protected and valued. We are a collective, ethical and universal institution.',
+    heroDesc: 'Alianza Índigo Neurodivergente works for a world where every diverse mind is recognized, protected and valued. We are a collective, ethical and universal institution.',
     btnNeurodiv: 'What is neurodivergence?',
     btnCert: 'Certifications',
     btnPlatforms: 'Platforms',
     btnRaffles: 'Institutional Raffles',
     btnJoin: 'Join the Alliance',
     purposeTitle: 'Institutional Purpose',
-    purposeDesc: 'Alianza Índigo exists to transform the social understanding of neurodivergence. We promote inclusive environments, certify ethical practices, develop accessible technology and build community.',
+    purposeDesc: 'Alianza Índigo Neurodivergente exists to transform the social understanding of neurodivergence. We promote inclusive environments, certify ethical practices, develop accessible technology and build community.',
     purposeItems: [
       { icon: Shield, title: 'Protection', desc: 'We defend the rights of neurodivergent people in all areas.' },
       { icon: Eye, title: 'Representation', desc: 'We make neurodivergence visible with dignity, rigor and respect.' },
@@ -253,8 +253,8 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
                 </h3>
                 <p className="text-white/70 text-sm leading-relaxed">
                   {lang === 'es'
-                    ? 'El Sello Universal de Alianza Índigo representa nuestro compromiso con la dignidad, la inclusión y la diversidad neurológica.'
-                    : 'The Universal Seal of Alianza Índigo represents our commitment to dignity, inclusion and neurological diversity.'}
+                    ? 'El Sello Universal de Alianza Índigo Neurodivergente representa nuestro compromiso con la dignidad, la inclusión y la diversidad neurológica.'
+                    : 'The Universal Seal of Alianza Índigo Neurodivergente represents our commitment to dignity, inclusion and neurological diversity.'}
                 </p>
               </div>
             </div>

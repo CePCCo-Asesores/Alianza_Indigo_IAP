@@ -89,8 +89,8 @@ const RafflesPage: React.FC<RafflesPageProps> = ({ lang }) => {
           </h1>
           <p className="text-white/80 text-lg leading-relaxed max-w-3xl">
             {es
-              ? 'Las rifas institucionales de Alianza Índigo son un mecanismo transparente de financiamiento para programas de inclusión y apoyo a la neurodivergencia. Cada peso recaudado tiene un destino claro y público.'
-              : 'Alianza Índigo institutional raffles are a transparent funding mechanism for inclusion programs and neurodivergence support. Every peso raised has a clear and public destination.'}
+              ? 'Las rifas institucionales de Alianza Índigo Neurodivergente son un mecanismo transparente de financiamiento para programas de inclusión y apoyo a la neurodivergencia. Cada peso recaudado tiene un destino claro y público.'
+              : 'Alianza Índigo Neurodivergente institutional raffles are a transparent funding mechanism for inclusion programs and neurodivergence support. Every peso raised has a clear and public destination.'}
           </p>
         </div>
       </section>

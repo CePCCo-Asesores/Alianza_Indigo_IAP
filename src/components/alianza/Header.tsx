@@ -20,7 +20,7 @@ const navItems = [
     label: { es: 'Nosotros', en: 'About Us' },
     icon: Building2,
     children: [
-      { id: 'nosotros', label: { es: 'Qué es Alianza Índigo', en: 'What is Alianza Índigo' } },
+      { id: 'nosotros', label: { es: 'Qué es Alianza Índigo Neurodivergente', en: 'What is Alianza Índigo Neurodivergente' } },
       { id: 'nosotros', label: { es: 'Misión y Visión', en: 'Mission & Vision' }, hash: 'mision' },
       { id: 'nosotros', label: { es: 'Valores Institucionales', en: 'Institutional Values' }, hash: 'valores' },
       { id: 'nosotros', label: { es: 'Transparencia', en: 'Transparency' }, hash: 'transparencia' },
@@ -152,12 +152,12 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, lang, onToggle
             <button
               onClick={() => handleNav('inicio')}
               className="flex items-center gap-3 group"
-              aria-label="Alianza Índigo - Inicio"
+              aria-label="Alianza Índigo Neurodivergente - Inicio"
             >
               <IndigoSeal size={42} variant="compact" />
               <div className="hidden sm:block">
                 <div className="font-heading font-bold text-[#1B1F5A] text-lg leading-tight tracking-tight">
-                  Alianza Índigo
+                  Alianza Índigo Neurodivergente
                 </div>
                 <div className="text-[10px] text-gray-500 font-label tracking-widest uppercase">
                   Neurodivergente I.A.P.

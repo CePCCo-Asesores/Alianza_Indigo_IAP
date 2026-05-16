@@ -30,18 +30,18 @@ const AppLayout: React.FC = () => {
   // Update document title based on current page
   useEffect(() => {
     const titles: Record<PageId, { es: string; en: string }> = {
-      inicio: { es: 'Alianza Índigo – Neurodivergencia', en: 'Alianza Índigo – Neurodivergence' },
-      nosotros: { es: 'Nosotros – Alianza Índigo', en: 'About Us – Alianza Índigo' },
-      certificaciones: { es: 'Certificaciones – Alianza Índigo', en: 'Certifications – Alianza Índigo' },
-      plataformas: { es: 'Plataformas – Alianza Índigo', en: 'Platforms – Alianza Índigo' },
-      investigacion: { es: 'Investigación – Alianza Índigo', en: 'Research – Alianza Índigo' },
-      recursos: { es: 'Recursos – Alianza Índigo', en: 'Resources – Alianza Índigo' },
-      comunidad: { es: 'Comunidad – Alianza Índigo', en: 'Community – Alianza Índigo' },
-      rifas: { es: 'Rifas Institucionales – Alianza Índigo', en: 'Institutional Raffles – Alianza Índigo' },
-      donaciones: { es: 'Donaciones – Alianza Índigo', en: 'Donations – Alianza Índigo' },
-      contacto: { es: 'Contacto – Alianza Índigo', en: 'Contact – Alianza Índigo' },
+      inicio: { es: 'Alianza Índigo Neurodivergente – Neurodivergencia', en: 'Alianza Índigo Neurodivergente – Neurodivergence' },
+      nosotros: { es: 'Nosotros – Alianza Índigo Neurodivergente', en: 'About Us – Alianza Índigo Neurodivergente' },
+      certificaciones: { es: 'Certificaciones – Alianza Índigo Neurodivergente', en: 'Certifications – Alianza Índigo Neurodivergente' },
+      plataformas: { es: 'Plataformas – Alianza Índigo Neurodivergente', en: 'Platforms – Alianza Índigo Neurodivergente' },
+      investigacion: { es: 'Investigación – Alianza Índigo Neurodivergente', en: 'Research – Alianza Índigo Neurodivergente' },
+      recursos: { es: 'Recursos – Alianza Índigo Neurodivergente', en: 'Resources – Alianza Índigo Neurodivergente' },
+      comunidad: { es: 'Comunidad – Alianza Índigo Neurodivergente', en: 'Community – Alianza Índigo Neurodivergente' },
+      rifas: { es: 'Rifas Institucionales – Alianza Índigo Neurodivergente', en: 'Institutional Raffles – Alianza Índigo Neurodivergente' },
+      donaciones: { es: 'Donaciones – Alianza Índigo Neurodivergente', en: 'Donations – Alianza Índigo Neurodivergente' },
+      contacto: { es: 'Contacto – Alianza Índigo Neurodivergente', en: 'Contact – Alianza Índigo Neurodivergente' },
     };
-    document.title = titles[currentPage]?.[lang] || 'Alianza Índigo';
+    document.title = titles[currentPage]?.[lang] || 'Alianza Índigo Neurodivergente';
   }, [currentPage, lang]);
 
   // Update html lang attribute

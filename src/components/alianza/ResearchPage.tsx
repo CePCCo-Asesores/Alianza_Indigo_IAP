@@ -103,8 +103,8 @@ const ResearchPage: React.FC<ResearchPageProps> = ({ lang }) => {
             </h2>
             <p className="text-gray-600 leading-relaxed mb-10 max-w-3xl">
               {es
-                ? 'El Observatorio de Neuroinclusión de Alianza Índigo monitorea, analiza y publica datos sobre el estado de la inclusión neurológica a nivel nacional e internacional.'
-                : 'The Alianza Índigo Neuroinclusion Observatory monitors, analyzes and publishes data on the state of neurological inclusion at national and international levels.'}
+                ? 'El Observatorio de Neuroinclusión de Alianza Índigo Neurodivergente monitorea, analiza y publica datos sobre el estado de la inclusión neurológica a nivel nacional e internacional.'
+                : 'The Alianza Índigo Neurodivergente Neuroinclusion Observatory monitors, analyzes and publishes data on the state of neurological inclusion at national and international levels.'}
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
               {(es ? [
@@ -189,8 +189,8 @@ const ResearchPage: React.FC<ResearchPageProps> = ({ lang }) => {
             </h2>
             <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto mb-10">
               {es
-                ? 'Alianza Índigo publica datos abiertos sobre neurodivergencia e inclusión. Estos datos están disponibles para investigadores, periodistas, gobiernos y la sociedad civil.'
-                : 'Alianza Índigo publishes open data on neurodivergence and inclusion. This data is available to researchers, journalists, governments and civil society.'}
+                ? 'Alianza Índigo Neurodivergente publica datos abiertos sobre neurodivergencia e inclusión. Estos datos están disponibles para investigadores, periodistas, gobiernos y la sociedad civil.'
+                : 'Alianza Índigo Neurodivergente publishes open data on neurodivergence and inclusion. This data is available to researchers, journalists, governments and civil society.'}
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {(es ? [

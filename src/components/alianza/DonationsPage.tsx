@@ -71,8 +71,8 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
           </h1>
           <p className="text-white/80 text-lg leading-relaxed max-w-3xl">
             {es
-              ? 'Tu apoyo hace posible que Alianza Índigo continúe protegiendo, representando y promoviendo la neurodivergencia. Cada contribución tiene un impacto directo y transparente.'
-              : 'Your support makes it possible for Alianza Índigo to continue protecting, representing and promoting neurodivergence. Every contribution has a direct and transparent impact.'}
+              ? 'Tu apoyo hace posible que Alianza Índigo Neurodivergente continúe protegiendo, representando y promoviendo la neurodivergencia. Cada contribución tiene un impacto directo y transparente.'
+              : 'Your support makes it possible for Alianza Índigo Neurodivergente to continue protecting, representing and promoting neurodivergence. Every contribution has a direct and transparent impact.'}
           </p>
         </div>
       </section>
@@ -165,7 +165,7 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
                 {es ? 'Membresía Anual' : 'Annual Membership'}
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                {es ? 'Únete como miembro de Alianza Índigo y apoya de forma sostenida la misión institucional.' : 'Join as a member of Alianza Índigo and sustainably support the institutional mission.'}
+                {es ? 'Únete como miembro de Alianza Índigo Neurodivergente y apoya de forma sostenida la misión institucional.' : 'Join as a member of Alianza Índigo Neurodivergente and sustainably support the institutional mission.'}
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
@@ -205,20 +205,20 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
             </h2>
             <p className="text-gray-600 leading-relaxed mb-8 max-w-3xl">
               {es
-                ? 'Alianza Índigo acepta patrocinios de organizaciones que compartan nuestros valores y principios éticos. Todo patrocinio es evaluado para garantizar la alineación con la misión institucional.'
-                : 'Alianza Índigo accepts sponsorships from organizations that share our values and ethical principles. Every sponsorship is evaluated to ensure alignment with the institutional mission.'}
+                ? 'Alianza Índigo Neurodivergente acepta patrocinios de organizaciones que compartan nuestros valores y principios éticos. Todo patrocinio es evaluado para garantizar la alineación con la misión institucional.'
+                : 'Alianza Índigo Neurodivergente accepts sponsorships from organizations that share our values and ethical principles. Every sponsorship is evaluated to ensure alignment with the institutional mission.'}
             </p>
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               {(es ? [
                 { title: 'Patrocinio de Programa', desc: 'Apoya un programa específico: certificaciones, investigación, tecnología o comunidad.', icon: Award },
                 { title: 'Patrocinio de Evento', desc: 'Financia foros, talleres, seminarios y eventos institucionales.', icon: Users },
                 { title: 'Patrocinio de Investigación', desc: 'Contribuye al Observatorio de Neuroinclusión y proyectos de investigación.', icon: Eye },
-                { title: 'Patrocinio Institucional', desc: 'Apoyo general a la operación y crecimiento de Alianza Índigo.', icon: Shield },
+                { title: 'Patrocinio Institucional', desc: 'Apoyo general a la operación y crecimiento de Alianza Índigo Neurodivergente.', icon: Shield },
               ] : [
                 { title: 'Program Sponsorship', desc: 'Support a specific program: certifications, research, technology or community.', icon: Award },
                 { title: 'Event Sponsorship', desc: 'Fund forums, workshops, seminars and institutional events.', icon: Users },
                 { title: 'Research Sponsorship', desc: 'Contribute to the Neuroinclusion Observatory and research projects.', icon: Eye },
-                { title: 'Institutional Sponsorship', desc: 'General support for the operation and growth of Alianza Índigo.', icon: Shield },
+                { title: 'Institutional Sponsorship', desc: 'General support for the operation and growth of Alianza Índigo Neurodivergente.', icon: Shield },
               ]).map((item, i) => {
                 const Icon = item.icon;
                 return (
@@ -246,8 +246,8 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto mb-8">
             {es
-              ? 'Alianza Índigo publica informes financieros periódicos. Cada peso recibido tiene un destino claro, público y auditable.'
-              : 'Alianza Índigo publishes periodic financial reports. Every peso received has a clear, public and auditable destination.'}
+              ? 'Alianza Índigo Neurodivergente publica informes financieros periódicos. Cada peso recibido tiene un destino claro, público y auditable.'
+              : 'Alianza Índigo Neurodivergente publishes periodic financial reports. Every peso received has a clear, public and auditable destination.'}
           </p>
           <div className="grid sm:grid-cols-3 gap-6">
             {(es ? [
