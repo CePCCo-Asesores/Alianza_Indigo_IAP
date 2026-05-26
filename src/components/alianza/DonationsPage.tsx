@@ -3,6 +3,7 @@ import {
   Heart, Star, Building2, ArrowRight, CheckCircle2,
   Shield, Eye, DollarSign, Users, Award
 } from 'lucide-react';
+import { trackDonationIntent } from '@/lib/gtm';
 
 interface DonationsPageProps {
   lang: 'es' | 'en';
@@ -145,7 +146,10 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
                   />
                 </div>
               </div>
-              <button className="btn-gold w-full justify-center text-lg py-4">
+              <button
+                className="btn-gold w-full justify-center text-lg py-4"
+                onClick={() => trackDonationIntent('single', selectedAmount ?? customAmount)}
+              >
                 {es ? 'Donar ahora' : 'Donate now'} <ArrowRight className="w-5 h-5" />
               </button>
               <p className="text-xs text-gray-400 text-center mt-4">
@@ -186,7 +190,10 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
                       </li>
                     ))}
                   </ul>
-                  <button className={`w-full justify-center ${tier.featured ? 'btn-gold' : 'btn-outline-indigo'}`}>
+                  <button
+                    className={`w-full justify-center ${tier.featured ? 'btn-gold' : 'btn-outline-indigo'}`}
+                    onClick={() => trackDonationIntent('membership', tier.price)}
+                  >
                     {es ? 'Seleccionar' : 'Select'} <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
