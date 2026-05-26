@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Header from './alianza/Header';
 import Footer from './alianza/Footer';
+import { trackPageView } from '@/lib/gtm';
 
 // Mapa de rutas ↔ pageId
 const PATH_TO_PAGE: Record<string, PageId> = {
@@ -77,10 +78,12 @@ const AppLayout: React.FC = () => {
 
   const toggleLang = () => setLang(prev => (prev === 'es' ? 'en' : 'es'));
 
-  // Actualiza el <title> del documento según la ruta y el idioma
+  // Actualiza el <title> y dispara page_view en GTM con cada cambio de ruta/idioma
   useEffect(() => {
-    document.title = TITLES[currentPage]?.[lang] ?? 'Alianza Índigo';
-  }, [currentPage, lang]);
+    const title = TITLES[currentPage]?.[lang] ?? 'Alianza Índigo';
+    document.title = title;
+    trackPageView(location.pathname, title);
+  }, [currentPage, lang, location.pathname]);
 
   // Actualiza el atributo lang del <html>
   useEffect(() => {
