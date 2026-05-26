@@ -3,6 +3,7 @@ import {
   Mail, MapPin, Phone, Send, ArrowRight, CheckCircle2,
   Globe, MessageSquare, Share2, ExternalLink
 } from 'lucide-react';
+import { trackContactFormSubmit } from '@/lib/gtm';
 
 interface ContactPageProps {
   lang: 'es' | 'en';
@@ -27,6 +28,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
+      trackContactFormSubmit(form.type);
       setSubmitted(true);
       setForm({ name: '', email: '', subject: '', type: '', message: '' });
       setTimeout(() => setSubmitted(false), 6000);
