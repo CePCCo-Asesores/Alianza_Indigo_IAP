@@ -3,6 +3,7 @@ import {
   Ticket, Calendar, Clock, ArrowRight, Shield, Eye,
   CheckCircle2, History, DollarSign, Target, Gift
 } from 'lucide-react';
+import { trackRaffleTicketClick } from '@/lib/gtm';
 
 interface RafflesPageProps {
   lang: 'es' | 'en';
@@ -198,7 +199,10 @@ const RafflesPage: React.FC<RafflesPageProps> = ({ lang }) => {
                         <Clock className="w-3.5 h-3.5" />
                         {es ? 'Cierre:' : 'Closes:'} {raffle.closeDate}
                       </div>
-                      <button className="btn-gold w-full justify-center">
+                      <button
+                        className="btn-gold w-full justify-center"
+                        onClick={() => trackRaffleTicketClick(raffle.title)}
+                      >
                         {es ? 'Comprar Boleto' : 'Buy Ticket'} <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>
