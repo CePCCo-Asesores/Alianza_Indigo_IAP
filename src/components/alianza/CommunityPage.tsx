@@ -3,6 +3,7 @@ import {
   Users, Heart, Calendar, MapPin, ArrowRight, Star,
   HandHeart, MessageCircle, Clock, ChevronRight
 } from 'lucide-react';
+import { trackVolunteerFormSubmit } from '@/lib/gtm';
 
 interface CommunityPageProps {
   lang: 'es' | 'en';
@@ -18,6 +19,7 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
 
   const handleVolunteerSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    trackVolunteerFormSubmit(volunteerForm.area);
     setVolunteerSubmitted(true);
     setVolunteerForm({ name: '', email: '', area: '', message: '' });
     setTimeout(() => setVolunteerSubmitted(false), 5000);
