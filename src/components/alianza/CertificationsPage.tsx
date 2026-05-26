@@ -4,6 +4,7 @@ import {
   Award, Shield, CheckCircle2, ArrowRight, FileText, Search,
   Building2, GraduationCap, Landmark, ClipboardCheck, Star, BadgeCheck
 } from 'lucide-react';
+import { trackCertificationRequest } from '@/lib/gtm';
 
 interface CertificationsPageProps {
   lang: 'es' | 'en';
@@ -153,7 +154,10 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
                   ))}
                 </div>
 
-                <button className="btn-indigo">
+                <button
+                  className="btn-indigo"
+                  onClick={() => trackCertificationRequest('CENI')}
+                >
                   {es ? 'Solicitar Certificación CENI' : 'Request CENI Certification'} <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -239,7 +243,10 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
               <div className="card-institutional p-6">
                 <h3 className="font-heading font-bold text-[#1B1F5A] mb-3">{es ? 'Solicitar Distintivo' : 'Request Badge'}</h3>
                 <p className="text-gray-600 text-sm mb-4">{es ? 'Presenta tu campaña para evaluación y obtén el respaldo institucional de Alianza Índigo.' : 'Submit your campaign for evaluation and obtain the institutional endorsement of Alianza Índigo.'}</p>
-                <button className="btn-indigo text-sm py-2 px-4">
+                <button
+                  className="btn-indigo text-sm py-2 px-4"
+                  onClick={() => trackCertificationRequest('Fuerza Índigo')}
+                >
                   {es ? 'Iniciar Solicitud' : 'Start Application'} <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -308,7 +315,10 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
               <div className="card-institutional p-6">
                 <h3 className="font-heading font-bold text-[#1B1F5A] mb-3">{es ? 'Solicitar Evaluación' : 'Request Evaluation'}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">{es ? 'Gobiernos y organismos públicos pueden solicitar una evaluación NeuroPlan.' : 'Governments and public bodies can request a NeuroPlan evaluation.'}</p>
-                <button className="btn-indigo text-sm py-2 px-4">
+                <button
+                  className="btn-indigo text-sm py-2 px-4"
+                  onClick={() => trackCertificationRequest('NeuroPlan')}
+                >
                   {es ? 'Solicitar' : 'Request'} <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
