@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import IndigoSeal from './IndigoSeal';
 import { Mail, MapPin, ExternalLink, ArrowRight, Globe, MessageCircle, Users, Share2 } from 'lucide-react';
+import { trackNewsletterSubscribe } from '@/lib/gtm';
 
 
 interface FooterProps {
@@ -15,6 +16,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.includes('@')) {
+      trackNewsletterSubscribe();
       setSubscribed(true);
       setEmail('');
       setTimeout(() => setSubscribed(false), 4000);
