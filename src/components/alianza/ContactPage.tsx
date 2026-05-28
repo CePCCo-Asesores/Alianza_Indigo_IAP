@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import {
   Mail, MapPin, Phone, Send, ArrowRight, CheckCircle2,
-  Globe, MessageSquare, Share2, ExternalLink, AlertCircle
+  Globe, MessageSquare, AlertCircle
 } from 'lucide-react';
 
 interface ContactPageProps {
@@ -66,14 +66,6 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
     { icon: Globe, label: 'Website', value: 'www.alianzaindigo.org', href: 'https://alianzaindigo.org' },
     { icon: MapPin, label: 'General address', value: 'Uxmal 7315B, Chihuahua, Chih. 31120', href: 'https://maps.google.com/?q=Uxmal+7315B+Chihuahua+Chihuahua+31120' },
   ];
-
-  const socialLinks = [
-    { label: 'Facebook', href: '#', letter: 'f' },
-    { label: 'X (Twitter)', href: '#', letter: 'X' },
-    { label: 'LinkedIn', href: '#', letter: 'in' },
-    { label: 'Instagram', href: '#', letter: 'ig' },
-  ];
-
 
   return (
     <div>
@@ -218,26 +210,6 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
                       );
                     })}
                   </div>
-                </div>
-
-                <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
-                  <h3 className="font-heading font-bold text-lg text-[#1B1F5A] mb-4">
-                    {es ? 'Redes Sociales' : 'Social Media'}
-                  </h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {socialLinks.map((link, i) => (
-                      <a
-                        key={i}
-                        href={link.href}
-                        onClick={(e) => e.preventDefault()}
-                        className="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-gray-50 hover:bg-indigo-50 text-gray-600 hover:text-[#1B1F5A] transition-all text-sm"
-                      >
-                        <span className="w-6 h-6 rounded bg-[#1B1F5A] text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">{link.letter}</span>
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-
                 </div>
 
                 <div className="bg-[#1B1F5A] rounded-xl p-6">

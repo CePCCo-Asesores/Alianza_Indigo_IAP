@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import IndigoSeal from './IndigoSeal';
-import { Mail, MapPin, Phone, ExternalLink, ArrowRight, Globe, MessageCircle, Users, Share2 } from 'lucide-react';
+import { Mail, MapPin, Phone, ArrowRight } from 'lucide-react';
 
 
 interface FooterProps {
@@ -131,25 +131,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
               </div>
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-4">{text.tagline}</p>
-            <div className="flex gap-3">
-              {[
-                { label: 'Facebook', letter: 'f' },
-                { label: 'X (Twitter)', letter: 'X' },
-                { label: 'LinkedIn', letter: 'in' },
-                { label: 'Instagram', letter: 'ig' },
-              ].map((social, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#FFD700] hover:text-[#1B1F5A] transition-all duration-300 text-xs font-bold"
-                  aria-label={social.label}
-                >
-                  {social.letter}
-                </a>
-              ))}
-            </div>
-
           </div>
 
           {/* Institutional */}
