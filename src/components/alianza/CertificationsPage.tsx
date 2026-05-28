@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import IndigoSeal from './IndigoSeal';
 import {
-  Award, Shield, CheckCircle2, ArrowRight, FileText, Search,
+  Award, Shield, CheckCircle2, ArrowRight, FileText,
   Building2, GraduationCap, Landmark, ClipboardCheck, Star, BadgeCheck
 } from 'lucide-react';
 
@@ -14,21 +14,7 @@ const CERT_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b4919a_
 const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
   const es = lang === 'es';
   const [activeTab, setActiveTab] = useState('ceni');
-  const [searchQuery, setSearchQuery] = useState('');
 
-  const certifiedOrgs = [
-    { name: es ? 'Instituto Nacional de Educación Inclusiva' : 'National Institute of Inclusive Education', type: es ? 'Educación' : 'Education', status: 'CENI', year: '2025' },
-    { name: es ? 'Corporativo Tecnológico Avanza' : 'Avanza Technology Corp', type: es ? 'Empresa' : 'Company', status: 'CENI', year: '2025' },
-    { name: es ? 'Hospital Regional de Neurodesarrollo' : 'Regional Neurodevelopment Hospital', type: es ? 'Salud' : 'Health', status: 'CENI', year: '2026' },
-    { name: es ? 'Municipio de Inclusión Activa' : 'Active Inclusion Municipality', type: es ? 'Gobierno' : 'Government', status: 'NeuroPlan', year: '2026' },
-    { name: es ? 'Fundación Mentes Diversas' : 'Diverse Minds Foundation', type: es ? 'ONG' : 'NGO', status: 'Fuerza Índigo', year: '2025' },
-    { name: es ? 'Universidad Autónoma del Conocimiento' : 'Autonomous University of Knowledge', type: es ? 'Educación' : 'Education', status: 'CENI', year: '2026' },
-  ];
-
-  const filteredOrgs = certifiedOrgs.filter(org =>
-    org.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    org.type.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   const tabs = [
     { id: 'ceni', label: 'CENI', icon: Award },
@@ -327,52 +313,16 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
             {es ? 'Consulta las organizaciones que han obtenido certificaciones de Alianza Índigo Neurodivergente.' : 'Check the organizations that have obtained Alianza Índigo Neurodivergente certifications.'}
           </p>
 
-          <div className="relative mb-6 max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={es ? 'Buscar institución...' : 'Search institution...'}
-              className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:border-[#1B1F5A] focus:ring-2 focus:ring-[#1B1F5A]/20 outline-none transition-all"
-              aria-label={es ? 'Buscar institución certificada' : 'Search certified institution'}
-            />
-          </div>
-
-          <div className="bg-white rounded-xl border border-gray-100 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full" role="table">
-                <thead>
-                  <tr className="bg-gray-50 border-b border-gray-100">
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">{es ? 'Institución' : 'Institution'}</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">{es ? 'Tipo' : 'Type'}</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">{es ? 'Certificación' : 'Certification'}</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">{es ? 'Año' : 'Year'}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredOrgs.map((org, i) => (
-                    <tr key={i} className="border-b border-gray-50 hover:bg-indigo-50/50 transition-colors">
-                      <td className="px-6 py-4 text-sm font-medium text-[#1B1F5A]">{org.name}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">{org.type}</td>
-                      <td className="px-6 py-4">
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#FFD700]/20 text-[#1B1F5A]">
-                          <BadgeCheck className="w-3.5 h-3.5" /> {org.status}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">{org.year}</td>
-                    </tr>
-                  ))}
-                  {filteredOrgs.length === 0 && (
-                    <tr>
-                      <td colSpan={4} className="px-6 py-8 text-center text-gray-400 text-sm">
-                        {es ? 'No se encontraron resultados.' : 'No results found.'}
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
+          <div className="bg-white rounded-xl border border-gray-100 p-10 text-center">
+            <BadgeCheck className="w-14 h-14 text-gray-200 mx-auto mb-4" />
+            <h3 className="font-heading font-bold text-lg text-[#1B1F5A] mb-2">
+              {es ? 'Registro en construcción' : 'Registry under construction'}
+            </h3>
+            <p className="text-gray-500 text-sm max-w-md mx-auto">
+              {es
+                ? 'Aún no se han emitido certificaciones. El registro público se habilitará a partir de la primera certificación oficial otorgada por Alianza Índigo Neurodivergente A.C.'
+                : 'No certifications have been issued yet. The public registry will be enabled starting from the first official certification granted by Alianza Índigo Neurodivergente A.C.'}
+            </p>
           </div>
         </div>
       </section>

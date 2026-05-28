@@ -1,20 +1,62 @@
 import React, { useState } from 'react';
 import {
   Heart, Star, Building2, ArrowRight, CheckCircle2,
-  Shield, Eye, DollarSign, Users, Award
+  Shield, Eye, Users, Award, Copy, CreditCard
 } from 'lucide-react';
 
 interface DonationsPageProps {
   lang: 'es' | 'en';
 }
 
+const CLABE = '728969000041539157';
+const CLABE_DISPLAY = '7289 6900 0041 5391 57';
+
+const TransferCard: React.FC<{ es: boolean }> = ({ es }) => {
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    navigator.clipboard.writeText(CLABE);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  return (
+    <div className="bg-[#1B1F5A] rounded-xl p-6 text-white">
+      <div className="flex items-center gap-3 mb-4">
+        <CreditCard className="w-6 h-6 text-[#FFD700]" />
+        <h3 className="font-heading font-bold text-lg">
+          {es ? 'Transferencia bancaria' : 'Bank transfer'}
+        </h3>
+      </div>
+      <div className="space-y-3 text-sm">
+        <div>
+          <p className="text-white/60 text-xs mb-0.5">{es ? 'Banco' : 'Bank'}</p>
+          <p className="font-semibold">Spin by OXXO</p>
+        </div>
+        <div>
+          <p className="text-white/60 text-xs mb-0.5">CLABE</p>
+          <div className="flex items-center gap-2">
+            <p className="font-mono font-bold text-[#FFD700] text-base tracking-wide">{CLABE_DISPLAY}</p>
+            <button onClick={copy} className="p-1 hover:bg-white/10 rounded transition-colors" title={es ? 'Copiar CLABE' : 'Copy CLABE'}>
+              <Copy className="w-4 h-4 text-white/70" />
+            </button>
+            {copied && <span className="text-xs text-emerald-400">{es ? '¡Copiado!' : 'Copied!'}</span>}
+          </div>
+        </div>
+        <div>
+          <p className="text-white/60 text-xs mb-0.5">{es ? 'Beneficiario' : 'Beneficiary'}</p>
+          <p className="font-semibold">Alianza Índigo Neurodivergente A.C.</p>
+        </div>
+        <div className="bg-white/10 rounded-lg p-3">
+          <p className="text-white/60 text-xs mb-0.5">{es ? 'Concepto / referencia' : 'Reference'}</p>
+          <p className="text-white/90">{es ? 'Tu nombre completo o escribe "Anónimo"' : 'Your full name or write "Anónimo"'}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
   const es = lang === 'es';
   const [donationType, setDonationType] = useState<'single' | 'membership' | 'sponsor'>('single');
-  const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
-  const [customAmount, setCustomAmount] = useState('');
-
-  const amounts = [100, 250, 500, 1000, 2500, 5000];
 
   const membershipTiers = es ? [
     {
@@ -107,50 +149,26 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
       {donationType === 'single' && (
         <section className="section-padding bg-gray-50">
           <div className="max-w-3xl mx-auto">
-            <div className="bg-white rounded-xl p-8 border border-gray-100 shadow-sm">
-              <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-2">
-                {es ? 'Donación Única' : 'Single Donation'}
-              </h2>
-              <p className="text-gray-600 mb-6">
-                {es ? 'Selecciona un monto o ingresa una cantidad personalizada.' : 'Select an amount or enter a custom quantity.'}
-              </p>
-              <div className="grid grid-cols-3 gap-3 mb-6">
-                {amounts.map(amount => (
-                  <button
-                    key={amount}
-                    onClick={() => { setSelectedAmount(amount); setCustomAmount(''); }}
-                    className={`py-3 rounded-lg font-heading font-bold text-lg transition-all ${
-                      selectedAmount === amount
-                        ? 'bg-[#1B1F5A] text-white'
-                        : 'bg-gray-50 text-[#1B1F5A] border border-gray-200 hover:border-[#1B1F5A]'
-                    }`}
-                  >
-                    ${amount.toLocaleString()}
-                  </button>
-                ))}
+            <div className="bg-white rounded-xl p-8 border border-gray-100 shadow-sm space-y-6">
+              <div>
+                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-2">
+                  {es ? 'Donación Única' : 'Single Donation'}
+                </h2>
+                <p className="text-gray-600">
+                  {es
+                    ? 'Realiza una transferencia bancaria al monto que desees. Indica tu nombre o dona de forma anónima.'
+                    : 'Make a bank transfer for any amount you choose. Include your name or donate anonymously.'}
+                </p>
               </div>
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  {es ? 'Monto personalizado (MXN)' : 'Custom amount (MXN)'}
-                </label>
-                <div className="relative">
-                  <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="number"
-                    value={customAmount}
-                    onChange={(e) => { setCustomAmount(e.target.value); setSelectedAmount(null); }}
-                    placeholder="0"
-                    min="1"
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:border-[#1B1F5A] focus:ring-2 focus:ring-[#1B1F5A]/20 outline-none transition-all text-lg font-heading"
-                  />
-                </div>
+              <TransferCard es={es} />
+              <div className="bg-indigo-50 rounded-xl p-4 text-sm text-[#1B1F5A]">
+                <p className="font-semibold mb-1">{es ? 'Después de tu transferencia' : 'After your transfer'}</p>
+                <p className="text-[#1B1F5A]/80">
+                  {es
+                    ? 'Puedes notificarnos a contacto@alianzaindigo.org con tu comprobante para enviarte un acuse de recibo institucional.'
+                    : 'You may notify us at contacto@alianzaindigo.org with your receipt and we will send you an institutional acknowledgement.'}
+                </p>
               </div>
-              <button className="btn-gold w-full justify-center text-lg py-4">
-                {es ? 'Donar ahora' : 'Donate now'} <ArrowRight className="w-5 h-5" />
-              </button>
-              <p className="text-xs text-gray-400 text-center mt-4">
-                {es ? 'Serás redirigido a una plataforma de pago segura.' : 'You will be redirected to a secure payment platform.'}
-              </p>
             </div>
           </div>
         </section>
@@ -168,7 +186,7 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
                 {es ? 'Únete como miembro de Alianza Índigo Neurodivergente y apoya de forma sostenida la misión institucional.' : 'Join as a member of Alianza Índigo Neurodivergente and sustainably support the institutional mission.'}
               </p>
             </div>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
               {membershipTiers.map((tier, i) => (
                 <div key={i} className={`bg-white rounded-xl p-8 border-2 ${tier.color} relative ${tier.featured ? 'shadow-lg' : 'shadow-sm'}`}>
                   {tier.featured && (
@@ -178,7 +196,7 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
                   )}
                   <h3 className="font-heading font-bold text-xl text-[#1B1F5A] mb-2">{tier.name}</h3>
                   <p className="font-heading font-black text-2xl text-[#FFD700] mb-6">{tier.price}</p>
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-3">
                     {tier.features.map((f, j) => (
                       <li key={j} className="flex items-start gap-2 text-sm text-gray-600">
                         <CheckCircle2 className="w-4 h-4 text-[#FFD700] flex-shrink-0 mt-0.5" />
@@ -186,11 +204,16 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
                       </li>
                     ))}
                   </ul>
-                  <button className={`w-full justify-center ${tier.featured ? 'btn-gold' : 'btn-outline-indigo'}`}>
-                    {es ? 'Seleccionar' : 'Select'} <ArrowRight className="w-4 h-4" />
-                  </button>
                 </div>
               ))}
+            </div>
+            <div className="max-w-xl">
+              <TransferCard es={es} />
+              <p className="text-sm text-gray-500 mt-4">
+                {es
+                  ? 'Transfiere el monto de la membresía que deseas e indica tu nombre y nivel en el concepto. Envía tu comprobante a contacto@alianzaindigo.org.'
+                  : 'Transfer the membership amount you want and include your name and tier in the reference. Send your receipt to contacto@alianzaindigo.org.'}
+              </p>
             </div>
           </div>
         </section>
@@ -226,9 +249,9 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
                     <Icon className="w-8 h-8 text-[#1B1F5A] mb-3" />
                     <h3 className="font-heading font-bold text-[#1B1F5A] mb-2">{item.title}</h3>
                     <p className="text-gray-600 text-sm leading-relaxed mb-4">{item.desc}</p>
-                    <button className="text-[#1B1F5A] text-sm font-semibold flex items-center gap-1 hover:text-[#FFD700] transition-colors">
+                    <a href="mailto:contacto@alianzaindigo.org" className="text-[#1B1F5A] text-sm font-semibold flex items-center gap-1 hover:text-[#FFD700] transition-colors">
                       {es ? 'Solicitar información' : 'Request information'} <ArrowRight className="w-4 h-4" />
-                    </button>
+                    </a>
                   </div>
                 );
               })}

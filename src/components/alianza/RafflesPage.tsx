@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Ticket, Calendar, Clock, ArrowRight, Shield, Eye,
-  CheckCircle2, History, DollarSign, Target, Gift
+  Ticket, Shield, Eye, History, Target, Gift, Copy, CreditCard, Clock
 } from 'lucide-react';
 
 interface RafflesPageProps {
@@ -10,67 +9,55 @@ interface RafflesPageProps {
 
 const RAFFLES_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b4919a_1773666714351_fcc9be1c.jpg';
 
+const CLABE = '728969000041539157';
+const CLABE_DISPLAY = '7289 6900 0041 5391 57';
+
+const RaffleTransferCard: React.FC<{ es: boolean }> = ({ es }) => {
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    navigator.clipboard.writeText(CLABE);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  return (
+    <div className="bg-[#1B1F5A] rounded-xl p-6 text-white">
+      <div className="flex items-center gap-3 mb-4">
+        <CreditCard className="w-6 h-6 text-[#FFD700]" />
+        <h3 className="font-heading font-bold text-lg">
+          {es ? 'Datos para transferencia' : 'Transfer details'}
+        </h3>
+      </div>
+      <div className="space-y-3 text-sm">
+        <div>
+          <p className="text-white/60 text-xs mb-0.5">{es ? 'Banco' : 'Bank'}</p>
+          <p className="font-semibold">Spin by OXXO</p>
+        </div>
+        <div>
+          <p className="text-white/60 text-xs mb-0.5">CLABE</p>
+          <div className="flex items-center gap-2">
+            <p className="font-mono font-bold text-[#FFD700] text-base tracking-wide">{CLABE_DISPLAY}</p>
+            <button onClick={copy} className="p-1 hover:bg-white/10 rounded transition-colors" title={es ? 'Copiar CLABE' : 'Copy CLABE'}>
+              <Copy className="w-4 h-4 text-white/70" />
+            </button>
+            {copied && <span className="text-xs text-emerald-400">{es ? '¡Copiado!' : 'Copied!'}</span>}
+          </div>
+        </div>
+        <div>
+          <p className="text-white/60 text-xs mb-0.5">{es ? 'Beneficiario' : 'Beneficiary'}</p>
+          <p className="font-semibold">Alianza Índigo Neurodivergente A.C.</p>
+        </div>
+        <div className="bg-white/10 rounded-lg p-3">
+          <p className="text-white/60 text-xs mb-0.5">{es ? 'Concepto / referencia' : 'Reference'}</p>
+          <p className="text-white/90">{es ? 'Tu nombre completo o escribe "Anónimo"' : 'Your full name or write "Anónimo"'}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const RafflesPage: React.FC<RafflesPageProps> = ({ lang }) => {
   const es = lang === 'es';
-  const [activeView, setActiveView] = useState<'active' | 'history' | 'transparency'>('active');
-
-  const activeRaffles = es ? [
-    {
-      id: 1,
-      title: 'Rifa Pro-Inclusión Educativa 2026',
-      desc: 'Todos los fondos recaudados serán destinados al programa de certificación CENI para escuelas públicas.',
-      price: '$150 MXN',
-      closeDate: '30 de Junio, 2026',
-      totalTickets: 5000,
-      soldTickets: 2340,
-      prize: 'Automóvil compacto 2026',
-      destination: 'Programa CENI para escuelas públicas',
-    },
-    {
-      id: 2,
-      title: 'Rifa Tecnología Accesible 2026',
-      desc: 'Financiamiento para el desarrollo de la plataforma ADIA y herramientas tecnológicas accesibles.',
-      price: '$100 MXN',
-      closeDate: '15 de Agosto, 2026',
-      totalTickets: 3000,
-      soldTickets: 890,
-      prize: 'Laptop profesional + Kit tecnológico',
-      destination: 'Desarrollo de plataforma ADIA',
-    },
-  ] : [
-    {
-      id: 1,
-      title: 'Pro-Educational Inclusion Raffle 2026',
-      desc: 'All funds raised will be allocated to the CENI certification program for public schools.',
-      price: '$150 MXN',
-      closeDate: 'June 30, 2026',
-      totalTickets: 5000,
-      soldTickets: 2340,
-      prize: '2026 Compact car',
-      destination: 'CENI program for public schools',
-    },
-    {
-      id: 2,
-      title: 'Accessible Technology Raffle 2026',
-      desc: 'Funding for the development of the ADIA platform and accessible technological tools.',
-      price: '$100 MXN',
-      closeDate: 'August 15, 2026',
-      totalTickets: 3000,
-      soldTickets: 890,
-      prize: 'Professional laptop + Tech kit',
-      destination: 'ADIA platform development',
-    },
-  ];
-
-  const pastRaffles = es ? [
-    { title: 'Rifa Navideña 2025', winner: 'Código: AI-RF-2025-4872', raised: '$450,000 MXN', destination: 'Biblioteca ND y recursos educativos' },
-    { title: 'Rifa Día de la Neurodivergencia 2025', winner: 'Código: AI-RF-2025-1293', raised: '$280,000 MXN', destination: 'Observatorio de Neuroinclusión' },
-    { title: 'Rifa Pro-Investigación 2025', winner: 'Código: AI-RF-2025-3561', raised: '$320,000 MXN', destination: 'Proyectos de investigación activos' },
-  ] : [
-    { title: 'Christmas Raffle 2025', winner: 'Code: AI-RF-2025-4872', raised: '$450,000 MXN', destination: 'ND Library and educational resources' },
-    { title: 'Neurodivergence Day Raffle 2025', winner: 'Code: AI-RF-2025-1293', raised: '$280,000 MXN', destination: 'Neuroinclusion Observatory' },
-    { title: 'Pro-Research Raffle 2025', winner: 'Code: AI-RF-2025-3561', raised: '$320,000 MXN', destination: 'Active research projects' },
-  ];
+  const [activeView, setActiveView] = useState<'active' | 'transparency'>('active');
 
   return (
     <div>
@@ -131,7 +118,6 @@ const RafflesPage: React.FC<RafflesPageProps> = ({ lang }) => {
           <div className="flex gap-1 py-2">
             {[
               { id: 'active' as const, label: es ? 'Rifas Activas' : 'Active Raffles', icon: Ticket },
-              { id: 'history' as const, label: es ? 'Historial' : 'History', icon: History },
               { id: 'transparency' as const, label: es ? 'Transparencia' : 'Transparency', icon: Eye },
             ].map(tab => {
               const Icon = tab.icon;
@@ -154,89 +140,34 @@ const RafflesPage: React.FC<RafflesPageProps> = ({ lang }) => {
       {/* Active Raffles */}
       {activeView === 'active' && (
         <section className="section-padding bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-8">
-              {activeRaffles.map((raffle) => {
-                const progress = Math.round((raffle.soldTickets / raffle.totalTickets) * 100);
-                return (
-                  <div key={raffle.id} className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-                    <div className="bg-[#1B1F5A] p-6">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Gift className="w-5 h-5 text-[#FFD700]" />
-                        <span className="text-[#FFD700] text-xs font-semibold uppercase tracking-wider">
-                          {es ? 'Rifa Activa' : 'Active Raffle'}
-                        </span>
-                      </div>
-                      <h3 className="font-heading font-bold text-xl text-white mb-2">{raffle.title}</h3>
-                      <p className="text-white/70 text-sm">{raffle.desc}</p>
-                    </div>
-                    <div className="p-6 space-y-4">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <p className="text-xs text-gray-500 mb-1">{es ? 'Premio' : 'Prize'}</p>
-                          <p className="font-heading font-bold text-[#1B1F5A] text-sm">{raffle.prize}</p>
-                        </div>
-                        <div>
-                          <p className="text-xs text-gray-500 mb-1">{es ? 'Costo del boleto' : 'Ticket cost'}</p>
-                          <p className="font-heading font-bold text-[#FFD700] text-lg">{raffle.price}</p>
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-500 mb-1">{es ? 'Destino de fondos' : 'Fund destination'}</p>
-                        <p className="text-sm text-gray-700">{raffle.destination}</p>
-                      </div>
-                      <div>
-                        <div className="flex justify-between text-xs text-gray-500 mb-1">
-                          <span>{raffle.soldTickets.toLocaleString()} / {raffle.totalTickets.toLocaleString()} {es ? 'boletos' : 'tickets'}</span>
-                          <span>{progress}%</span>
-                        </div>
-                        <div className="w-full bg-gray-100 rounded-full h-2.5">
-                          <div className="bg-[#FFD700] h-2.5 rounded-full transition-all" style={{ width: `${progress}%` }} />
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2 text-xs text-gray-500">
-                        <Clock className="w-3.5 h-3.5" />
-                        {es ? 'Cierre:' : 'Closes:'} {raffle.closeDate}
-                      </div>
-                      <button className="btn-gold w-full justify-center">
-                        {es ? 'Comprar Boleto' : 'Buy Ticket'} <ArrowRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* History */}
-      {activeView === 'history' && (
-        <section className="section-padding bg-gray-50">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-6">
-              {es ? 'Historial de Rifas' : 'Raffle History'}
-            </h2>
-            <div className="space-y-4">
-              {pastRaffles.map((raffle, i) => (
-                <div key={i} className="bg-white rounded-xl p-6 border border-gray-100">
-                  <h3 className="font-heading font-bold text-[#1B1F5A] mb-3">{raffle.title}</h3>
-                  <div className="grid sm:grid-cols-3 gap-4">
-                    <div>
-                      <p className="text-xs text-gray-500 mb-1">{es ? 'Ganador' : 'Winner'}</p>
-                      <p className="text-sm font-mono text-[#1B1F5A]">{raffle.winner}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500 mb-1">{es ? 'Fondos recaudados' : 'Funds raised'}</p>
-                      <p className="text-sm font-bold text-[#FFD700]">{raffle.raised}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500 mb-1">{es ? 'Destino' : 'Destination'}</p>
-                      <p className="text-sm text-gray-700">{raffle.destination}</p>
-                    </div>
-                  </div>
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <div className="bg-[#1B1F5A] p-8 text-center">
+                <div className="w-16 h-16 rounded-full bg-[#FFD700]/20 flex items-center justify-center mx-auto mb-4">
+                  <Clock className="w-8 h-8 text-[#FFD700]" />
                 </div>
-              ))}
+                <h2 className="font-heading font-bold text-2xl text-white mb-2">
+                  {es ? 'Próximamente' : 'Coming Soon'}
+                </h2>
+                <p className="text-white/70">
+                  {es
+                    ? 'Aún no hay rifas activas. Estamos preparando la primera edición.'
+                    : 'No active raffles yet. We are preparing the first edition.'}
+                </p>
+              </div>
+              <div className="p-8 space-y-4">
+                <p className="text-gray-600 text-sm">
+                  {es
+                    ? 'Cuando lancemos nuestra primera rifa institucional, los boletos podrán adquirirse mediante transferencia bancaria. Para recibir notificaciones, escríbenos a contacto@alianzaindigo.org.'
+                    : 'When we launch our first institutional raffle, tickets will be available by bank transfer. To receive notifications, write to contacto@alianzaindigo.org.'}
+                </p>
+                <RaffleTransferCard es={es} />
+                <p className="text-xs text-gray-400">
+                  {es
+                    ? 'Los datos de transferencia se activarán cuando haya una rifa en curso. Antes de transferir, verifica que haya una convocatoria oficial publicada.'
+                    : 'Transfer details will be active when a raffle is in progress. Before transferring, verify that an official announcement is published.'}
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -249,47 +180,32 @@ const RafflesPage: React.FC<RafflesPageProps> = ({ lang }) => {
             <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-6">
               {es ? 'Transparencia del Programa de Rifas' : 'Raffle Program Transparency'}
             </h2>
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-white rounded-xl p-6 border border-gray-100">
-                <DollarSign className="w-8 h-8 text-[#FFD700] mb-3" />
-                <h3 className="font-heading font-bold text-[#1B1F5A] mb-2">
-                  {es ? 'Total Recaudado 2025' : 'Total Raised 2025'}
-                </h3>
-                <p className="font-heading font-black text-3xl text-[#1B1F5A] mb-2">$1,050,000 MXN</p>
-                <p className="text-gray-600 text-sm">{es ? 'Distribuido en 3 programas institucionales' : 'Distributed across 3 institutional programs'}</p>
-              </div>
-              <div className="bg-white rounded-xl p-6 border border-gray-100">
-                <Ticket className="w-8 h-8 text-[#FFD700] mb-3" />
-                <h3 className="font-heading font-bold text-[#1B1F5A] mb-2">
-                  {es ? 'Rifas Realizadas' : 'Raffles Held'}
-                </h3>
-                <p className="font-heading font-black text-3xl text-[#1B1F5A] mb-2">3</p>
-                <p className="text-gray-600 text-sm">{es ? 'Todas con resultados públicos y auditables' : 'All with public and auditable results'}</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl p-6 border border-gray-100">
-              <h3 className="font-heading font-bold text-[#1B1F5A] mb-4">{es ? 'Destino de Fondos 2025' : 'Fund Destination 2025'}</h3>
-              <div className="space-y-3">
-                {(es ? [
-                  { label: 'Programa CENI para escuelas', amount: '$450,000', pct: 43 },
-                  { label: 'Observatorio de Neuroinclusión', amount: '$280,000', pct: 27 },
-                  { label: 'Proyectos de investigación', amount: '$320,000', pct: 30 },
-                ] : [
-                  { label: 'CENI program for schools', amount: '$450,000', pct: 43 },
-                  { label: 'Neuroinclusion Observatory', amount: '$280,000', pct: 27 },
-                  { label: 'Research projects', amount: '$320,000', pct: 30 },
-                ]).map((item, i) => (
-                  <div key={i}>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span className="text-gray-700">{item.label}</span>
-                      <span className="font-semibold text-[#1B1F5A]">{item.amount} MXN ({item.pct}%)</span>
-                    </div>
-                    <div className="w-full bg-gray-100 rounded-full h-2">
-                      <div className="bg-[#FFD700] h-2 rounded-full" style={{ width: `${item.pct}%` }} />
-                    </div>
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              {(es ? [
+                { icon: Target, title: 'Objetivo', desc: 'Cada rifa tiene un destino de fondos definido y publicado antes del inicio de la convocatoria.' },
+                { icon: Eye, title: 'Resultados públicos', desc: 'Los ganadores se anuncian por código. El destino de cada peso recaudado se publica en el informe de cierre.' },
+                { icon: Shield, title: 'Proceso regulado', desc: 'Las rifas se rigen por sus propias bases disponibles en cada convocatoria, alineadas con los Términos de Uso institucionales.' },
+              ] : [
+                { icon: Target, title: 'Objective', desc: 'Each raffle has a defined fund destination published before the announcement opens.' },
+                { icon: Eye, title: 'Public results', desc: 'Winners are announced by code. The destination of every peso raised is published in the closing report.' },
+                { icon: Shield, title: 'Regulated process', desc: 'Raffles are governed by their own rules available at each announcement, aligned with institutional Terms of Use.' },
+              ]).map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <div key={i} className="bg-white rounded-xl p-6 border border-gray-100">
+                    <Icon className="w-8 h-8 text-[#FFD700] mb-3" />
+                    <h3 className="font-heading font-bold text-[#1B1F5A] mb-2">{item.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
                   </div>
-                ))}
-              </div>
+                );
+              })}
+            </div>
+            <div className="bg-indigo-50 rounded-xl p-6 border border-indigo-100">
+              <p className="text-[#1B1F5A] text-sm leading-relaxed">
+                {es
+                  ? 'Alianza Índigo Neurodivergente A.C. no ha realizado rifas hasta la fecha. Los informes de transparencia se publicarán a partir de la primera edición.'
+                  : 'Alianza Índigo Neurodivergente A.C. has not held any raffles to date. Transparency reports will be published starting from the first edition.'}
+              </p>
             </div>
           </div>
         </section>

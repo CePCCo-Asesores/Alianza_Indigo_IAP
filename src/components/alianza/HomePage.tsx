@@ -42,12 +42,6 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
       { icon: Ticket, title: 'Rifas', desc: 'Programa de financiamiento transparente para proyectos de inclusión.', page: 'rifas', color: 'bg-rose-50 text-rose-700' },
     ],
     statsTitle: 'Impacto Institucional',
-    stats: [
-      { value: '4', label: 'Certificaciones activas' },
-      { value: '6+', label: 'Plataformas tecnológicas' },
-      { value: '100%', label: 'Transparencia institucional' },
-      { value: 'Global', label: 'Alcance universal' },
-    ],
     ctaTitle: '¿Tu organización es neuroinclusiva?',
     ctaDesc: 'Obtén la Certificación CENI y demuestra tu compromiso con la neurodivergencia. Proceso transparente, voluntario y basado en evidencia.',
     ctaBtn: 'Conocer certificaciones',
@@ -89,12 +83,6 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
       { icon: Ticket, title: 'Raffles', desc: 'Transparent funding program for inclusion projects.', page: 'rifas', color: 'bg-rose-50 text-rose-700' },
     ],
     statsTitle: 'Institutional Impact',
-    stats: [
-      { value: '4', label: 'Active certifications' },
-      { value: '6+', label: 'Technology platforms' },
-      { value: '100%', label: 'Institutional transparency' },
-      { value: 'Global', label: 'Universal reach' },
-    ],
     ctaTitle: 'Is your organization neuroinclusive?',
     ctaDesc: 'Obtain the CENI Certification and demonstrate your commitment to neurodivergence. Transparent, voluntary and evidence-based process.',
     ctaBtn: 'Learn about certifications',
@@ -183,20 +171,6 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 indigo-gradient" aria-labelledby="stats-title">
-        <div className="container-institutional px-4 md:px-8">
-          <h2 id="stats-title" className="sr-only">{t.statsTitle}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {t.stats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="font-heading font-black text-3xl md:text-4xl text-[#FFD700] mb-2">{stat.value}</div>
-                <div className="text-white/70 text-sm font-medium">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Programs Grid */}
       <section className="section-padding bg-gray-50" aria-labelledby="programs-title">
