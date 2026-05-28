@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import IndigoSeal from './IndigoSeal';
+import InfoModal from './InfoModal';
 import {
   Shield, Eye, Heart, Scale, Users, Globe, BookOpen,
   CheckCircle2, FileText, ArrowRight, Landmark, HandHeart
@@ -11,6 +12,7 @@ interface AboutPageProps {
 
 const AboutPage: React.FC<AboutPageProps> = ({ lang }) => {
   const es = lang === 'es';
+  const [modalOpen, setModalOpen] = useState(false);
 
   const values = es ? [
     { icon: Shield, title: 'Dignidad', desc: 'Toda persona neurodivergente merece respeto, reconocimiento y protección.' },
@@ -237,7 +239,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ lang }) => {
                     {es ? 'Documento PDF descargable' : 'Downloadable PDF document'}
                   </p>
                 </div>
-                <button className="btn-gold text-sm py-2 px-4">
+                <button className="btn-gold text-sm py-2 px-4" onClick={() => setModalOpen(true)}>
                   {es ? 'Descargar' : 'Download'}
                 </button>
               </div>
@@ -309,6 +311,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ lang }) => {
           </div>
         </div>
       </section>
+      <InfoModal open={modalOpen} onClose={() => setModalOpen(false)} lang={lang} subject={es ? 'Estatutos Institucionales' : 'Institutional Statutes'} />
     </div>
   );
 };

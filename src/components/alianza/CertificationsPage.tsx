@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import IndigoSeal from './IndigoSeal';
+import InfoModal from './InfoModal';
 import {
   Award, Shield, CheckCircle2, ArrowRight, FileText,
   Building2, GraduationCap, Landmark, ClipboardCheck, Star, BadgeCheck
@@ -14,6 +15,9 @@ const CERT_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b4919a_
 const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
   const es = lang === 'es';
   const [activeTab, setActiveTab] = useState('ceni');
+  const [modal, setModal] = useState<{ open: boolean; subject?: string }>({ open: false });
+  const openModal = (subject?: string) => setModal({ open: true, subject });
+  const closeModal = () => setModal({ open: false });
 
 
   const tabs = [
@@ -139,7 +143,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
                   ))}
                 </div>
 
-                <button className="btn-indigo">
+                <button className="btn-indigo" onClick={() => openModal(es ? 'Certificación CENI' : 'CENI Certification')}>
                   {es ? 'Solicitar Certificación CENI' : 'Request CENI Certification'} <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -218,14 +222,14 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
               <div className="card-institutional p-6">
                 <h3 className="font-heading font-bold text-[#1B1F5A] mb-3">{es ? 'Manual de Uso' : 'Usage Manual'}</h3>
                 <p className="text-gray-600 text-sm mb-4">{es ? 'Guía completa para el uso correcto del distintivo Fuerza Índigo en campañas y materiales.' : 'Complete guide for the correct use of the Fuerza Índigo badge in campaigns and materials.'}</p>
-                <button className="btn-outline-indigo text-sm py-2 px-4">
+                <button className="btn-outline-indigo text-sm py-2 px-4" onClick={() => openModal(es ? 'Manual Fuerza Índigo' : 'Fuerza Índigo Manual')}>
                   <FileText className="w-4 h-4" /> {es ? 'Descargar Manual' : 'Download Manual'}
                 </button>
               </div>
               <div className="card-institutional p-6">
                 <h3 className="font-heading font-bold text-[#1B1F5A] mb-3">{es ? 'Solicitar Distintivo' : 'Request Badge'}</h3>
                 <p className="text-gray-600 text-sm mb-4">{es ? 'Presenta tu campaña para evaluación y obtén el respaldo institucional de Alianza Índigo Neurodivergente.' : 'Submit your campaign for evaluation and obtain the institutional endorsement of Alianza Índigo Neurodivergente.'}</p>
-                <button className="btn-indigo text-sm py-2 px-4">
+                <button className="btn-indigo text-sm py-2 px-4" onClick={() => openModal(es ? 'Distintivo Fuerza Índigo' : 'Fuerza Índigo Badge')}>
                   {es ? 'Iniciar Solicitud' : 'Start Application'} <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -260,7 +264,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
                 <div key={i} className="card-institutional p-6">
                   <h3 className="font-heading font-bold text-[#1B1F5A] mb-2">{item.title}</h3>
                   <p className="text-gray-600 text-sm mb-4">{item.desc}</p>
-                  <button className="btn-outline-indigo text-sm py-2 px-4">{item.btn}</button>
+                  <button className="btn-outline-indigo text-sm py-2 px-4" onClick={() => openModal(`${es ? 'Sello Universal' : 'Universal Seal'} – ${item.title}`)}>{item.btn}</button>
                 </div>
               ))}
             </div>
@@ -294,7 +298,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
               <div className="card-institutional p-6">
                 <h3 className="font-heading font-bold text-[#1B1F5A] mb-3">{es ? 'Solicitar Evaluación' : 'Request Evaluation'}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">{es ? 'Gobiernos y organismos públicos pueden solicitar una evaluación NeuroPlan.' : 'Governments and public bodies can request a NeuroPlan evaluation.'}</p>
-                <button className="btn-indigo text-sm py-2 px-4">
+                <button className="btn-indigo text-sm py-2 px-4" onClick={() => openModal('NeuroPlan')}>
                   {es ? 'Solicitar' : 'Request'} <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -302,6 +306,8 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
           </div>
         </section>
       )}
+
+      <InfoModal open={modal.open} onClose={closeModal} lang={lang} subject={modal.subject} />
 
       {/* Public Registry */}
       <section className="section-padding bg-gray-50">

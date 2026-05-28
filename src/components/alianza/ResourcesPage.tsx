@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import InfoModal from './InfoModal';
 import {
   BookOpen, FileText, Video, PenTool, GraduationCap, Building2,
   Landmark, Download, Search, Filter, ArrowRight, ExternalLink
@@ -14,6 +15,9 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({ lang }) => {
   const es = lang === 'es';
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [modal, setModal] = useState<{ open: boolean; subject?: string }>({ open: false });
+  const openModal = (subject?: string) => setModal({ open: true, subject });
+  const closeModal = () => setModal({ open: false });
 
   const categories = [
     { id: 'all', label: es ? 'Todos' : 'All' },
@@ -132,7 +136,7 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({ lang }) => {
                   <h3 className="font-heading font-bold text-sm text-[#1B1F5A] mb-2 group-hover:text-[#2B2D6D] flex-1">{resource.title}</h3>
                   <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-50">
                     <span className="text-xs text-gray-400">{resource.audience}</span>
-                    <button className="text-[#1B1F5A] text-xs font-semibold flex items-center gap-1 hover:text-[#FFD700] transition-colors">
+                    <button className="text-[#1B1F5A] text-xs font-semibold flex items-center gap-1 hover:text-[#FFD700] transition-colors" onClick={() => openModal(resource.title)}>
                       {resource.format === 'Video' || resource.format === 'Artículo' || resource.format === 'Article' ? (
                         <><ExternalLink className="w-3.5 h-3.5" /> {es ? 'Ver' : 'View'}</>
                       ) : (
@@ -175,7 +179,7 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({ lang }) => {
                   <Icon className="w-12 h-12 text-[#1B1F5A] mx-auto mb-4" />
                   <h3 className="font-heading font-bold text-lg text-[#1B1F5A] mb-3">{sector.title}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">{sector.desc}</p>
-                  <button className="btn-outline-indigo text-sm py-2 px-4">
+                  <button className="btn-outline-indigo text-sm py-2 px-4" onClick={() => openModal(sector.title)}>
                     {es ? 'Ver recursos' : 'View resources'} <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -184,6 +188,7 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({ lang }) => {
           </div>
         </div>
       </section>
+      <InfoModal open={modal.open} onClose={closeModal} lang={lang} subject={modal.subject} />
     </div>
   );
 };

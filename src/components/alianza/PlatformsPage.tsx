@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import InfoModal from './InfoModal';
 import {
   Cpu, Bot, QrCode, Code2, Users, LayoutDashboard,
   ArrowRight, Search, CheckCircle2, AlertCircle, Workflow, BookOpen
@@ -12,6 +13,7 @@ const TECH_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b4919a_
 
 const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
   const es = lang === 'es';
+  const [modalOpen, setModalOpen] = useState(false);
   const [verifyCode, setVerifyCode] = useState('');
   const [verifyResult, setVerifyResult] = useState<null | 'valid' | 'invalid'>(null);
 
@@ -255,7 +257,7 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
                   ? 'Nuestra API permite a desarrolladores y organizaciones integrar la validación de certificaciones de Alianza Índigo Neurodivergente en sus propios sistemas.'
                   : 'Our API allows developers and organizations to integrate Alianza Índigo Neurodivergente certification validation into their own systems.'}
               </p>
-              <button className="btn-gold">
+              <button className="btn-gold" onClick={() => setModalOpen(true)}>
                 {es ? 'Ver Documentación' : 'View Documentation'} <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -273,6 +275,7 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
           </div>
         </div>
       </section>
+      <InfoModal open={modalOpen} onClose={() => setModalOpen(false)} lang={lang} subject={es ? 'API Pública' : 'Public API'} />
     </div>
   );
 };
