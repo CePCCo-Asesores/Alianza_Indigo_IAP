@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   FlaskConical, BarChart3, FileText, Database, Microscope,
-  ArrowRight, Calendar, Tag, ExternalLink, Download
+  Calendar, Tag, Clock
 } from 'lucide-react';
 
 interface ResearchPageProps {
@@ -13,22 +13,6 @@ const RESEARCH_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b49
 const ResearchPage: React.FC<ResearchPageProps> = ({ lang }) => {
   const es = lang === 'es';
   const [activeSection, setActiveSection] = useState('observatory');
-
-  const publications = es ? [
-    { title: 'Estado de la Neuroinclusión en América Latina 2025', type: 'Informe', date: 'Enero 2026', tags: ['Neuroinclusión', 'Datos'] },
-    { title: 'Guía de Buenas Prácticas para Entornos Laborales ND', type: 'Guía', date: 'Noviembre 2025', tags: ['Laboral', 'Inclusión'] },
-    { title: 'Impacto de las Certificaciones CENI: Primer Análisis', type: 'Estudio', date: 'Septiembre 2025', tags: ['CENI', 'Impacto'] },
-    { title: 'Neurodivergencia y Educación Superior: Retos y Oportunidades', type: 'Artículo', date: 'Julio 2025', tags: ['Educación', 'Universidad'] },
-    { title: 'Marco Ético para la Representación de la Neurodivergencia en Medios', type: 'Documento', date: 'Mayo 2025', tags: ['Medios', 'Ética'] },
-    { title: 'Indicadores de Neuroinclusión Municipal: Metodología NeuroPlan', type: 'Metodología', date: 'Marzo 2025', tags: ['NeuroPlan', 'Gobierno'] },
-  ] : [
-    { title: 'State of Neuroinclusion in Latin America 2025', type: 'Report', date: 'January 2026', tags: ['Neuroinclusion', 'Data'] },
-    { title: 'Best Practices Guide for ND Work Environments', type: 'Guide', date: 'November 2025', tags: ['Work', 'Inclusion'] },
-    { title: 'Impact of CENI Certifications: First Analysis', type: 'Study', date: 'September 2025', tags: ['CENI', 'Impact'] },
-    { title: 'Neurodivergence and Higher Education: Challenges and Opportunities', type: 'Article', date: 'July 2025', tags: ['Education', 'University'] },
-    { title: 'Ethical Framework for Neurodivergence Representation in Media', type: 'Document', date: 'May 2025', tags: ['Media', 'Ethics'] },
-    { title: 'Municipal Neuroinclusion Indicators: NeuroPlan Methodology', type: 'Methodology', date: 'March 2025', tags: ['NeuroPlan', 'Government'] },
-  ];
 
   const projects = es ? [
     { title: 'Índice Nacional de Neuroinclusión', status: 'En curso', desc: 'Desarrollo de un índice cuantitativo que mide el nivel de neuroinclusión en instituciones públicas y privadas.' },
@@ -106,23 +90,13 @@ const ResearchPage: React.FC<ResearchPageProps> = ({ lang }) => {
                 ? 'El Observatorio de Neuroinclusión de Alianza Índigo Neurodivergente monitorea, analiza y publica datos sobre el estado de la inclusión neurológica a nivel nacional e internacional.'
                 : 'The Alianza Índigo Neurodivergente Neuroinclusion Observatory monitors, analyzes and publishes data on the state of neurological inclusion at national and international levels.'}
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-              {(es ? [
-                { value: '24', label: 'Indicadores monitoreados', color: 'bg-indigo-50 text-[#1B1F5A]' },
-                { value: '12', label: 'Países analizados', color: 'bg-blue-50 text-blue-700' },
-                { value: '6', label: 'Informes publicados', color: 'bg-purple-50 text-purple-700' },
-                { value: '3', label: 'Alianzas de datos', color: 'bg-emerald-50 text-emerald-700' },
-              ] : [
-                { value: '24', label: 'Monitored indicators', color: 'bg-indigo-50 text-[#1B1F5A]' },
-                { value: '12', label: 'Countries analyzed', color: 'bg-blue-50 text-blue-700' },
-                { value: '6', label: 'Published reports', color: 'bg-purple-50 text-purple-700' },
-                { value: '3', label: 'Data partnerships', color: 'bg-emerald-50 text-emerald-700' },
-              ]).map((stat, i) => (
-                <div key={i} className={`rounded-xl p-6 ${stat.color}`}>
-                  <div className="font-heading font-black text-3xl mb-1">{stat.value}</div>
-                  <div className="text-sm opacity-80">{stat.label}</div>
-                </div>
-              ))}
+            <div className="bg-indigo-50 rounded-xl p-4 border border-indigo-100 mb-10 text-sm text-[#1B1F5A]">
+              <span className="flex items-center gap-2">
+                <Clock className="w-4 h-4 flex-shrink-0" />
+                {es
+                  ? 'El Observatorio se encuentra en fase de desarrollo. Los datos e indicadores se publicarán a partir de la primera edición oficial.'
+                  : 'The Observatory is currently in development. Data and indicators will be published starting from the first official edition.'}
+              </span>
             </div>
             <div className="bg-gray-50 rounded-xl p-8 border border-gray-100">
               <h3 className="font-heading font-bold text-xl text-[#1B1F5A] mb-4">
@@ -154,26 +128,16 @@ const ResearchPage: React.FC<ResearchPageProps> = ({ lang }) => {
             <h2 className="font-heading font-bold text-3xl text-[#1B1F5A] mb-8">
               {es ? 'Publicaciones Institucionales' : 'Institutional Publications'}
             </h2>
-            <div className="space-y-4">
-              {publications.map((pub, i) => (
-                <div key={i} className="card-institutional p-6 flex flex-col md:flex-row md:items-center gap-4 group hover:border-[#FFD700]">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs font-semibold px-2 py-0.5 rounded bg-indigo-50 text-[#1B1F5A]">{pub.type}</span>
-                      <span className="text-xs text-gray-400 flex items-center gap-1"><Calendar className="w-3 h-3" /> {pub.date}</span>
-                    </div>
-                    <h3 className="font-heading font-bold text-[#1B1F5A] group-hover:text-[#2B2D6D]">{pub.title}</h3>
-                    <div className="flex gap-2 mt-2">
-                      {pub.tags.map((tag, j) => (
-                        <span key={j} className="text-xs text-gray-500 flex items-center gap-1"><Tag className="w-3 h-3" /> {tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                  <button className="btn-outline-indigo text-sm py-2 px-4 flex-shrink-0">
-                    <Download className="w-4 h-4" /> {es ? 'Descargar' : 'Download'}
-                  </button>
-                </div>
-              ))}
+            <div className="bg-gray-50 rounded-xl border border-gray-100 p-10 text-center">
+              <FileText className="w-14 h-14 text-gray-200 mx-auto mb-4" />
+              <h3 className="font-heading font-bold text-lg text-[#1B1F5A] mb-2">
+                {es ? 'Próximamente' : 'Coming Soon'}
+              </h3>
+              <p className="text-gray-500 text-sm max-w-md mx-auto">
+                {es
+                  ? 'Estamos desarrollando nuestras primeras publicaciones institucionales. Informes, guías y documentos estarán disponibles aquí cuando sean publicados oficialmente.'
+                  : 'We are developing our first institutional publications. Reports, guides and documents will be available here when officially published.'}
+              </p>
             </div>
           </div>
         </section>
@@ -189,34 +153,18 @@ const ResearchPage: React.FC<ResearchPageProps> = ({ lang }) => {
             </h2>
             <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto mb-10">
               {es
-                ? 'Alianza Índigo Neurodivergente publica datos abiertos sobre neurodivergencia e inclusión. Estos datos están disponibles para investigadores, periodistas, gobiernos y la sociedad civil.'
-                : 'Alianza Índigo Neurodivergente publishes open data on neurodivergence and inclusion. This data is available to researchers, journalists, governments and civil society.'}
+                ? 'Alianza Índigo Neurodivergente publicará datos abiertos sobre neurodivergencia e inclusión para investigadores, periodistas, gobiernos y la sociedad civil.'
+                : 'Alianza Índigo Neurodivergente will publish open data on neurodivergence and inclusion for researchers, journalists, governments and civil society.'}
             </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {(es ? [
-                { title: 'Índice de Neuroinclusión', format: 'CSV / JSON', size: '2.4 MB' },
-                { title: 'Registro de Certificaciones', format: 'CSV', size: '156 KB' },
-                { title: 'Indicadores Educativos ND', format: 'CSV / XLSX', size: '1.8 MB' },
-                { title: 'Encuesta de Percepción ND', format: 'CSV', size: '890 KB' },
-                { title: 'Mapa de Recursos ND', format: 'GeoJSON', size: '3.2 MB' },
-                { title: 'Estadísticas de Certificaciones', format: 'JSON', size: '420 KB' },
-              ] : [
-                { title: 'Neuroinclusion Index', format: 'CSV / JSON', size: '2.4 MB' },
-                { title: 'Certifications Registry', format: 'CSV', size: '156 KB' },
-                { title: 'ND Educational Indicators', format: 'CSV / XLSX', size: '1.8 MB' },
-                { title: 'ND Perception Survey', format: 'CSV', size: '890 KB' },
-                { title: 'ND Resources Map', format: 'GeoJSON', size: '3.2 MB' },
-                { title: 'Certification Statistics', format: 'JSON', size: '420 KB' },
-              ]).map((dataset, i) => (
-                <div key={i} className="card-institutional p-6 text-left">
-                  <Database className="w-8 h-8 text-[#FFD700] mb-3" />
-                  <h3 className="font-heading font-bold text-sm text-[#1B1F5A] mb-1">{dataset.title}</h3>
-                  <p className="text-xs text-gray-500 mb-3">{dataset.format} · {dataset.size}</p>
-                  <button className="text-[#1B1F5A] text-sm font-semibold flex items-center gap-1 hover:text-[#FFD700] transition-colors">
-                    <Download className="w-4 h-4" /> {es ? 'Descargar' : 'Download'}
-                  </button>
-                </div>
-              ))}
+            <div className="bg-gray-50 rounded-xl border border-gray-100 p-10">
+              <h3 className="font-heading font-bold text-lg text-[#1B1F5A] mb-2">
+                {es ? 'Próximamente' : 'Coming Soon'}
+              </h3>
+              <p className="text-gray-500 text-sm max-w-md mx-auto">
+                {es
+                  ? 'Los primeros conjuntos de datos abiertos estarán disponibles a partir de la publicación del primer informe del Observatorio de Neuroinclusión.'
+                  : 'The first open datasets will be available starting from the publication of the first Neuroinclusion Observatory report.'}
+              </p>
             </div>
           </div>
         </section>

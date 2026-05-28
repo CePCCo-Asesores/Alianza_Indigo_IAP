@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import {
-  Users, Heart, Calendar, MapPin, ArrowRight, Star,
-  HandHeart, MessageCircle, Clock, ChevronRight, AlertCircle
+  Heart, Calendar, ArrowRight, Star,
+  HandHeart, MessageCircle, ChevronRight, AlertCircle
 } from 'lucide-react';
 
 interface CommunityPageProps {
@@ -46,29 +46,6 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
     }
   };
 
-  const stories = es ? [
-    { title: 'Encontrar mi lugar en el mundo laboral', excerpt: 'Una historia colectiva sobre la experiencia de personas neurodivergentes en entornos laborales que implementaron adaptaciones razonables.', tag: 'Laboral' },
-    { title: 'La escuela que entendió la diferencia', excerpt: 'Relato institucional sobre una escuela que obtuvo la certificación CENI y transformó su cultura educativa.', tag: 'Educación' },
-    { title: 'Cuando la tecnología se convierte en aliada', excerpt: 'Experiencias colectivas sobre el uso de herramientas tecnológicas accesibles para personas neurodivergentes.', tag: 'Tecnología' },
-    { title: 'Comunidad que sostiene', excerpt: 'Testimonios anónimos sobre el impacto de pertenecer a una red de apoyo neurodivergente.', tag: 'Comunidad' },
-  ] : [
-    { title: 'Finding my place in the work world', excerpt: 'A collective story about the experience of neurodivergent people in work environments that implemented reasonable adaptations.', tag: 'Work' },
-    { title: 'The school that understood difference', excerpt: 'Institutional account of a school that obtained CENI certification and transformed its educational culture.', tag: 'Education' },
-    { title: 'When technology becomes an ally', excerpt: 'Collective experiences about the use of accessible technological tools for neurodivergent people.', tag: 'Technology' },
-    { title: 'Community that sustains', excerpt: 'Anonymous testimonials about the impact of belonging to a neurodivergent support network.', tag: 'Community' },
-  ];
-
-  const events = es ? [
-    { title: 'Foro Nacional de Neuroinclusión 2026', date: '15-17 Mayo 2026', location: 'Virtual', type: 'Foro' },
-    { title: 'Taller: Adaptaciones Razonables en el Aula', date: '22 Abril 2026', location: 'Virtual', type: 'Taller' },
-    { title: 'Convocatoria: Embajadores Índigo 2026', date: 'Hasta 30 Junio 2026', location: 'Nacional', type: 'Convocatoria' },
-    { title: 'Seminario: Neurodivergencia y Políticas Públicas', date: '8 Julio 2026', location: 'Virtual', type: 'Seminario' },
-  ] : [
-    { title: 'National Neuroinclusion Forum 2026', date: 'May 15-17, 2026', location: 'Virtual', type: 'Forum' },
-    { title: 'Workshop: Reasonable Adaptations in the Classroom', date: 'April 22, 2026', location: 'Virtual', type: 'Workshop' },
-    { title: 'Call: Índigo Ambassadors 2026', date: 'Until June 30, 2026', location: 'National', type: 'Call' },
-    { title: 'Seminar: Neurodivergence and Public Policies', date: 'July 8, 2026', location: 'Virtual', type: 'Seminar' },
-  ];
 
   return (
     <div>
@@ -111,26 +88,13 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
                   ? 'Los Embajadores Índigo son una red colectiva de representación institucional. No son figuras individuales, sino un cuerpo colectivo que lleva el mensaje de Alianza Índigo Neurodivergente a comunidades, instituciones y espacios públicos.'
                   : 'Índigo Ambassadors are a collective network of institutional representation. They are not individual figures, but a collective body that carries the Alianza Índigo Neurodivergente message to communities, institutions and public spaces.'}
               </p>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                {(es ? [
-                  { value: '50+', label: 'Embajadores activos' },
-                  { value: '12', label: 'Estados representados' },
-                  { value: '30+', label: 'Eventos realizados' },
-                  { value: '100%', label: 'Voluntario' },
-                ] : [
-                  { value: '50+', label: 'Active ambassadors' },
-                  { value: '12', label: 'States represented' },
-                  { value: '30+', label: 'Events held' },
-                  { value: '100%', label: 'Voluntary' },
-                ]).map((stat, i) => (
-                  <div key={i} className="bg-indigo-50 rounded-lg p-4">
-                    <div className="font-heading font-bold text-xl text-[#1B1F5A]">{stat.value}</div>
-                    <div className="text-xs text-gray-600">{stat.label}</div>
-                  </div>
-                ))}
+              <div className="bg-indigo-50 rounded-xl p-4 text-sm text-[#1B1F5A] mb-6">
+                {es
+                  ? 'El programa de Embajadores Índigo está en construcción. Próximamente abriremos la convocatoria oficial.'
+                  : 'The Índigo Ambassadors program is under development. We will open the official call soon.'}
               </div>
-              <button className="btn-indigo">
-                {es ? 'Conocer el programa' : 'Learn about the program'} <ArrowRight className="w-4 h-4" />
+              <button className="btn-indigo" onClick={() => onNavigate('contacto')}>
+                {es ? 'Contactar para más información' : 'Contact for more information'} <ArrowRight className="w-4 h-4" />
               </button>
             </div>
             <div className="bg-[#1B1F5A] rounded-2xl p-8">
@@ -173,17 +137,16 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
           <p className="text-gray-600 mb-8">
             {es ? 'Relatos colectivos y anónimos sobre la experiencia neurodivergente.' : 'Collective and anonymous accounts of the neurodivergent experience.'}
           </p>
-          <div className="grid md:grid-cols-2 gap-6">
-            {stories.map((story, i) => (
-              <div key={i} className="card-institutional p-6 group hover:border-[#FFD700]">
-                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-[#FFD700]/20 text-[#1B1F5A] mb-3 inline-block">{story.tag}</span>
-                <h3 className="font-heading font-bold text-lg text-[#1B1F5A] mb-2">{story.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-3">{story.excerpt}</p>
-                <button className="text-[#1B1F5A] text-sm font-semibold flex items-center gap-1 hover:text-[#FFD700] transition-colors">
-                  {es ? 'Leer más' : 'Read more'} <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            ))}
+          <div className="bg-white rounded-xl border border-gray-100 p-10 text-center">
+            <MessageCircle className="w-14 h-14 text-gray-200 mx-auto mb-4" />
+            <h3 className="font-heading font-bold text-lg text-[#1B1F5A] mb-2">
+              {es ? 'Próximamente' : 'Coming Soon'}
+            </h3>
+            <p className="text-gray-500 text-sm max-w-md mx-auto">
+              {es
+                ? 'Estamos recopilando historias colectivas y anónimas de la comunidad neurodivergente. Si quieres compartir tu experiencia, escríbenos a contacto@alianzaindigo.org.'
+                : 'We are collecting collective and anonymous stories from the neurodivergent community. If you want to share your experience, write to contacto@alianzaindigo.org.'}
+            </p>
           </div>
         </div>
       </section>
@@ -194,25 +157,16 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
           <h2 className="font-heading font-bold text-3xl text-[#1B1F5A] mb-8">
             {es ? 'Eventos y Convocatorias' : 'Events and Calls'}
           </h2>
-          <div className="space-y-4">
-            {events.map((event, i) => (
-              <div key={i} className="card-institutional p-6 flex flex-col md:flex-row md:items-center gap-4 group hover:border-[#FFD700]">
-                <div className="w-14 h-14 rounded-lg bg-indigo-50 flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-6 h-6 text-[#1B1F5A]" />
-                </div>
-                <div className="flex-1">
-                  <span className="text-xs font-semibold px-2 py-0.5 rounded bg-[#FFD700]/20 text-[#1B1F5A]">{event.type}</span>
-                  <h3 className="font-heading font-bold text-[#1B1F5A] mt-1">{event.title}</h3>
-                  <div className="flex items-center gap-4 mt-1 text-xs text-gray-500">
-                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {event.date}</span>
-                    <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {event.location}</span>
-                  </div>
-                </div>
-                <button className="btn-outline-indigo text-sm py-2 px-4 flex-shrink-0">
-                  {es ? 'Más información' : 'More info'}
-                </button>
-              </div>
-            ))}
+          <div className="bg-gray-50 rounded-xl border border-gray-100 p-10 text-center">
+            <Calendar className="w-14 h-14 text-gray-200 mx-auto mb-4" />
+            <h3 className="font-heading font-bold text-lg text-[#1B1F5A] mb-2">
+              {es ? 'Sin eventos programados' : 'No scheduled events'}
+            </h3>
+            <p className="text-gray-500 text-sm max-w-md mx-auto">
+              {es
+                ? 'Aún no hay eventos publicados. Los foros, talleres y convocatorias institucionales se anunciarán aquí en cuanto estén confirmados. Suscríbete a nuestro boletín a través del formulario de contacto para recibir avisos.'
+                : 'No events published yet. Institutional forums, workshops and calls will be announced here once confirmed. Subscribe to our newsletter via the contact form to receive updates.'}
+            </p>
           </div>
         </div>
       </section>
