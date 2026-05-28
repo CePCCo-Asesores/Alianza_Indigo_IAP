@@ -275,6 +275,40 @@ const AboutPage: React.FC<AboutPageProps> = ({ lang }) => {
           </div>
         </div>
       </section>
+
+      {/* Legal Status */}
+      <section id="estatus-legal" className="section-padding bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-heading font-bold text-3xl text-[#1B1F5A] mb-4 text-center">
+            {es ? 'Estatus Legal' : 'Legal Status'}
+          </h2>
+          <p className="text-gray-600 max-w-3xl mx-auto mb-10 text-center leading-relaxed">
+            {es
+              ? 'Alianza Índigo Neurodivergente opera bajo el respaldo legal de la Asociación Mexicana de Criptominería Ecológica A.C., organización registrada ante las autoridades mexicanas y verificada por Google for Nonprofits.'
+              : 'Alianza Índigo Neurodivergente operates under the legal backing of the Asociación Mexicana de Criptominería Ecológica A.C., an organization registered with Mexican authorities and verified by Google for Nonprofits.'}
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {[
+              { label: es ? 'Organización paraguas' : 'Umbrella organization', value: 'Asoc. Mexicana de Criptominería Ecológica A.C.' },
+              { label: 'RFC', value: 'AMC40807GA9' },
+              { label: 'CLUNI', value: 'AMC2408070873T' },
+              { label: es ? 'Verificación' : 'Verification', value: 'Google for Nonprofits ✓' },
+            ].map((item, i) => (
+              <div key={i} className="bg-white rounded-xl p-6 border border-gray-100 text-center">
+                <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">{item.label}</p>
+                <p className="font-heading font-bold text-[#1B1F5A] text-sm leading-snug">{item.value}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-[#1B1F5A] rounded-xl p-6 max-w-2xl mx-auto text-center">
+            <p className="text-white/70 text-sm leading-relaxed">
+              {es
+                ? 'Puedes verificar el estatus CLUNI de nuestra organización paraguas en el Sistema de Información del Registro Federal de las OSC (SIRFOSC) del INDESOL.'
+                : 'You can verify the CLUNI status of our umbrella organization in the Federal Registry of Civil Society Organizations (SIRFOSC) at INDESOL.'}
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

@@ -35,12 +35,14 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
 
   const contactInfo = es ? [
     { icon: Mail, label: 'Correo institucional', value: 'contacto@alianzaindigo.org', href: 'mailto:contacto@alianzaindigo.org' },
-    { icon: Globe, label: 'Sitio web', value: 'www.alianzaindigo.org', href: '#' },
-    { icon: MapPin, label: 'Dirección general', value: 'Dirección General Institucional, México', href: '#' },
+    { icon: Phone, label: 'Teléfono', value: '657-239-6866', href: 'tel:6572396866' },
+    { icon: Globe, label: 'Sitio web', value: 'www.alianzaindigo.org', href: 'https://alianzaindigo.org' },
+    { icon: MapPin, label: 'Dirección general', value: 'Uxmal 7315B, Chihuahua, Chih. 31120', href: 'https://maps.google.com/?q=Uxmal+7315B+Chihuahua+Chihuahua+31120' },
   ] : [
-    { icon: Mail, label: 'Institutional email', value: 'contact@alianzaindigo.org', href: 'mailto:contact@alianzaindigo.org' },
-    { icon: Globe, label: 'Website', value: 'www.alianzaindigo.org', href: '#' },
-    { icon: MapPin, label: 'General address', value: 'General Institutional Office, Mexico', href: '#' },
+    { icon: Mail, label: 'Institutional email', value: 'contacto@alianzaindigo.org', href: 'mailto:contacto@alianzaindigo.org' },
+    { icon: Phone, label: 'Phone', value: '657-239-6866', href: 'tel:6572396866' },
+    { icon: Globe, label: 'Website', value: 'www.alianzaindigo.org', href: 'https://alianzaindigo.org' },
+    { icon: MapPin, label: 'General address', value: 'Uxmal 7315B, Chihuahua, Chih. 31120', href: 'https://maps.google.com/?q=Uxmal+7315B+Chihuahua+Chihuahua+31120' },
   ];
 
   const socialLinks = [

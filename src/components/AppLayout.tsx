@@ -11,8 +11,10 @@ import CommunityPage from './alianza/CommunityPage';
 import RafflesPage from './alianza/RafflesPage';
 import DonationsPage from './alianza/DonationsPage';
 import ContactPage from './alianza/ContactPage';
+import PrivacyPage from './alianza/PrivacyPage';
+import TermsPage from './alianza/TermsPage';
 
-type PageId = 'inicio' | 'nosotros' | 'certificaciones' | 'plataformas' | 'investigacion' | 'recursos' | 'comunidad' | 'rifas' | 'donaciones' | 'contacto';
+type PageId = 'inicio' | 'nosotros' | 'certificaciones' | 'plataformas' | 'investigacion' | 'recursos' | 'comunidad' | 'rifas' | 'donaciones' | 'contacto' | 'privacidad' | 'terminos';
 
 const AppLayout: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageId>('inicio');
@@ -40,6 +42,8 @@ const AppLayout: React.FC = () => {
       rifas: { es: 'Rifas Institucionales – Alianza Índigo Neurodivergente', en: 'Institutional Raffles – Alianza Índigo Neurodivergente' },
       donaciones: { es: 'Donaciones – Alianza Índigo Neurodivergente', en: 'Donations – Alianza Índigo Neurodivergente' },
       contacto: { es: 'Contacto – Alianza Índigo Neurodivergente', en: 'Contact – Alianza Índigo Neurodivergente' },
+      privacidad: { es: 'Política de Privacidad – Alianza Índigo Neurodivergente', en: 'Privacy Policy – Alianza Índigo Neurodivergente' },
+      terminos: { es: 'Términos de Uso – Alianza Índigo Neurodivergente', en: 'Terms of Use – Alianza Índigo Neurodivergente' },
     };
     document.title = titles[currentPage]?.[lang] || 'Alianza Índigo Neurodivergente';
   }, [currentPage, lang]);
@@ -71,6 +75,10 @@ const AppLayout: React.FC = () => {
         return <DonationsPage lang={lang} />;
       case 'contacto':
         return <ContactPage lang={lang} />;
+      case 'privacidad':
+        return <PrivacyPage lang={lang} />;
+      case 'terminos':
+        return <TermsPage lang={lang} />;
       default:
         return <HomePage onNavigate={handleNavigate} lang={lang} />;
     }

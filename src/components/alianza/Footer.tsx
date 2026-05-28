@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import IndigoSeal from './IndigoSeal';
-import { Mail, MapPin, ExternalLink, ArrowRight, Globe, MessageCircle, Users, Share2 } from 'lucide-react';
+import { Mail, MapPin, Phone, ExternalLink, ArrowRight, Globe, MessageCircle, Users, Share2 } from 'lucide-react';
 
 
 interface FooterProps {
@@ -50,7 +50,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
       terms: 'Términos',
       accessibility: 'Accesibilidad',
       tagline: 'Asociación Civil dedicada a la protección, representación, certificación y promoción de la neurodivergencia.',
-      address: 'Dirección General Institucional',
+      address: 'Uxmal 7315B, Chihuahua, Chih. 31120',
+      phone: '657-239-6866',
       emailContact: 'contacto@alianzaindigo.org',
     },
     en: {
@@ -81,8 +82,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
       terms: 'Terms',
       accessibility: 'Accessibility',
       tagline: 'Civil Association dedicated to the protection, representation, certification and promotion of neurodivergence.',
-      address: 'General Institutional Office',
-      emailContact: 'contact@alianzaindigo.org',
+      address: 'Uxmal 7315B, Chihuahua, Chih. 31120',
+      phone: '657-239-6866',
+      emailContact: 'contacto@alianzaindigo.org',
     }
   };
 
@@ -220,7 +222,11 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
             <div className="mt-6 space-y-2">
               <div className="flex items-center gap-2 text-white/60 text-sm">
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                <span>{text.emailContact}</span>
+                <a href="mailto:contacto@alianzaindigo.org" className="hover:text-[#FFD700] transition-colors">{text.emailContact}</a>
+              </div>
+              <div className="flex items-center gap-2 text-white/60 text-sm">
+                <Phone className="w-4 h-4 flex-shrink-0" />
+                <a href="tel:6572396866" className="hover:text-[#FFD700] transition-colors">{text.phone}</a>
               </div>
               <div className="flex items-start gap-2 text-white/60 text-sm">
                 <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
@@ -238,8 +244,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
             &copy; {new Date().getFullYear()} Alianza Índigo Neurodivergente A.C. {text.rights}
           </p>
           <div className="flex items-center gap-4 text-xs text-white/40">
-            <button onClick={() => onNavigate('nosotros')} className="hover:text-[#FFD700] transition-colors">{text.privacy}</button>
-            <button onClick={() => onNavigate('nosotros')} className="hover:text-[#FFD700] transition-colors">{text.terms}</button>
+            <button onClick={() => onNavigate('privacidad')} className="hover:text-[#FFD700] transition-colors">{text.privacy}</button>
+            <button onClick={() => onNavigate('terminos')} className="hover:text-[#FFD700] transition-colors">{text.terms}</button>
             <button onClick={() => onNavigate('nosotros')} className="hover:text-[#FFD700] transition-colors">{text.accessibility}</button>
           </div>
         </div>
