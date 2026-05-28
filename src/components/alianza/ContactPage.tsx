@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import {
   Mail, MapPin, Phone, Send, ArrowRight, CheckCircle2,
-  Globe, MessageSquare, Share2, ExternalLink
+  Globe, MessageSquare, Share2, ExternalLink, AlertCircle
 } from 'lucide-react';
 
 interface ContactPageProps {
@@ -12,6 +13,8 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
   const es = lang === 'es';
   const [form, setForm] = useState({ name: '', email: '', subject: '', type: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validate = () => {
@@ -24,12 +27,31 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) {
+    if (!validate()) return;
+    setSending(true);
+    setSendError(false);
+    try {
+      await emailjs.send(
+        'alianza_indigo',
+        'template_h2g5dit',
+        {
+          from_name: form.name,
+          from_email: form.email,
+          inquiry_type: form.type || (es ? 'No especificado' : 'Not specified'),
+          subject: form.subject,
+          message: form.message,
+        },
+        'aoWEMTr5Wdhy17jqA'
+      );
       setSubmitted(true);
       setForm({ name: '', email: '', subject: '', type: '', message: '' });
-      setTimeout(() => setSubmitted(false), 6000);
+      setTimeout(() => setSubmitted(false), 8000);
+    } catch {
+      setSendError(true);
+    } finally {
+      setSending(false);
     }
   };
 
@@ -153,8 +175,15 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
                       />
                       {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
                     </div>
-                    <button type="submit" className="btn-indigo w-full justify-center">
-                      <Send className="w-4 h-4" /> {es ? 'Enviar mensaje' : 'Send message'}
+                    {sendError && (
+                      <div className="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm">
+                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                        {es ? 'Ocurrió un error al enviar. Intenta de nuevo o escríbenos directamente.' : 'An error occurred. Please try again or email us directly.'}
+                      </div>
+                    )}
+                    <button type="submit" disabled={sending} className="btn-indigo w-full justify-center disabled:opacity-60">
+                      <Send className="w-4 h-4" />
+                      {sending ? (es ? 'Enviando...' : 'Sending...') : (es ? 'Enviar mensaje' : 'Send message')}
                     </button>
                   </form>
                 </div>

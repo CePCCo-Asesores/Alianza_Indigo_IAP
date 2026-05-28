@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import {
   Users, Heart, Calendar, MapPin, ArrowRight, Star,
-  HandHeart, MessageCircle, Clock, ChevronRight
+  HandHeart, MessageCircle, Clock, ChevronRight, AlertCircle
 } from 'lucide-react';
 
 interface CommunityPageProps {
@@ -15,12 +16,34 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
   const es = lang === 'es';
   const [volunteerForm, setVolunteerForm] = useState({ name: '', email: '', area: '', message: '' });
   const [volunteerSubmitted, setVolunteerSubmitted] = useState(false);
+  const [volunteerSending, setVolunteerSending] = useState(false);
+  const [volunteerError, setVolunteerError] = useState(false);
 
-  const handleVolunteerSubmit = (e: React.FormEvent) => {
+  const handleVolunteerSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setVolunteerSubmitted(true);
-    setVolunteerForm({ name: '', email: '', area: '', message: '' });
-    setTimeout(() => setVolunteerSubmitted(false), 5000);
+    setVolunteerSending(true);
+    setVolunteerError(false);
+    try {
+      await emailjs.send(
+        'alianza_indigo',
+        'template_h2g5dit',
+        {
+          from_name: volunteerForm.name,
+          from_email: volunteerForm.email,
+          inquiry_type: volunteerForm.area || (lang === 'es' ? 'Voluntariado' : 'Volunteering'),
+          subject: lang === 'es' ? 'Solicitud de Voluntariado' : 'Volunteering Application',
+          message: volunteerForm.message || (lang === 'es' ? '(Sin mensaje adicional)' : '(No additional message)'),
+        },
+        'aoWEMTr5Wdhy17jqA'
+      );
+      setVolunteerSubmitted(true);
+      setVolunteerForm({ name: '', email: '', area: '', message: '' });
+      setTimeout(() => setVolunteerSubmitted(false), 8000);
+    } catch {
+      setVolunteerError(true);
+    } finally {
+      setVolunteerSending(false);
+    }
   };
 
   const stories = es ? [
@@ -264,8 +287,17 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#1B1F5A] focus:ring-2 focus:ring-[#1B1F5A]/20 outline-none transition-all resize-none"
                 />
               </div>
-              <button type="submit" className="btn-indigo w-full justify-center">
-                {es ? 'Enviar solicitud' : 'Submit application'} <ArrowRight className="w-4 h-4" />
+              {volunteerError && (
+                <div className="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm">
+                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                  {es ? 'Ocurrió un error al enviar. Intenta de nuevo.' : 'An error occurred. Please try again.'}
+                </div>
+              )}
+              <button type="submit" disabled={volunteerSending} className="btn-indigo w-full justify-center disabled:opacity-60">
+                {volunteerSending
+                  ? (es ? 'Enviando...' : 'Sending...')
+                  : (es ? 'Enviar solicitud' : 'Submit application')}
+                {!volunteerSending && <ArrowRight className="w-4 h-4" />}
               </button>
             </form>
           )}
