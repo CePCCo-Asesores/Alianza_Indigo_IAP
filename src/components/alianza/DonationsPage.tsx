@@ -236,38 +236,6 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
           </div>
         </section>
       )}
-
-      {/* Transparency */}
-      <section className="section-padding bg-white">
-        <div className="max-w-5xl mx-auto text-center">
-          <Shield className="w-12 h-12 text-[#1B1F5A] mx-auto mb-4" />
-          <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-4">
-            {es ? 'Transparencia Financiera' : 'Financial Transparency'}
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            {es
-              ? 'Alianza Índigo Neurodivergente publica informes financieros periódicos. Cada peso recibido tiene un destino claro, público y auditable.'
-              : 'Alianza Índigo Neurodivergente publishes periodic financial reports. Every peso received has a clear, public and auditable destination.'}
-          </p>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {(es ? [
-              { value: '$1.05M', label: 'Recaudado en 2025', sub: 'Rifas y donaciones' },
-              { value: '92%', label: 'A programas', sub: 'Destino directo' },
-              { value: '8%', label: 'Operación', sub: 'Costos administrativos' },
-            ] : [
-              { value: '$1.05M', label: 'Raised in 2025', sub: 'Raffles and donations' },
-              { value: '92%', label: 'To programs', sub: 'Direct destination' },
-              { value: '8%', label: 'Operations', sub: 'Administrative costs' },
-            ]).map((stat, i) => (
-              <div key={i} className="bg-gray-50 rounded-xl p-6">
-                <div className="font-heading font-black text-3xl text-[#1B1F5A] mb-1">{stat.value}</div>
-                <div className="font-semibold text-sm text-gray-700">{stat.label}</div>
-                <div className="text-xs text-gray-400">{stat.sub}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
