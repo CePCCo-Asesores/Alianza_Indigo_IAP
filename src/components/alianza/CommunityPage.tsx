@@ -38,7 +38,7 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
   ];
 
   const events = es ? [
-    { title: 'Foro Nacional de Neuroinclusión 2026', date: '15-17 Mayo 2026', location: 'Virtual', type: 'Foro' },
+    { title: 'Foro Nacional de Neuroinclusin 2026', date: '15-17 Mayo 2026', location: 'Virtual', type: 'Foro' },
     { title: 'Taller: Adaptaciones Razonables en el Aula', date: '22 Abril 2026', location: 'Virtual', type: 'Taller' },
     { title: 'Convocatoria: Embajadores Índigo 2026', date: 'Hasta 30 Junio 2026', location: 'Nacional', type: 'Convocatoria' },
     { title: 'Seminario: Neurodivergencia y Políticas Públicas', date: '8 Julio 2026', location: 'Virtual', type: 'Seminario' },
@@ -108,7 +108,7 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
                   </div>
                 ))}
               </div>
-              <button className="btn-indigo">
+              <button className="btn-indigo" onClick={() => onNavigate('contacto')}>
                 {es ? 'Conocer el programa' : 'Learn about the program'} <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -250,11 +250,11 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#1B1F5A] focus:ring-2 focus:ring-[#1B1F5A]/20 outline-none transition-all"
                 >
                   <option value="">{es ? 'Selecciona un área' : 'Select an area'}</option>
-                  <option>{es ? 'Embajadores Índigo' : 'Índigo Ambassadors'}</option>
-                  <option>{es ? 'Investigación' : 'Research'}</option>
-                  <option>{es ? 'Comunicación' : 'Communication'}</option>
-                  <option>{es ? 'Tecnología' : 'Technology'}</option>
-                  <option>{es ? 'Eventos' : 'Events'}</option>
+                  <option value="embajadores">{es ? 'Embajadores Índigo' : 'Índigo Ambassadors'}</option>
+                  <option value="investigacion">{es ? 'Investigación' : 'Research'}</option>
+                  <option value="comunicacion">{es ? 'Comunicación' : 'Communication'}</option>
+                  <option value="tecnologia">{es ? 'Tecnología' : 'Technology'}</option>
+                  <option value="eventos">{es ? 'Eventos' : 'Events'}</option>
                 </select>
               </div>
               <div>

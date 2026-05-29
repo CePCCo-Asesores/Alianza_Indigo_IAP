@@ -79,11 +79,12 @@ const AppLayout: React.FC = () => {
   const toggleLang = () => setLang(prev => (prev === 'es' ? 'en' : 'es'));
 
   // Actualiza el <title> y dispara page_view en GTM con cada cambio de ruta/idioma
+  // currentPage se deriva de location.pathname en el mismo render, no hace falta listarlo dos veces
   useEffect(() => {
     const title = TITLES[currentPage]?.[lang] ?? 'Alianza Índigo';
     document.title = title;
     trackPageView(location.pathname, title);
-  }, [currentPage, lang, location.pathname]);
+  }, [lang, location.pathname]);
 
   // Actualiza el atributo lang del <html>
   useEffect(() => {

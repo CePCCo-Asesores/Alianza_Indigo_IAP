@@ -100,10 +100,9 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, lang, onToggle
   }, [mobileOpen]);
 
   const handleNav = (page: string) => {
-    onNavigate(page);
+    onNavigate(page); // AppLayout.handleNavigate already calls window.scrollTo
     setMobileOpen(false);
     setActiveDropdown(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

@@ -9,6 +9,8 @@ interface ContactPageProps {
   lang: 'es' | 'en';
 }
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
   const es = lang === 'es';
   const [form, setForm] = useState({ name: '', email: '', subject: '', type: '', message: '' });
@@ -18,7 +20,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
   const validate = () => {
     const newErrors: Record<string, string> = {};
     if (!form.name.trim()) newErrors.name = es ? 'Nombre requerido' : 'Name required';
-    if (!form.email.includes('@')) newErrors.email = es ? 'Correo inválido' : 'Invalid email';
+    if (!EMAIL_RE.test(form.email.trim())) newErrors.email = es ? 'Correo inválido' : 'Invalid email';
     if (!form.subject.trim()) newErrors.subject = es ? 'Asunto requerido' : 'Subject required';
     if (!form.message.trim()) newErrors.message = es ? 'Mensaje requerido' : 'Message required';
     setErrors(newErrors);
@@ -124,13 +126,13 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
                         className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#1B1F5A] focus:ring-2 focus:ring-[#1B1F5A]/20 outline-none transition-all"
                       >
                         <option value="">{es ? 'Selecciona una opción' : 'Select an option'}</option>
-                        <option>{es ? 'Certificaciones' : 'Certifications'}</option>
-                        <option>{es ? 'Donaciones y membresías' : 'Donations and memberships'}</option>
-                        <option>{es ? 'Colaboración institucional' : 'Institutional collaboration'}</option>
-                        <option>{es ? 'Medios de comunicación' : 'Media'}</option>
-                        <option>{es ? 'Rifas institucionales' : 'Institutional raffles'}</option>
-                        <option>{es ? 'Voluntariado' : 'Volunteering'}</option>
-                        <option>{es ? 'Otro' : 'Other'}</option>
+                        <option value="certificaciones">{es ? 'Certificaciones' : 'Certifications'}</option>
+                        <option value="donaciones">{es ? 'Donaciones y membresías' : 'Donations and memberships'}</option>
+                        <option value="colaboracion">{es ? 'Colaboración institucional' : 'Institutional collaboration'}</option>
+                        <option value="medios">{es ? 'Medios de comunicación' : 'Media'}</option>
+                        <option value="rifas">{es ? 'Rifas institucionales' : 'Institutional raffles'}</option>
+                        <option value="voluntariado">{es ? 'Voluntariado' : 'Volunteering'}</option>
+                        <option value="otro">{es ? 'Otro' : 'Other'}</option>
                       </select>
                     </div>
                     <div>
