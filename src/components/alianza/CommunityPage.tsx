@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { trackEvent } from '../../lib/analytics';
 import {
   Heart, Calendar, ArrowRight, Star,
   HandHeart, MessageCircle, ChevronRight, AlertCircle
@@ -38,6 +39,7 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
       );
       setVolunteerSubmitted(true);
       setVolunteerForm({ name: '', email: '', area: '', message: '' });
+      trackEvent('generate_lead', { event_category: 'volunteer', event_label: volunteerForm.area || 'general' });
       setTimeout(() => setVolunteerSubmitted(false), 8000);
     } catch {
       setVolunteerError(true);

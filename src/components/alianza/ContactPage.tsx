@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { trackEvent } from '../../lib/analytics';
 import {
   Mail, MapPin, Phone, Send, ArrowRight, CheckCircle2,
   Globe, MessageSquare, AlertCircle
@@ -47,6 +48,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
       );
       setSubmitted(true);
       setForm({ name: '', email: '', subject: '', type: '', message: '' });
+      trackEvent('generate_lead', { event_category: 'contact', event_label: form.type || 'general' });
       setTimeout(() => setSubmitted(false), 8000);
     } catch {
       setSendError(true);

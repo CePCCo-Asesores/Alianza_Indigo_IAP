@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import IndigoSeal from './IndigoSeal';
 import { Mail, MapPin, Phone, ArrowRight } from 'lucide-react';
+import { trackEvent } from '../../lib/analytics';
 
 
 interface FooterProps {
@@ -18,6 +19,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
       setSubscribed(true);
       setEmail('');
       setTimeout(() => setSubscribed(false), 4000);
+      trackEvent('sign_up', { event_category: 'newsletter', event_label: 'footer' });
     }
   };
 
