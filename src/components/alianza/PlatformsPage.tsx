@@ -203,7 +203,7 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 max-w-md mx-auto">
             <AlertCircle className="w-8 h-8 text-amber-500 mx-auto mb-3" />
             <p className="font-heading font-semibold text-amber-800 text-sm mb-1">
-              {es ? 'Verificador en construcción' : 'Verifier under construction'}
+              {es ? 'Sin registros vigentes' : 'No active records'}
             </p>
             <p className="text-amber-700 text-xs leading-relaxed">
               {es

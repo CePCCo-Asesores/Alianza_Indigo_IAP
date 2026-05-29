@@ -322,7 +322,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
           <div className="bg-white rounded-xl border border-gray-100 p-10 text-center">
             <BadgeCheck className="w-14 h-14 text-gray-200 mx-auto mb-4" />
             <h3 className="font-heading font-bold text-lg text-[#1B1F5A] mb-2">
-              {es ? 'Registro en construcción' : 'Registry under construction'}
+              {es ? 'Sin certificaciones emitidas' : 'No certifications issued'}
             </h3>
             <p className="text-gray-500 text-sm max-w-md mx-auto">
               {es

@@ -93,8 +93,8 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
               </p>
               <div className="bg-indigo-50 rounded-xl p-4 text-sm text-[#1B1F5A] mb-6">
                 {es
-                  ? 'El programa de Embajadores Índigo está en construcción. Próximamente abriremos la convocatoria oficial.'
-                  : 'The Índigo Ambassadors program is under development. We will open the official call soon.'}
+                  ? 'El programa de Embajadores Índigo está en fase de apertura. La convocatoria oficial se anunciará en esta página.'
+                  : 'The Índigo Ambassadors program is in its opening phase. The official call will be announced on this page.'}
               </div>
               <button className="btn-indigo" onClick={() => onNavigate('contacto')}>
                 {es ? 'Contactar para más información' : 'Contact for more information'} <ArrowRight className="w-4 h-4" />
@@ -143,7 +143,7 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
           <div className="bg-white rounded-xl border border-gray-100 p-10 text-center">
             <MessageCircle className="w-14 h-14 text-gray-200 mx-auto mb-4" />
             <h3 className="font-heading font-bold text-lg text-[#1B1F5A] mb-2">
-              {es ? 'Próximamente' : 'Coming Soon'}
+              {es ? 'Sin historias publicadas' : 'No stories published'}
             </h3>
             <p className="text-gray-500 text-sm max-w-md mx-auto">
               {es

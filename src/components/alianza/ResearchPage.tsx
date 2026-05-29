@@ -131,7 +131,7 @@ const ResearchPage: React.FC<ResearchPageProps> = ({ lang }) => {
             <div className="bg-gray-50 rounded-xl border border-gray-100 p-10 text-center">
               <FileText className="w-14 h-14 text-gray-200 mx-auto mb-4" />
               <h3 className="font-heading font-bold text-lg text-[#1B1F5A] mb-2">
-                {es ? 'Próximamente' : 'Coming Soon'}
+                {es ? 'Sin publicaciones disponibles' : 'No publications available'}
               </h3>
               <p className="text-gray-500 text-sm max-w-md mx-auto">
                 {es
@@ -158,7 +158,7 @@ const ResearchPage: React.FC<ResearchPageProps> = ({ lang }) => {
             </p>
             <div className="bg-gray-50 rounded-xl border border-gray-100 p-10">
               <h3 className="font-heading font-bold text-lg text-[#1B1F5A] mb-2">
-                {es ? 'Próximamente' : 'Coming Soon'}
+                {es ? 'Sin conjuntos de datos disponibles' : 'No datasets available'}
               </h3>
               <p className="text-gray-500 text-sm max-w-md mx-auto">
                 {es
