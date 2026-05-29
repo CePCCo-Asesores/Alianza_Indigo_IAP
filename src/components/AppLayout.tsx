@@ -76,7 +76,7 @@ const AppLayout: React.FC = () => {
       case 'investigacion':
         return <ResearchPage lang={lang} />;
       case 'recursos':
-        return <ResourcesPage lang={lang} />;
+        return <ResourcesPage lang={lang} onNavigate={handleNavigate} />;
       case 'comunidad':
         return <CommunityPage lang={lang} onNavigate={handleNavigate} />;
       case 'donaciones':
