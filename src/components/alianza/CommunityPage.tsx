@@ -38,8 +38,9 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
         'aoWEMTr5Wdhy17jqA'
       );
       setVolunteerSubmitted(true);
+      const area = volunteerForm.area;
       setVolunteerForm({ name: '', email: '', area: '', message: '' });
-      trackEvent('generate_lead', { event_category: 'volunteer', event_label: volunteerForm.area || 'general' });
+      trackEvent('generate_lead', { event_category: 'volunteer', event_label: area || 'general' });
       setTimeout(() => setVolunteerSubmitted(false), 8000);
     } catch {
       setVolunteerError(true);

@@ -154,7 +154,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, lang, onToggle
               className="flex items-center gap-3 group"
               aria-label="Alianza Índigo Neurodivergente - Inicio"
             >
-              <IndigoSeal size={42} variant="compact" />
+              <IndigoSeal size={42} />
               <div className="hidden sm:block">
                 <div className="font-heading font-bold text-[#1B1F5A] text-lg leading-tight tracking-tight">
                   Alianza Índigo Neurodivergente

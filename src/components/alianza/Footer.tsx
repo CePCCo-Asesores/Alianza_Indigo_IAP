@@ -127,7 +127,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
           {/* Brand */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <IndigoSeal size={48} variant="compact" />
+              <IndigoSeal size={48} />
               <div>
                 <div className="font-heading font-bold text-lg">Alianza Índigo Neurodivergente A.C.</div>
               </div>

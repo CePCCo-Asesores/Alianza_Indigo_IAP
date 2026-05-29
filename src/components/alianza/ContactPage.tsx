@@ -225,7 +225,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
                       : 'For urgent inquiries about certifications or situations requiring immediate attention.'}
                   </p>
                   <a
-                    href="mailto:urgente@alianzaindigo.org"
+                    href="mailto:contacto@alianzaindigo.org"
                     className="btn-gold text-sm py-2 px-4"
                   >
                     {es ? 'Correo urgente' : 'Urgent email'} <ArrowRight className="w-4 h-4" />
