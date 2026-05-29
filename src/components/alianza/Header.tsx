@@ -9,12 +9,15 @@ import {
 
 interface HeaderProps {
   currentPage: string;
-  onNavigate: (page: string) => void;
+  onNavigate: (page: string, section?: string) => void;
   lang: 'es' | 'en';
   onToggleLang: () => void;
 }
 
-const navItems = [
+type NavChild = { id: string; label: { es: string; en: string }; hash?: string };
+type NavItem = { id: string; label: { es: string; en: string }; icon: React.FC<{ className?: string }>; children?: NavChild[] };
+
+const navItems: NavItem[] = [
   {
     id: 'nosotros',
     label: { es: 'Nosotros', en: 'About Us' },
@@ -94,11 +97,11 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, lang, onToggle
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  const handleNav = (page: string) => {
-    onNavigate(page);
+  const handleNav = (page: string, section?: string) => {
+    onNavigate(page, section);
     setMobileOpen(false);
     setActiveDropdown(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!section) window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -189,7 +192,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, lang, onToggle
                         {item.children.map((child, idx) => (
                           <button
                             key={idx}
-                            onClick={() => handleNav(child.id)}
+                            onClick={() => handleNav(child.id, child.hash)}
                             className="w-full text-left px-4 py-2.5 text-sm text-gray-600 hover:text-[#1B1F5A] hover:bg-indigo-50 transition-colors"
                           >
                             {child.label[lang]}

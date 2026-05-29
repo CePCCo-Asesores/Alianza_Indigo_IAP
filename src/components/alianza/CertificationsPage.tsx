@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import IndigoSeal from './IndigoSeal';
 import InfoModal from './InfoModal';
 import {
@@ -8,13 +8,20 @@ import {
 
 interface CertificationsPageProps {
   lang: 'es' | 'en';
+  section?: string;
 }
 
 const CERT_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b4919a_1773666481034_398844ac.jpg';
 
-const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
+const TAB_IDS = ['ceni', 'fuerza', 'sello', 'neuroplan'];
+
+const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang, section }) => {
   const es = lang === 'es';
-  const [activeTab, setActiveTab] = useState('ceni');
+  const [activeTab, setActiveTab] = useState(section && TAB_IDS.includes(section) ? section : 'ceni');
+
+  useEffect(() => {
+    if (section && TAB_IDS.includes(section)) setActiveTab(section);
+  }, [section]);
   const [modal, setModal] = useState<{ open: boolean; subject?: string }>({ open: false });
   const openModal = (subject?: string) => setModal({ open: true, subject });
   const closeModal = () => setModal({ open: false });

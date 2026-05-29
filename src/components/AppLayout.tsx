@@ -17,12 +17,24 @@ type PageId = 'inicio' | 'nosotros' | 'certificaciones' | 'plataformas' | 'inves
 
 const AppLayout: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageId>('inicio');
+  const [currentSection, setCurrentSection] = useState<string | undefined>(undefined);
   const [lang, setLang] = useState<'es' | 'en'>('es');
 
-  const handleNavigate = (page: string) => {
+  const handleNavigate = (page: string, section?: string) => {
     setCurrentPage(page as PageId);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setCurrentSection(section);
+    if (!section) window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Scroll to DOM section after page change (for anchor-based sections)
+  useEffect(() => {
+    if (!currentSection) return;
+    const timer = setTimeout(() => {
+      const el = document.getElementById(currentSection);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 120);
+    return () => clearTimeout(timer);
+  }, [currentPage, currentSection]);
 
   const toggleLang = () => {
     setLang(prev => prev === 'es' ? 'en' : 'es');
@@ -58,7 +70,7 @@ const AppLayout: React.FC = () => {
       case 'nosotros':
         return <AboutPage lang={lang} />;
       case 'certificaciones':
-        return <CertificationsPage lang={lang} />;
+        return <CertificationsPage lang={lang} section={currentSection} />;
       case 'plataformas':
         return <PlatformsPage lang={lang} />;
       case 'investigacion':
@@ -84,7 +96,7 @@ const AppLayout: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-white">
       <Header
         currentPage={currentPage}
-        onNavigate={handleNavigate}
+        onNavigate={(page, section) => handleNavigate(page, section)}
         lang={lang}
         onToggleLang={toggleLang}
       />
