@@ -83,8 +83,8 @@ const App = () => (
                 <Route path="rifas" element={<RafflesWrap />} />
                 <Route path="donaciones" element={<DonationsWrap />} />
                 <Route path="contacto" element={<ContactWrap />} />
+                <Route path="*" element={<NotFound />} />
               </Route>
-              <Route path="*" element={<NotFound />} />
             </Routes>
           </AppProvider>
         </BrowserRouter>
