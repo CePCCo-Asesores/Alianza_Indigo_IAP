@@ -38,7 +38,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
       resources: 'Recursos',
       community: 'Comunidad',
       participate: 'Participa',
-      raffles: 'Rifas Institucionales',
       donations: 'Donaciones',
       volunteer: 'Voluntariado',
       contact: 'Contacto',
@@ -70,7 +69,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
       resources: 'Resources',
       community: 'Community',
       participate: 'Participate',
-      raffles: 'Institutional Raffles',
       donations: 'Donations',
       volunteer: 'Volunteering',
       contact: 'Contact',
@@ -186,7 +184,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
             <h4 className="font-heading font-semibold text-sm text-[#FFD700] mb-4 uppercase tracking-wider">{text.participate}</h4>
             <ul className="space-y-2.5">
               {[
-                { label: text.raffles, page: 'rifas' },
                 { label: text.donations, page: 'donaciones' },
                 { label: text.volunteer, page: 'comunidad' },
                 { label: text.contact, page: 'contacto' },

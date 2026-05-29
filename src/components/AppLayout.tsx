@@ -8,13 +8,12 @@ import PlatformsPage from './alianza/PlatformsPage';
 import ResearchPage from './alianza/ResearchPage';
 import ResourcesPage from './alianza/ResourcesPage';
 import CommunityPage from './alianza/CommunityPage';
-import RafflesPage from './alianza/RafflesPage';
 import DonationsPage from './alianza/DonationsPage';
 import ContactPage from './alianza/ContactPage';
 import PrivacyPage from './alianza/PrivacyPage';
 import TermsPage from './alianza/TermsPage';
 
-type PageId = 'inicio' | 'nosotros' | 'certificaciones' | 'plataformas' | 'investigacion' | 'recursos' | 'comunidad' | 'rifas' | 'donaciones' | 'contacto' | 'privacidad' | 'terminos';
+type PageId = 'inicio' | 'nosotros' | 'certificaciones' | 'plataformas' | 'investigacion' | 'recursos' | 'comunidad' | 'donaciones' | 'contacto' | 'privacidad' | 'terminos';
 
 const AppLayout: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageId>('inicio');
@@ -39,7 +38,6 @@ const AppLayout: React.FC = () => {
       investigacion: { es: 'Investigación – Alianza Índigo Neurodivergente', en: 'Research – Alianza Índigo Neurodivergente' },
       recursos: { es: 'Recursos – Alianza Índigo Neurodivergente', en: 'Resources – Alianza Índigo Neurodivergente' },
       comunidad: { es: 'Comunidad – Alianza Índigo Neurodivergente', en: 'Community – Alianza Índigo Neurodivergente' },
-      rifas: { es: 'Rifas Institucionales – Alianza Índigo Neurodivergente', en: 'Institutional Raffles – Alianza Índigo Neurodivergente' },
       donaciones: { es: 'Donaciones – Alianza Índigo Neurodivergente', en: 'Donations – Alianza Índigo Neurodivergente' },
       contacto: { es: 'Contacto – Alianza Índigo Neurodivergente', en: 'Contact – Alianza Índigo Neurodivergente' },
       privacidad: { es: 'Política de Privacidad – Alianza Índigo Neurodivergente', en: 'Privacy Policy – Alianza Índigo Neurodivergente' },
@@ -69,8 +67,6 @@ const AppLayout: React.FC = () => {
         return <ResourcesPage lang={lang} />;
       case 'comunidad':
         return <CommunityPage lang={lang} onNavigate={handleNavigate} />;
-      case 'rifas':
-        return <RafflesPage lang={lang} />;
       case 'donaciones':
         return <DonationsPage lang={lang} />;
       case 'contacto':

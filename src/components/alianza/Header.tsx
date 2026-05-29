@@ -3,7 +3,7 @@ import IndigoSeal from './IndigoSeal';
 import {
   Menu, X, ChevronDown, Globe,
   Building2, Award, Cpu, BookOpen, FlaskConical,
-  Users, Ticket, Heart, Mail
+  Users, Heart, Mail
 } from 'lucide-react';
 
 
@@ -61,11 +61,6 @@ const navItems = [
     id: 'comunidad',
     label: { es: 'Comunidad', en: 'Community' },
     icon: Users,
-  },
-  {
-    id: 'rifas',
-    label: { es: 'Rifas', en: 'Raffles' },
-    icon: Ticket,
   },
   {
     id: 'donaciones',

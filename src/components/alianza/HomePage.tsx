@@ -1,7 +1,7 @@
 import React from 'react';
 import IndigoSeal from './IndigoSeal';
 import {
-  Award, Cpu, FlaskConical, BookOpen, Users, Ticket, Heart,
+  Award, Cpu, FlaskConical, BookOpen, Users, Heart,
   ArrowRight, Shield, Eye, Scale, Lightbulb, Globe, CheckCircle2
 } from 'lucide-react';
 
@@ -21,7 +21,6 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
     btnNeurodiv: '¿Qué es la neurodivergencia?',
     btnCert: 'Certificaciones',
     btnPlatforms: 'Plataformas',
-    btnRaffles: 'Rifas institucionales',
     btnJoin: 'Únete a la Alianza',
     purposeTitle: 'Propósito Institucional',
     purposeDesc: 'Alianza Índigo Neurodivergente existe para transformar la comprensión social de la neurodivergencia. Promovemos entornos inclusivos, certificamos prácticas éticas, desarrollamos tecnología accesible y construimos comunidad.',
@@ -39,7 +38,6 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
       { icon: FlaskConical, title: 'Observatorio', desc: 'Investigación y datos abiertos sobre neuroinclusión a nivel global.', page: 'investigacion', color: 'bg-purple-50 text-purple-700' },
       { icon: BookOpen, title: 'Biblioteca ND', desc: 'Recursos educativos, guías y material para escuelas, empresas y gobiernos.', page: 'recursos', color: 'bg-emerald-50 text-emerald-700' },
       { icon: Users, title: 'Embajadores', desc: 'Red colectiva de representación y voluntariado institucional.', page: 'comunidad', color: 'bg-amber-50 text-amber-700' },
-      { icon: Ticket, title: 'Rifas', desc: 'Programa de financiamiento transparente para proyectos de inclusión.', page: 'rifas', color: 'bg-rose-50 text-rose-700' },
     ],
     statsTitle: 'Impacto Institucional',
     ctaTitle: '¿Tu organización es neuroinclusiva?',
@@ -62,7 +60,6 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
     btnNeurodiv: 'What is neurodivergence?',
     btnCert: 'Certifications',
     btnPlatforms: 'Platforms',
-    btnRaffles: 'Institutional Raffles',
     btnJoin: 'Join the Alliance',
     purposeTitle: 'Institutional Purpose',
     purposeDesc: 'Alianza Índigo Neurodivergente exists to transform the social understanding of neurodivergence. We promote inclusive environments, certify ethical practices, develop accessible technology and build community.',
@@ -80,7 +77,6 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
       { icon: FlaskConical, title: 'Observatory', desc: 'Research and open data on neuroinclusion globally.', page: 'investigacion', color: 'bg-purple-50 text-purple-700' },
       { icon: BookOpen, title: 'ND Library', desc: 'Educational resources, guides and materials for schools, companies and governments.', page: 'recursos', color: 'bg-emerald-50 text-emerald-700' },
       { icon: Users, title: 'Ambassadors', desc: 'Collective network of institutional representation and volunteering.', page: 'comunidad', color: 'bg-amber-50 text-amber-700' },
-      { icon: Ticket, title: 'Raffles', desc: 'Transparent funding program for inclusion projects.', page: 'rifas', color: 'bg-rose-50 text-rose-700' },
     ],
     statsTitle: 'Institutional Impact',
     ctaTitle: 'Is your organization neuroinclusive?',
@@ -129,9 +125,6 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate, lang }) => {
               </button>
               <button onClick={() => onNavigate('plataformas')} className="border-2 border-white/30 text-white px-5 py-3 rounded-lg font-medium hover:bg-white/10 transition-all inline-flex items-center gap-2">
                 {t.btnPlatforms}
-              </button>
-              <button onClick={() => onNavigate('rifas')} className="border-2 border-white/30 text-white px-5 py-3 rounded-lg font-medium hover:bg-white/10 transition-all inline-flex items-center gap-2">
-                {t.btnRaffles}
               </button>
               <button onClick={() => onNavigate('donaciones')} className="border-2 border-[#FFD700]/50 text-[#FFD700] px-5 py-3 rounded-lg font-medium hover:bg-[#FFD700]/10 transition-all inline-flex items-center gap-2">
                 {t.btnJoin} <ArrowRight className="w-4 h-4" />

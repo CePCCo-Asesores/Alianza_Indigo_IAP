@@ -144,7 +144,6 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
                         <option>{es ? 'Donaciones y membresías' : 'Donations and memberships'}</option>
                         <option>{es ? 'Colaboración institucional' : 'Institutional collaboration'}</option>
                         <option>{es ? 'Medios de comunicación' : 'Media'}</option>
-                        <option>{es ? 'Rifas institucionales' : 'Institutional raffles'}</option>
                         <option>{es ? 'Voluntariado' : 'Volunteering'}</option>
                         <option>{es ? 'Otro' : 'Other'}</option>
                       </select>

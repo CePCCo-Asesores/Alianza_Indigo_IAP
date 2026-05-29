@@ -73,12 +73,7 @@ const TermsPage: React.FC<TermsPageProps> = ({ lang }) => {
               </div>
 
               <div>
-                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">6. Rifas institucionales</h2>
-                <p>Las rifas organizadas por Alianza Índigo Neurodivergente A.C. se rigen por sus propias bases y reglamentos, disponibles al momento de cada convocatoria. La participación implica la aceptación de dichas bases.</p>
-              </div>
-
-              <div>
-                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">7. Exención de responsabilidad</h2>
+                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">6. Exención de responsabilidad</h2>
                 <p>Alianza Índigo Neurodivergente A.C. no se hace responsable de:</p>
                 <ul className="list-disc pl-6 space-y-1 mt-2">
                   <li>Daños derivados del uso o imposibilidad de uso del Sitio.</li>
@@ -89,17 +84,17 @@ const TermsPage: React.FC<TermsPageProps> = ({ lang }) => {
               </div>
 
               <div>
-                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">8. Legislación aplicable y jurisdicción</h2>
+                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">7. Legislación aplicable y jurisdicción</h2>
                 <p>Los presentes Términos se rigen por las leyes vigentes en los Estados Unidos Mexicanos. Para cualquier controversia derivada del uso del Sitio, las partes se someten a la jurisdicción de los tribunales competentes de la ciudad de Chihuahua, Chihuahua, México, renunciando a cualquier otro fuero.</p>
               </div>
 
               <div>
-                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">9. Modificaciones</h2>
+                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">8. Modificaciones</h2>
                 <p>Alianza Índigo Neurodivergente A.C. se reserva el derecho de modificar estos Términos en cualquier momento. Los cambios serán publicados en esta página. El uso continuado del Sitio implica la aceptación de los nuevos Términos.</p>
               </div>
 
               <div>
-                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">10. Contacto</h2>
+                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">9. Contacto</h2>
                 <div className="bg-gray-50 rounded-xl p-6 space-y-3">
                   <div className="flex items-center gap-3 text-sm">
                     <Mail className="w-5 h-5 text-[#1B1F5A]" />
@@ -164,12 +159,7 @@ const TermsPage: React.FC<TermsPageProps> = ({ lang }) => {
               </div>
 
               <div>
-                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">6. Institutional raffles</h2>
-                <p>Raffles organized by Alianza Índigo Neurodivergente A.C. are governed by their own rules and regulations, available at the time of each announcement. Participation implies acceptance of those rules.</p>
-              </div>
-
-              <div>
-                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">7. Disclaimer</h2>
+                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">6. Disclaimer</h2>
                 <p>Alianza Índigo Neurodivergente A.C. is not responsible for:</p>
                 <ul className="list-disc pl-6 space-y-1 mt-2">
                   <li>Damages resulting from use or inability to use the Site.</li>
@@ -180,17 +170,17 @@ const TermsPage: React.FC<TermsPageProps> = ({ lang }) => {
               </div>
 
               <div>
-                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">8. Applicable law and jurisdiction</h2>
+                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">7. Applicable law and jurisdiction</h2>
                 <p>These Terms are governed by the laws of the United Mexican States. For any disputes arising from use of the Site, the parties submit to the jurisdiction of competent courts in Chihuahua, Chihuahua, Mexico.</p>
               </div>
 
               <div>
-                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">9. Modifications</h2>
+                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">8. Modifications</h2>
                 <p>Alianza Índigo Neurodivergente A.C. reserves the right to modify these Terms at any time. Changes will be published on this page. Continued use of the Site implies acceptance of the new Terms.</p>
               </div>
 
               <div>
-                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">10. Contact</h2>
+                <h2 className="font-heading font-bold text-2xl text-[#1B1F5A] mb-3">9. Contact</h2>
                 <div className="bg-gray-50 rounded-xl p-6 space-y-3">
                   <div className="flex items-center gap-3 text-sm">
                     <Mail className="w-5 h-5 text-[#1B1F5A]" />
