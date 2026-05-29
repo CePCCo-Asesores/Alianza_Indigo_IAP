@@ -222,14 +222,21 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
 
       {/* Bottom bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
-          <p className="text-white/40 text-xs">
-            &copy; {new Date().getFullYear()} Alianza Índigo Neurodivergente A.C. {text.rights}
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex flex-col gap-2">
+          <p className="text-white/30 text-xs text-center">
+            {lang === 'es'
+              ? 'Alianza Índigo Neurodivergente A.C. es una organización civil sin fines de lucro constituida en México. Opera bajo Asociación Mexicana de Criptominería Ecológica A.C. · RFC: AMC40807GA9 · CLUNI: AMC2408070873T'
+              : 'Alianza Índigo Neurodivergente A.C. is a non-profit civil organization incorporated in Mexico. Operates under Asociación Mexicana de Criptominería Ecológica A.C. · RFC: AMC40807GA9 · CLUNI: AMC2408070873T'}
           </p>
-          <div className="flex items-center gap-4 text-xs text-white/40">
-            <button onClick={() => onNavigate('privacidad')} className="hover:text-[#FFD700] transition-colors">{text.privacy}</button>
-            <button onClick={() => onNavigate('terminos')} className="hover:text-[#FFD700] transition-colors">{text.terms}</button>
-            <button onClick={() => onNavigate('nosotros')} className="hover:text-[#FFD700] transition-colors">{text.accessibility}</button>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
+            <p className="text-white/40 text-xs">
+              &copy; {new Date().getFullYear()} Alianza Índigo Neurodivergente A.C. {text.rights}
+            </p>
+            <div className="flex items-center gap-4 text-xs text-white/40">
+              <button onClick={() => onNavigate('privacidad')} className="hover:text-[#FFD700] transition-colors">{text.privacy}</button>
+              <button onClick={() => onNavigate('terminos')} className="hover:text-[#FFD700] transition-colors">{text.terms}</button>
+              <button onClick={() => onNavigate('nosotros')} className="hover:text-[#FFD700] transition-colors">{text.accessibility}</button>
+            </div>
           </div>
         </div>
       </div>
