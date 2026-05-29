@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InfoModal from './InfoModal';
 import {
   Cpu, Bot, QrCode, Code2, Users, LayoutDashboard,
-  ArrowRight, Search, CheckCircle2, AlertCircle, Workflow, BookOpen
+  ArrowRight, CheckCircle2, AlertCircle, Workflow, BookOpen
 } from 'lucide-react';
 
 interface PlatformsPageProps {
@@ -14,16 +14,6 @@ const TECH_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b4919a_
 const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
   const es = lang === 'es';
   const [modalOpen, setModalOpen] = useState(false);
-  const [verifyCode, setVerifyCode] = useState('');
-  const [verifyResult, setVerifyResult] = useState<null | 'valid' | 'invalid'>(null);
-
-  const handleVerify = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (verifyCode.trim().length > 3) {
-      setVerifyResult(verifyCode.toUpperCase().startsWith('AI-') ? 'valid' : 'invalid');
-    }
-  };
-
   const platforms = es ? [
     {
       icon: Bot,
@@ -205,42 +195,22 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
           <h2 className="font-heading font-bold text-3xl text-[#1B1F5A] mb-4">
             {es ? 'Verificador de Distintivos' : 'Badge Verifier'}
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-gray-600 mb-6">
             {es
-              ? 'Ingresa el código único de un distintivo o certificación para verificar su autenticidad. Los códigos válidos comienzan con "AI-".'
-              : 'Enter the unique code of a badge or certification to verify its authenticity. Valid codes start with "AI-".'}
+              ? 'Herramienta para verificar la autenticidad de certificaciones y distintivos otorgados por Alianza Índigo Neurodivergente.'
+              : 'Tool to verify the authenticity of certifications and badges granted by Alianza Índigo Neurodivergente.'}
           </p>
-          <form onSubmit={handleVerify} className="flex gap-3 max-w-md mx-auto mb-6">
-            <input
-              type="text"
-              value={verifyCode}
-              onChange={(e) => { setVerifyCode(e.target.value); setVerifyResult(null); }}
-              placeholder={es ? 'Ej: AI-CENI-2026-001' : 'E.g.: AI-CENI-2026-001'}
-              className="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:border-[#1B1F5A] focus:ring-2 focus:ring-[#1B1F5A]/20 outline-none transition-all"
-              aria-label={es ? 'Código de verificación' : 'Verification code'}
-            />
-            <button type="submit" className="btn-indigo">
-              <Search className="w-4 h-4" /> {es ? 'Verificar' : 'Verify'}
-            </button>
-          </form>
-          {verifyResult === 'valid' && (
-            <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 flex items-center gap-3 max-w-md mx-auto animate-fade-in">
-              <CheckCircle2 className="w-6 h-6 text-emerald-600 flex-shrink-0" />
-              <div className="text-left">
-                <p className="font-semibold text-emerald-700 text-sm">{es ? 'Distintivo válido' : 'Valid badge'}</p>
-                <p className="text-emerald-600 text-xs">{es ? 'Este código corresponde a un distintivo auténtico de Alianza Índigo Neurodivergente.' : 'This code corresponds to an authentic Alianza Índigo Neurodivergente badge.'}</p>
-              </div>
-            </div>
-          )}
-          {verifyResult === 'invalid' && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3 max-w-md mx-auto animate-fade-in">
-              <AlertCircle className="w-6 h-6 text-red-600 flex-shrink-0" />
-              <div className="text-left">
-                <p className="font-semibold text-red-700 text-sm">{es ? 'Código no encontrado' : 'Code not found'}</p>
-                <p className="text-red-600 text-xs">{es ? 'Este código no corresponde a ningún distintivo registrado.' : 'This code does not correspond to any registered badge.'}</p>
-              </div>
-            </div>
-          )}
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 max-w-md mx-auto">
+            <AlertCircle className="w-8 h-8 text-amber-500 mx-auto mb-3" />
+            <p className="font-heading font-semibold text-amber-800 text-sm mb-1">
+              {es ? 'Verificador en construcción' : 'Verifier under construction'}
+            </p>
+            <p className="text-amber-700 text-xs leading-relaxed">
+              {es
+                ? 'El verificador estará activo a partir de la primera certificación oficial emitida. Aún no hay distintivos registrados en el sistema.'
+                : 'The verifier will be active from the first official certification issued. There are no registered badges in the system yet.'}
+            </p>
+          </div>
         </div>
       </section>
 
