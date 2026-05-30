@@ -15,15 +15,43 @@ import TermsPage from './alianza/TermsPage';
 
 type PageId = 'inicio' | 'nosotros' | 'certificaciones' | 'plataformas' | 'investigacion' | 'recursos' | 'comunidad' | 'donaciones' | 'contacto' | 'privacidad' | 'terminos';
 
+const VALID_PAGES: PageId[] = ['inicio', 'nosotros', 'certificaciones', 'plataformas', 'investigacion', 'recursos', 'comunidad', 'donaciones', 'contacto', 'privacidad', 'terminos'];
+
+const pageFromHash = (): PageId => {
+  const hash = window.location.hash.replace('#', '') as PageId;
+  return VALID_PAGES.includes(hash) ? hash : 'inicio';
+};
+
 const AppLayout: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<PageId>('inicio');
+  const [currentPage, setCurrentPage] = useState<PageId>(pageFromHash);
   const [currentSection, setCurrentSection] = useState<string | undefined>(undefined);
   const [lang, setLang] = useState<'es' | 'en'>('es');
 
+  // Sync initial history entry so the very first back press stays inside the app
+  useEffect(() => {
+    const page = pageFromHash();
+    window.history.replaceState({ page, section: undefined }, '', page === 'inicio' ? '/' : `#${page}`);
+  }, []);
+
+  // Handle browser back / forward
+  useEffect(() => {
+    const onPopState = (e: PopStateEvent) => {
+      const state = e.state as { page?: string; section?: string } | null;
+      const page = (state?.page as PageId) ?? pageFromHash();
+      setCurrentPage(VALID_PAGES.includes(page) ? page : 'inicio');
+      setCurrentSection(state?.section);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
   const handleNavigate = (page: string, section?: string) => {
-    setCurrentPage(page as PageId);
+    const pageId = page as PageId;
+    setCurrentPage(pageId);
     setCurrentSection(section);
     if (!section) window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.history.pushState({ page: pageId, section }, '', pageId === 'inicio' ? '/' : `#${pageId}`);
   };
 
   // Scroll to DOM section after page change (for anchor-based sections)
