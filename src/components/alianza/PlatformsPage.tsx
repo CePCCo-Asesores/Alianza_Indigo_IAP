@@ -15,6 +15,7 @@ const TECH_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b4919a_
 const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
   const es = lang === 'es';
   const [modalOpen, setModalOpen] = useState(false);
+  const [joinModalOpen, setJoinModalOpen] = useState(false);
   const platforms = es ? [
     {
       icon: Bot,
@@ -451,12 +452,12 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
                   ? 'Una sola aportación. Membresía de por vida en Alianza Índigo Neurodivergente. Impacto directo en la educación inclusiva de México.'
                   : 'A single contribution. Lifetime membership in Alianza Índigo Neurodivergente. Direct impact on inclusive education in Mexico.'}
               </p>
-              <a
-                href="mailto:contacto@alianzaindigo.org?subject=Quiero unirme a Alianza Índigo – Aportación $200 MXN"
+              <button
+                onClick={() => setJoinModalOpen(true)}
                 className="block w-full bg-[#FFD700] hover:bg-[#FFC800] text-[#1B1F5A] font-heading font-bold py-4 px-6 rounded-xl text-center transition-colors text-lg"
               >
                 {es ? 'Quiero unirme ahora' : 'I want to join now'}
-              </a>
+              </button>
               <p className="text-white/40 text-xs mt-4">
                 {es
                   ? 'Te contactaremos en menos de 48 horas para confirmar tu ingreso.'
@@ -541,6 +542,7 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
         </div>
       </section>
       <InfoModal open={modalOpen} onClose={() => setModalOpen(false)} lang={lang} subject={es ? 'API Pública' : 'Public API'} />
+      <InfoModal open={joinModalOpen} onClose={() => setJoinModalOpen(false)} lang={lang} subject={es ? 'Unirse a Alianza Índigo – $200 MXN' : 'Join Alianza Índigo – $200 MXN'} />
     </div>
   );
 };
