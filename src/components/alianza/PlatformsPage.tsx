@@ -43,32 +43,11 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
   ],
 },
     {
-      icon: Workflow,
-      title: 'Arquitecto de Pipelines (n8n)',
-      desc: 'Sistema de automatización de procesos institucionales basado en n8n. Permite crear flujos de trabajo automatizados para certificaciones, registros y comunicaciones.',
-      status: 'Activo',
-      features: ['Automatización de certificaciones', 'Flujos de comunicación', 'Integración con CRM', 'Reportes automatizados'],
-    },
-    {
-      icon: Users,
-      title: 'RENAP-ND',
-      desc: 'Registro Nacional de Prestadores de Servicios Neurodivergentes. Directorio público verificable de terapeutas, médicos y centros que han firmado el Código de Ética Neuroafirmativa de Alianza Índigo Neurodivergente.',
-      status: 'En desarrollo',
-      features: ['Directorio verificado y público', 'Búsqueda por especialidad', 'Verificación por QR dinámico', 'Tres estados: vigente, suspendido, retirado'],
-    },
-    {
       icon: QrCode,
       title: 'Verificador de Distintivos',
       desc: 'Sistema de verificación mediante código QR y código único que permite validar la autenticidad de certificaciones y distintivos otorgados por Alianza Índigo Neurodivergente en tiempo real.',
       status: 'Activo',
       features: ['Verificación por QR', 'Código único por certificación', 'Validación en tiempo real', 'Registro público consultable'],
-    },
-    {
-      icon: Code2,
-      title: 'API Pública',
-      desc: 'Interfaz de programación que permite a terceros validar certificaciones, consultar el registro público y acceder a datos abiertos de Alianza Índigo Neurodivergente.',
-      status: 'En desarrollo',
-      features: ['Endpoints RESTful', 'Documentación completa', 'Autenticación segura', 'Rate limiting'],
     },
   ] : [
     {
@@ -98,32 +77,11 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
   ],
 },
     {
-      icon: Workflow,
-      title: 'Pipeline Architect (n8n)',
-      desc: 'Institutional process automation system based on n8n. Allows creating automated workflows for certifications, registrations and communications.',
-      status: 'Active',
-      features: ['Certification automation', 'Communication flows', 'CRM integration', 'Automated reports'],
-    },
-    {
-      icon: Users,
-      title: 'RENAP-ND',
-      desc: 'National Registry of Neurodivergent Service Providers. Public verifiable directory of therapists, doctors and centers that have signed the Alianza Índigo Neurodivergente Neuroaffirmative Code of Ethics.',
-      status: 'In development',
-      features: ['Verified public directory', 'Search by specialty', 'Dynamic QR verification', 'Three states: valid, suspended, withdrawn'],
-    },
-    {
       icon: QrCode,
       title: 'Badge Verifier',
       desc: 'QR code and unique code verification system that validates the authenticity of certifications and badges granted by Alianza Índigo Neurodivergente in real time.',
       status: 'Active',
       features: ['QR verification', 'Unique code per certification', 'Real-time validation', 'Public registry'],
-    },
-    {
-      icon: Code2,
-      title: 'Public API',
-      desc: 'Programming interface that allows third parties to validate certifications, consult the public registry and access open data from Alianza Índigo Neurodivergente.',
-      status: 'In development',
-      features: ['RESTful endpoints', 'Complete documentation', 'Secure authentication', 'Rate limiting'],
     },
   ];
 
@@ -226,15 +184,15 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
       </section>
 
       {/* El Problema */}
-      <section className="section-padding bg-red-50">
+      <section className="section-padding bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-3 mb-6">
-            <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0" />
-            <h2 className="font-heading font-bold text-3xl text-red-800">
+            <AlertTriangle className="w-8 h-8 text-[#1B1F5A] flex-shrink-0" />
+            <h2 className="font-heading font-bold text-3xl text-[#1B1F5A]">
               {es ? 'La crisis de inclusión en las aulas mexicanas' : 'The inclusion crisis in Mexican classrooms'}
             </h2>
           </div>
-          <p className="text-red-700 leading-relaxed mb-8 max-w-4xl">
+          <p className="text-gray-700 leading-relaxed mb-8 max-w-4xl">
             {es
               ? 'Más del 15% del alumnado en México presenta alguna condición neurodivergente — TDAH, autismo, dislexia, discalculia, entre otras — pero el sistema educativo carece de las herramientas, la formación y el tiempo para atenderlos adecuadamente. El resultado: millones de niñas y niños invisibilizados en su propio salón de clases.'
               : 'More than 15% of students in Mexico have a neurodivergent condition — ADHD, autism, dyslexia, dyscalculia, among others — but the education system lacks the tools, training and time to support them properly. The result: millions of children made invisible in their own classrooms.'}
@@ -255,14 +213,14 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
               { stat: '40%', desc: 'of ND students drop out before middle school' },
               { stat: '$0 MXN', desc: 'SEP budget allocated to AI tools for teachers in 2024' },
             ]).map((item, i) => (
-              <div key={i} className="bg-white rounded-xl p-5 border border-red-100">
-                <p className="font-heading font-black text-2xl text-red-600 mb-1">{item.stat}</p>
+              <div key={i} className="bg-white rounded-xl p-5 border border-gray-200 shadow-sm">
+                <p className="font-heading font-black text-2xl text-[#1B1F5A] mb-1">{item.stat}</p>
                 <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
-          <div className="bg-red-100 rounded-xl p-6 border border-red-200">
-            <h3 className="font-heading font-bold text-red-800 mb-3">
+          <div className="bg-indigo-50 rounded-xl p-6 border border-indigo-100">
+            <h3 className="font-heading font-bold text-[#1B1F5A] mb-3">
               {es ? '¿Por qué no se ha resuelto?' : 'Why hasn\'t it been solved?'}
             </h3>
             <div className="grid md:grid-cols-2 gap-3">
@@ -277,8 +235,8 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
                 'Existing digital tools are not in Spanish nor free',
                 'Official documentation (IEP, ACI) consumes hours taken from the classroom',
               ]).map((barrier, i) => (
-                <div key={i} className="flex items-start gap-2 text-sm text-red-700">
-                  <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-red-500" />
+                <div key={i} className="flex items-start gap-2 text-sm text-[#1B1F5A]/80">
+                  <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#1B1F5A]" />
                   {barrier}
                 </div>
               ))}
