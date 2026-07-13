@@ -5,12 +5,16 @@ import {
   Building2, GraduationCap, Landmark, ClipboardCheck, Star, BadgeCheck
 } from 'lucide-react';
 import { trackCertificationRequest } from '@/lib/gtm';
+import { CENI_URL, CENI_FUERZA_URL, CENI_NEUROPLAN_URL } from '@/lib/config';
 
 interface CertificationsPageProps {
   lang: 'es' | 'en';
 }
 
 const CERT_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b4919a_1773666481034_398844ac.jpg';
+
+const openCeni = (url: string) =>
+  window.open(url, '_blank', 'noopener,noreferrer');
 
 const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
   const es = lang === 'es';
@@ -33,7 +37,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
 
   const tabs = [
     { id: 'ceni', label: 'CENI', icon: Award },
-    { id: 'fuerza', label: es ? 'Fuerza Índigo' : 'Fuerza Índigo', icon: Shield },
+    { id: 'fuerza', label: 'Fuerza Índigo', icon: Shield },
     { id: 'sello', label: es ? 'Sello Universal' : 'Universal Seal', icon: BadgeCheck },
     { id: 'neuroplan', label: 'NeuroPlan', icon: ClipboardCheck },
   ];
@@ -156,7 +160,10 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
 
                 <button
                   className="btn-indigo"
-                  onClick={() => trackCertificationRequest('CENI')}
+                  onClick={() => {
+                    trackCertificationRequest('CENI');
+                    openCeni(CENI_URL);
+                  }}
                 >
                   {es ? 'Solicitar Certificación CENI' : 'Request CENI Certification'} <ArrowRight className="w-4 h-4" />
                 </button>
@@ -245,7 +252,10 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
                 <p className="text-gray-600 text-sm mb-4">{es ? 'Presenta tu campaña para evaluación y obtén el respaldo institucional de Alianza Índigo.' : 'Submit your campaign for evaluation and obtain the institutional endorsement of Alianza Índigo.'}</p>
                 <button
                   className="btn-indigo text-sm py-2 px-4"
-                  onClick={() => trackCertificationRequest('Fuerza Índigo')}
+                  onClick={() => {
+                    trackCertificationRequest('Fuerza Índigo');
+                    openCeni(CENI_FUERZA_URL);
+                  }}
                 >
                   {es ? 'Iniciar Solicitud' : 'Start Application'} <ArrowRight className="w-4 h-4" />
                 </button>
@@ -317,7 +327,10 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">{es ? 'Gobiernos y organismos públicos pueden solicitar una evaluación NeuroPlan.' : 'Governments and public bodies can request a NeuroPlan evaluation.'}</p>
                 <button
                   className="btn-indigo text-sm py-2 px-4"
-                  onClick={() => trackCertificationRequest('NeuroPlan')}
+                  onClick={() => {
+                    trackCertificationRequest('NeuroPlan');
+                    openCeni(CENI_NEUROPLAN_URL);
+                  }}
                 >
                   {es ? 'Solicitar' : 'Request'} <ArrowRight className="w-4 h-4" />
                 </button>
