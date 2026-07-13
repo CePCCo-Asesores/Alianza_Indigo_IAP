@@ -5,6 +5,7 @@ import {
   Building2, GraduationCap, Landmark, ClipboardCheck, Star, BadgeCheck
 } from 'lucide-react';
 import { trackCertificationRequest } from '@/lib/gtm';
+import { CENI_URL } from '@/lib/config';
 
 interface CertificationsPageProps {
   lang: 'es' | 'en';
@@ -33,10 +34,15 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
 
   const tabs = [
     { id: 'ceni', label: 'CENI', icon: Award },
-    { id: 'fuerza', label: es ? 'Fuerza Índigo' : 'Fuerza Índigo', icon: Shield },
+    { id: 'fuerza', label: 'Fuerza Índigo', icon: Shield },
     { id: 'sello', label: es ? 'Sello Universal' : 'Universal Seal', icon: BadgeCheck },
     { id: 'neuroplan', label: 'NeuroPlan', icon: ClipboardCheck },
   ];
+
+  const handleCertRequest = (type: string) => {
+    trackCertificationRequest(type);
+    window.open(CENI_URL, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <div>
@@ -156,7 +162,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
 
                 <button
                   className="btn-indigo"
-                  onClick={() => trackCertificationRequest('CENI')}
+                  onClick={() => handleCertRequest('CENI')}
                 >
                   {es ? 'Solicitar Certificación CENI' : 'Request CENI Certification'} <ArrowRight className="w-4 h-4" />
                 </button>
@@ -245,7 +251,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
                 <p className="text-gray-600 text-sm mb-4">{es ? 'Presenta tu campaña para evaluación y obtén el respaldo institucional de Alianza Índigo.' : 'Submit your campaign for evaluation and obtain the institutional endorsement of Alianza Índigo.'}</p>
                 <button
                   className="btn-indigo text-sm py-2 px-4"
-                  onClick={() => trackCertificationRequest('Fuerza Índigo')}
+                  onClick={() => handleCertRequest('Fuerza Índigo')}
                 >
                   {es ? 'Iniciar Solicitud' : 'Start Application'} <ArrowRight className="w-4 h-4" />
                 </button>
@@ -317,7 +323,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">{es ? 'Gobiernos y organismos públicos pueden solicitar una evaluación NeuroPlan.' : 'Governments and public bodies can request a NeuroPlan evaluation.'}</p>
                 <button
                   className="btn-indigo text-sm py-2 px-4"
-                  onClick={() => trackCertificationRequest('NeuroPlan')}
+                  onClick={() => handleCertRequest('NeuroPlan')}
                 >
                   {es ? 'Solicitar' : 'Request'} <ArrowRight className="w-4 h-4" />
                 </button>
