@@ -9,7 +9,7 @@ import {
 
 interface HeaderProps {
   currentPage: string;
-  onNavigate: (page: string) => void;
+  onNavigate: (page: string, hash?: string) => void;
   lang: 'es' | 'en';
   onToggleLang: () => void;
 }
@@ -99,8 +99,8 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, lang, onToggle
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  const handleNav = (page: string) => {
-    onNavigate(page); // AppLayout.handleNavigate already calls window.scrollTo
+  const handleNav = (page: string, hash?: string) => {
+    onNavigate(page, hash);
     setMobileOpen(false);
     setActiveDropdown(null);
   };
@@ -193,7 +193,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, lang, onToggle
                         {item.children.map((child, idx) => (
                           <button
                             key={idx}
-                            onClick={() => handleNav(child.id)}
+                            onClick={() => handleNav(child.id, child.hash)}
                             className="w-full text-left px-4 py-2.5 text-sm text-gray-600 hover:text-[#1B1F5A] hover:bg-indigo-50 transition-colors"
                           >
                             {child.label[lang]}

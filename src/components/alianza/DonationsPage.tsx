@@ -15,6 +15,17 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState('');
 
+  const requestDonationInfo = (type: 'single' | 'membership' | 'sponsor', amount?: number | string) => {
+    trackDonationIntent(type, amount);
+    const subject = encodeURIComponent(es ? 'Solicitud de información para donar' : 'Donation information request');
+    const body = encodeURIComponent(
+      es
+        ? `Hola, quiero recibir instrucciones para apoyar a Alianza Índigo.\n\nTipo: ${type}\nMonto/opción: ${amount || 'Por definir'}`
+        : `Hello, I would like to receive instructions to support Alianza Índigo.\n\nType: ${type}\nAmount/option: ${amount || 'To be defined'}`
+    );
+    window.location.href = `mailto:donaciones@alianzaindigo.org?subject=${subject}&body=${body}`;
+  };
+
   const amounts = [100, 250, 500, 1000, 2500, 5000];
 
   const membershipTiers = es ? [
@@ -148,12 +159,12 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
               </div>
               <button
                 className="btn-gold w-full justify-center text-lg py-4"
-                onClick={() => trackDonationIntent('single', selectedAmount ?? customAmount)}
+                onClick={() => requestDonationInfo('single', selectedAmount ?? customAmount)}
               >
-                {es ? 'Donar ahora' : 'Donate now'} <ArrowRight className="w-5 h-5" />
+                {es ? 'Solicitar datos para donar' : 'Request donation details'} <ArrowRight className="w-5 h-5" />
               </button>
               <p className="text-xs text-gray-400 text-center mt-4">
-                {es ? 'Serás redirigido a una plataforma de pago segura.' : 'You will be redirected to a secure payment platform.'}
+                {es ? 'Se abrirá un correo prellenado para coordinar la donación.' : 'A prefilled email will open to coordinate the donation.'}
               </p>
             </div>
           </div>
@@ -192,7 +203,7 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
                   </ul>
                   <button
                     className={`w-full justify-center ${tier.featured ? 'btn-gold' : 'btn-outline-indigo'}`}
-                    onClick={() => trackDonationIntent('membership', tier.price)}
+                    onClick={() => requestDonationInfo('membership', tier.price)}
                   >
                     {es ? 'Seleccionar' : 'Select'} <ArrowRight className="w-4 h-4" />
                   </button>
@@ -233,7 +244,10 @@ const DonationsPage: React.FC<DonationsPageProps> = ({ lang }) => {
                     <Icon className="w-8 h-8 text-[#1B1F5A] mb-3" />
                     <h3 className="font-heading font-bold text-[#1B1F5A] mb-2">{item.title}</h3>
                     <p className="text-gray-600 text-sm leading-relaxed mb-4">{item.desc}</p>
-                    <button className="text-[#1B1F5A] text-sm font-semibold flex items-center gap-1 hover:text-[#FFD700] transition-colors">
+                    <button
+                      className="text-[#1B1F5A] text-sm font-semibold flex items-center gap-1 hover:text-[#FFD700] transition-colors"
+                      onClick={() => requestDonationInfo('sponsor', item.title)}
+                    >
                       {es ? 'Solicitar información' : 'Request information'} <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>

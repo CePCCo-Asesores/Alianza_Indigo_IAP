@@ -13,12 +13,12 @@ const TECH_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b4919a_
 const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
   const es = lang === 'es';
   const [verifyCode, setVerifyCode] = useState('');
-  const [verifyResult, setVerifyResult] = useState<null | 'valid' | 'invalid'>(null);
+  const [verifyResult, setVerifyResult] = useState<null | 'unavailable'>(null);
 
   const handleVerify = (e: React.FormEvent) => {
     e.preventDefault();
     if (verifyCode.trim().length > 3) {
-      setVerifyResult(verifyCode.toUpperCase().startsWith('AI-') ? 'valid' : 'invalid');
+      setVerifyResult('unavailable');
     }
   };
 
@@ -205,8 +205,8 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
           </h2>
           <p className="text-gray-600 mb-8">
             {es
-              ? 'Ingresa el código único de un distintivo o certificación para verificar su autenticidad. Los códigos válidos comienzan con "AI-".'
-              : 'Enter the unique code of a badge or certification to verify its authenticity. Valid codes start with "AI-".'}
+              ? 'Ingresa el código único de un distintivo o certificación. La validación pública se activará cuando el registro oficial esté conectado.'
+              : 'Enter the unique code of a badge or certification. Public validation will be activated when the official registry is connected.'}
           </p>
           <form onSubmit={handleVerify} className="flex gap-3 max-w-md mx-auto mb-6">
             <input
@@ -221,21 +221,12 @@ const PlatformsPage: React.FC<PlatformsPageProps> = ({ lang }) => {
               <Search className="w-4 h-4" /> {es ? 'Verificar' : 'Verify'}
             </button>
           </form>
-          {verifyResult === 'valid' && (
-            <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 flex items-center gap-3 max-w-md mx-auto animate-fade-in">
-              <CheckCircle2 className="w-6 h-6 text-emerald-600 flex-shrink-0" />
+          {verifyResult === 'unavailable' && (
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-center gap-3 max-w-md mx-auto animate-fade-in">
+              <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0" />
               <div className="text-left">
-                <p className="font-semibold text-emerald-700 text-sm">{es ? 'Distintivo válido' : 'Valid badge'}</p>
-                <p className="text-emerald-600 text-xs">{es ? 'Este código corresponde a un distintivo auténtico de Alianza Índigo.' : 'This code corresponds to an authentic Alianza Índigo badge.'}</p>
-              </div>
-            </div>
-          )}
-          {verifyResult === 'invalid' && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3 max-w-md mx-auto animate-fade-in">
-              <AlertCircle className="w-6 h-6 text-red-600 flex-shrink-0" />
-              <div className="text-left">
-                <p className="font-semibold text-red-700 text-sm">{es ? 'Código no encontrado' : 'Code not found'}</p>
-                <p className="text-red-600 text-xs">{es ? 'Este código no corresponde a ningún distintivo registrado.' : 'This code does not correspond to any registered badge.'}</p>
+                <p className="font-semibold text-amber-700 text-sm">{es ? 'Verificador en preparación' : 'Verifier in preparation'}</p>
+                <p className="text-amber-700 text-xs">{es ? 'Aún no hay un registro público conectado para confirmar o rechazar códigos.' : 'There is not yet a connected public registry to confirm or reject codes.'}</p>
               </div>
             </div>
           )}

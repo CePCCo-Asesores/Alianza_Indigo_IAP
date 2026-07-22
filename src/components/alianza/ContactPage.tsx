@@ -10,6 +10,7 @@ interface ContactPageProps {
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const CONTACT_EMAIL = 'contacto@alianzaindigo.org';
 
 const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
   const es = lang === 'es';
@@ -31,6 +32,17 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
     e.preventDefault();
     if (validate()) {
       trackContactFormSubmit(form.type);
+      const subject = encodeURIComponent(`[${form.type || 'general'}] ${form.subject}`);
+      const body = encodeURIComponent(
+        [
+          `Nombre: ${form.name}`,
+          `Correo: ${form.email}`,
+          `Tipo: ${form.type || 'general'}`,
+          '',
+          form.message,
+        ].join('\n')
+      );
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
       setSubmitted(true);
       setForm({ name: '', email: '', subject: '', type: '', message: '' });
       setTimeout(() => setSubmitted(false), 6000);
@@ -84,10 +96,10 @@ const ContactPage: React.FC<ContactPageProps> = ({ lang }) => {
                 <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-10 text-center animate-fade-in">
                   <CheckCircle2 className="w-16 h-16 text-emerald-600 mx-auto mb-4" />
                   <h2 className="font-heading font-bold text-2xl text-emerald-700 mb-2">
-                    {es ? '¡Mensaje enviado!' : 'Message sent!'}
+                    {es ? 'Correo preparado' : 'Email prepared'}
                   </h2>
                   <p className="text-emerald-600">
-                    {es ? 'Hemos recibido tu mensaje. Responderemos a la brevedad posible.' : 'We have received your message. We will respond as soon as possible.'}
+                    {es ? 'Se abrió tu cliente de correo para enviar el mensaje institucional.' : 'Your email client opened so you can send the institutional message.'}
                   </p>
                 </div>
               ) : (

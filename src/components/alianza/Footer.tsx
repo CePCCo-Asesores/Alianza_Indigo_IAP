@@ -5,7 +5,7 @@ import { trackNewsletterSubscribe } from '@/lib/gtm';
 
 
 interface FooterProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: string, hash?: string) => void;
   lang: 'es' | 'en';
 }
 
@@ -17,6 +17,14 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
     e.preventDefault();
     if (email.includes('@')) {
       trackNewsletterSubscribe();
+      const contactEmail = lang === 'es' ? 'contacto@alianzaindigo.org' : 'contact@alianzaindigo.org';
+      const subject = encodeURIComponent(lang === 'es' ? 'Suscripción al boletín' : 'Newsletter subscription');
+      const body = encodeURIComponent(
+        lang === 'es'
+          ? `Quiero suscribirme al boletín institucional con este correo: ${email}`
+          : `I want to subscribe to the institutional newsletter with this email: ${email}`
+      );
+      window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
       setSubscribed(true);
       setEmail('');
       setTimeout(() => setSubscribed(false), 4000);
@@ -47,6 +55,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
       emailPlaceholder: 'correo@ejemplo.com',
       subscribe: 'Suscribirse',
       subscribed: 'Suscrito correctamente',
+      prepared: 'Solicitud preparada',
       rights: 'Todos los derechos reservados.',
       privacy: 'Privacidad',
       terms: 'Términos',
@@ -78,6 +87,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
       emailPlaceholder: 'email@example.com',
       subscribe: 'Subscribe',
       subscribed: 'Successfully subscribed',
+      prepared: 'Request prepared',
       rights: 'All rights reserved.',
       privacy: 'Privacy',
       terms: 'Terms',
@@ -111,7 +121,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
                 aria-label={lang === 'es' ? 'Correo electrónico' : 'Email address'}
               />
               <button type="submit" className="btn-gold py-3 px-6 flex-shrink-0">
-                {subscribed ? text.subscribed : text.subscribe}
+                {subscribed ? text.prepared : text.subscribe}
                 {!subscribed && <ArrowRight className="w-4 h-4" />}
               </button>
             </form>
@@ -142,6 +152,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
                   key={i}
                   href="#"
                   onClick={(e) => e.preventDefault()}
+                  aria-disabled="true"
                   className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#FFD700] hover:text-[#1B1F5A] transition-all duration-300 text-xs font-bold"
                   aria-label={social.label}
                 >
@@ -157,15 +168,15 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, lang }) => {
             <h4 className="font-heading font-semibold text-sm text-[#FFD700] mb-4 uppercase tracking-wider">{text.institutional}</h4>
             <ul className="space-y-2.5">
               {[
-                { label: text.about, page: 'nosotros' },
-                { label: text.mission, page: 'nosotros' },
-                { label: text.values, page: 'nosotros' },
-                { label: text.transparency, page: 'nosotros' },
-                { label: text.statutes, page: 'nosotros' },
+                { label: text.about, page: 'nosotros', hash: undefined },
+                { label: text.mission, page: 'nosotros', hash: 'mision' },
+                { label: text.values, page: 'nosotros', hash: 'valores' },
+                { label: text.transparency, page: 'nosotros', hash: 'transparencia' },
+                { label: text.statutes, page: 'nosotros', hash: 'transparencia' },
               ].map((item, i) => (
                 <li key={i}>
                   <button
-                    onClick={() => onNavigate(item.page)}
+                    onClick={() => onNavigate(item.page, item.hash)}
                     className="text-white/60 hover:text-[#FFD700] text-sm transition-colors"
                   >
                     {item.label}

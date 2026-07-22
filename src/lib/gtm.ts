@@ -4,7 +4,7 @@
  * SETUP:
  *  1. Crea tu cuenta en https://tagmanager.google.com
  *  2. Crea un contenedor Web para alianzaindigo.org
- *  3. Reemplaza GTM_ID abajo con tu ID real (formato GTM-XXXXXXX)
+ *  3. Configura VITE_GTM_ID con tu ID real (formato GTM-XXXXXXX)
  *  4. Dentro de GTM configura:
  *     a) Tag: Google Analytics GA4 Configuration (con tu Measurement ID G-XXXXXXXXXX)
  *     b) Tag: GA4 Event por cada evento listado aquí
@@ -12,7 +12,7 @@
  *     d) Vincula GA4 con Google Ads para importar conversiones
  */
 
-export const GTM_ID = 'GTM-XXXXXXX'; // ← REEMPLAZAR con tu ID real
+export const GTM_ID = import.meta.env.VITE_GTM_ID?.trim() ?? '';
 
 // Extiende Window para que TypeScript no se queje del dataLayer
 declare global {
@@ -26,6 +26,21 @@ export function pushEvent(event: string, params: Record<string, unknown> = {}): 
   if (typeof window === 'undefined') return;
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event, ...params });
+}
+
+export function initGoogleTagManager(): void {
+  if (typeof window === 'undefined' || !GTM_ID) return;
+  if (document.querySelector(`script[data-gtm-id="${GTM_ID}"]`)) return;
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+
+  const firstScript = document.getElementsByTagName('script')[0];
+  const script = document.createElement('script');
+  script.async = true;
+  script.dataset.gtmId = GTM_ID;
+  script.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(GTM_ID)}`;
+  firstScript.parentNode?.insertBefore(script, firstScript);
 }
 
 // ─── Eventos de conversión principal ────────────────────────────────────────

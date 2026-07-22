@@ -20,6 +20,17 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
   const handleVolunteerSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     trackVolunteerFormSubmit(volunteerForm.area);
+    const subject = encodeURIComponent(es ? 'Solicitud de voluntariado' : 'Volunteering request');
+    const body = encodeURIComponent(
+      [
+        `${es ? 'Nombre' : 'Name'}: ${volunteerForm.name}`,
+        `${es ? 'Correo' : 'Email'}: ${volunteerForm.email}`,
+        `${es ? 'Área' : 'Area'}: ${volunteerForm.area || (es ? 'General' : 'General')}`,
+        '',
+        volunteerForm.message,
+      ].join('\n')
+    );
+    window.location.href = `mailto:voluntariado@alianzaindigo.org?subject=${subject}&body=${body}`;
     setVolunteerSubmitted(true);
     setVolunteerForm({ name: '', email: '', area: '', message: '' });
     setTimeout(() => setVolunteerSubmitted(false), 5000);
@@ -212,10 +223,10 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ lang, onNavigate }) => {
             <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-8 text-center animate-fade-in">
               <Heart className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
               <h3 className="font-heading font-bold text-emerald-700 text-xl mb-2">
-                {es ? '¡Gracias por tu interés!' : 'Thank you for your interest!'}
+                {es ? 'Correo preparado' : 'Email prepared'}
               </h3>
               <p className="text-emerald-600">
-                {es ? 'Hemos recibido tu solicitud. Nos pondremos en contacto contigo pronto.' : 'We have received your application. We will contact you soon.'}
+                {es ? 'Se abrió tu cliente de correo para enviar la solicitud de voluntariado.' : 'Your email client opened so you can send the volunteering request.'}
               </p>
             </div>
           ) : (

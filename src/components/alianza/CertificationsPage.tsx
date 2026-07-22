@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import IndigoSeal from './IndigoSeal';
 import {
   Award, Shield, CheckCircle2, ArrowRight, FileText, Search,
   Building2, GraduationCap, Landmark, ClipboardCheck, Star, BadgeCheck
 } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import { trackCertificationRequest } from '@/lib/gtm';
 import { CENI_URL } from '@/lib/config';
 
@@ -12,9 +13,11 @@ interface CertificationsPageProps {
 }
 
 const CERT_IMG = 'https://d64gsuwffb70l.cloudfront.net/69b80020a63de7c690b4919a_1773666481034_398844ac.jpg';
+const TAB_IDS = ['ceni', 'fuerza', 'sello', 'neuroplan'];
 
 const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
   const es = lang === 'es';
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState('ceni');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -38,6 +41,16 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
     { id: 'sello', label: es ? 'Sello Universal' : 'Universal Seal', icon: BadgeCheck },
     { id: 'neuroplan', label: 'NeuroPlan', icon: ClipboardCheck },
   ];
+
+  useEffect(() => {
+    const tabFromHash = location.hash.slice(1);
+    if (TAB_IDS.includes(tabFromHash)) {
+      setActiveTab(tabFromHash);
+      window.setTimeout(() => {
+        document.getElementById(tabFromHash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 0);
+    }
+  }, [location.hash]);
 
   const handleCertRequest = (type: string) => {
     trackCertificationRequest(type);
@@ -94,7 +107,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
 
       {/* CENI */}
       {activeTab === 'ceni' && (
-        <section className="section-padding bg-white">
+        <section id="ceni" className="section-padding bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-5 gap-12">
               <div className="lg:col-span-3">
@@ -222,7 +235,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
 
       {/* Fuerza Índigo */}
       {activeTab === 'fuerza' && (
-        <section className="section-padding bg-white">
+        <section id="fuerza" className="section-padding bg-white">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-lg bg-[#1B1F5A] flex items-center justify-center">
@@ -263,7 +276,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
 
       {/* Sello Universal */}
       {activeTab === 'sello' && (
-        <section className="section-padding bg-white">
+        <section id="sello" className="section-padding bg-white">
           <div className="max-w-5xl mx-auto text-center">
             <IndigoSeal size={180} className="mx-auto mb-8" />
             <h2 className="font-heading font-bold text-3xl text-[#1B1F5A] mb-4">
@@ -297,7 +310,7 @@ const CertificationsPage: React.FC<CertificationsPageProps> = ({ lang }) => {
 
       {/* NeuroPlan */}
       {activeTab === 'neuroplan' && (
-        <section className="section-padding bg-white">
+        <section id="neuroplan" className="section-padding bg-white">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-lg bg-[#1B1F5A] flex items-center justify-center">

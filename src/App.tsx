@@ -1,7 +1,6 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useOutletContext } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AppProvider } from "@/contexts/AppContext";
@@ -18,8 +17,6 @@ import RafflesPage from "@/components/alianza/RafflesPage";
 import DonationsPage from "@/components/alianza/DonationsPage";
 import ContactPage from "@/components/alianza/ContactPage";
 import NotFound from "@/pages/NotFound";
-
-const queryClient = new QueryClient();
 
 // Wrappers que consumen el contexto del layout (lang + onNavigate)
 const HomeWrap = () => {
@@ -65,31 +62,29 @@ const ContactWrap = () => {
 
 const App = () => (
   <ThemeProvider defaultTheme="light">
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AppProvider>
-            <Routes>
-              <Route path="/" element={<AppLayout />}>
-                <Route index element={<HomeWrap />} />
-                <Route path="nosotros" element={<AboutWrap />} />
-                <Route path="certificaciones" element={<CertWrap />} />
-                <Route path="plataformas" element={<PlatWrap />} />
-                <Route path="investigacion" element={<ResearchWrap />} />
-                <Route path="recursos" element={<ResourcesWrap />} />
-                <Route path="comunidad" element={<CommunityWrap />} />
-                <Route path="rifas" element={<RafflesWrap />} />
-                <Route path="donaciones" element={<DonationsWrap />} />
-                <Route path="contacto" element={<ContactWrap />} />
-                <Route path="*" element={<NotFound />} />
-              </Route>
-            </Routes>
-          </AppProvider>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <AppProvider>
+          <Routes>
+            <Route path="/" element={<AppLayout />}>
+              <Route index element={<HomeWrap />} />
+              <Route path="nosotros" element={<AboutWrap />} />
+              <Route path="certificaciones" element={<CertWrap />} />
+              <Route path="plataformas" element={<PlatWrap />} />
+              <Route path="investigacion" element={<ResearchWrap />} />
+              <Route path="recursos" element={<ResourcesWrap />} />
+              <Route path="comunidad" element={<CommunityWrap />} />
+              <Route path="rifas" element={<RafflesWrap />} />
+              <Route path="donaciones" element={<DonationsWrap />} />
+              <Route path="contacto" element={<ContactWrap />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </AppProvider>
+      </BrowserRouter>
+    </TooltipProvider>
   </ThemeProvider>
 );
 

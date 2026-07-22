@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Header from './alianza/Header';
 import Footer from './alianza/Footer';
-import { trackPageView } from '@/lib/gtm';
+import { initGoogleTagManager, trackPageView } from '@/lib/gtm';
 
 // Mapa de rutas ↔ pageId
 const PATH_TO_PAGE: Record<string, PageId> = {
@@ -46,7 +46,7 @@ type PageId =
 // Tipo exportado para que App.tsx lo pueda usar en useOutletContext
 export type LayoutContext = {
   lang: 'es' | 'en';
-  onNavigate: (page: string) => void;
+  onNavigate: (page: string, hash?: string) => void;
 };
 
 const TITLES: Record<PageId, { es: string; en: string }> = {
@@ -70,21 +70,35 @@ const AppLayout: React.FC = () => {
   // Deriva el pageId activo desde la URL real
   const currentPage: PageId = PATH_TO_PAGE[location.pathname] ?? 'inicio';
 
-  const handleNavigate = (page: string) => {
+  const handleNavigate = (page: string, hash?: string) => {
     const path = PAGE_TO_PATH[page] ?? '/';
-    navigate(path);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate(hash ? `${path}#${hash}` : path);
   };
 
   const toggleLang = () => setLang(prev => (prev === 'es' ? 'en' : 'es'));
 
+  useEffect(() => {
+    initGoogleTagManager();
+  }, []);
+
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = decodeURIComponent(location.hash.slice(1));
+      window.setTimeout(() => {
+        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 0);
+      return;
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname, location.hash]);
+
   // Actualiza el <title> y dispara page_view en GTM con cada cambio de ruta/idioma
-  // currentPage se deriva de location.pathname en el mismo render, no hace falta listarlo dos veces
   useEffect(() => {
     const title = TITLES[currentPage]?.[lang] ?? 'Alianza Índigo';
     document.title = title;
     trackPageView(location.pathname, title);
-  }, [lang, location.pathname]);
+  }, [currentPage, lang, location.pathname]);
 
   // Actualiza el atributo lang del <html>
   useEffect(() => {
